@@ -1,3 +1,4 @@
+require 'byebug'
 class Api::PropertiesController < ApplicationController
     before_action :require_login
 
@@ -17,6 +18,7 @@ class Api::PropertiesController < ApplicationController
 
     def create
         @property = Property.create(property_params)
+        debugger
         if @property.save
             render :show
         else
@@ -50,6 +52,6 @@ class Api::PropertiesController < ApplicationController
 
 
     def property_params
-        params.require(:property).permit(:title, :description, :author_id)
+        params.require(:property).permit(:address, :city, :zipcode)
     end
 end

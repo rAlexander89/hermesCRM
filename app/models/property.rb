@@ -17,7 +17,7 @@
 #
 class Property < ApplicationRecord
 
-    validates :address, presnce: true
+    validates :address, presence: true
     validates :city, presence: true
     validates :zipcode, presence: true
     
