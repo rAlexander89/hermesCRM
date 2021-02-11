@@ -6,6 +6,7 @@ import {
 
 const sessionErrorsReducer = (state = [], action) => {
     
+    
     Object.freeze(state);
     
     switch (action.type) {

@@ -1,6 +1,8 @@
+require 'byebug'
 class Api::SessionsController < ApplicationController
 
-    def create
+       def create
+        debugger
         @user = User.find_by_credentials(
             params[:user][:email],
             params[:user][:password]
