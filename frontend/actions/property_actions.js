@@ -1,6 +1,7 @@
 import * as PropertyAPIUtil from '../utils/property_api_util'
 
 export const RECEIVE_PROPERTIES = 'RECEIVE_PROPERTIES'
+export const RECEIVE_CSV = 'RECEIVE_CSV'
 export const RECEIVE_PROPERTY = 'RECEIVE_PROPERTY'
 export const REMOVE_PROPERTY = "REMOVE_PROPERTY"
 export const RECEIVE_PROPERTY_ERRORS = "RECEIVE_PROPERTY_ERRORS"
@@ -16,6 +17,13 @@ export const receiveProperty = property => {
     return{
         type: RECEIVE_PROPERTY,
         property
+    }
+}
+
+export const receiveCSV = csv => {
+    return{
+        type: RECEIVE_CSV,
+        csv
     }
 }
 
@@ -48,6 +56,12 @@ export const fetchProperty = propertyId => dispatch => {
 export const createProperty = property => dispatch => {
     return PropertyAPIUtil.createProperty(property)
         .then(property => dispatch(receiveProperty(property)),
+            error => dispatch(receivePropertyErrors(error.responseJSON)))
+}
+
+export const importProperties = csv => dispatch => {
+    return PropertyAPIUtil.importProperties(csv)
+        .then(csv => dispatch(receiveCSV(csv)),
             error => dispatch(receivePropertyErrors(error.responseJSON)))
 }
 

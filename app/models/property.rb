@@ -20,5 +20,11 @@ class Property < ApplicationRecord
     validates :address, presence: true
     validates :city, presence: true
     validates :zipcode, presence: true
+
+    def self.import(file)
+        CSV.forEach(file.path, headers: true) do |row|
+            Property.create! row.to_hash
+        end
+    end
     
 end

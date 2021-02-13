@@ -1,4 +1,5 @@
 require 'byebug'
+
 class Api::PropertiesController < ApplicationController
     before_action :require_login
 
@@ -19,11 +20,22 @@ class Api::PropertiesController < ApplicationController
     def create
         @property = Property.create(property_params)
         if @property.save
-            render :show
+            render :index
         else
             render json: @property.errors.full_messages, status: 422
         end
     end
+
+    def import
+        @properties = Property.import(params[:file])
+        if @properties.save
+            render :index
+        else
+            render json: @properties.errors.full_messages, status: 422
+        end
+    end
+    
+
 
     # def update
     #     @property = Property.find_by(id: params[:id])
