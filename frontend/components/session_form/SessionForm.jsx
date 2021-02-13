@@ -1,13 +1,13 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
+import { useHistory } from 'react-router-dom'
 
-const SessionForm = ({loginUser, signupUser}) => {
-
-    // const [form, setForm] = useState({email: '', password: '' })
+const SessionForm = ({loginUser}) => {
 
     const inputForm = useRef(null)
+    const history = useHistory()
 
-
-    const handleClick = () => {
+    const handleClick = (e) => {
+        e.preventDefault()
         let formData = inputForm.current
 
         const user = {
@@ -15,36 +15,35 @@ const SessionForm = ({loginUser, signupUser}) => {
             password: formData['password'].value 
         }
 
-
-        // setForm(form => ({
-        //     email: formData['email'].value,
-        //     password: formData['password'].value    
-        // }))
-
-        debugger
-
-
-
         loginUser(user)
-            .then(() => console.log('we are in'))
+            .then(() => {
+                inputForm.current.reset()
+                history.push('/dash')
+                console.log('we are in')
+            })
     }
 
     return (
-        <div className='form-container'>
-            <form ref={inputForm} className='session-form'>
+        <div className='session-form-container'>
+            <div className='session-form-header'>
+                <h1>Flipping Unleashed</h1>
+            </div>
+            <form ref={inputForm} className='session-form' autoComplete="off">
                 <input
                     type='email'
+                    className='email-field'
                     placeholder='email'
                     label={'email'}
                     name={'email'}/>
 
                 <input
                     type='password'
+                    className='password-field'
                     placeholder='password'
                     label={'password'}
                     name={'password'}/>
             </form>
-                <button onClick={handleClick}>Log In</button>
+                <div type='submit' className='session-button' onClick={handleClick}> LOG IN </div>
         </div>
     )
 }

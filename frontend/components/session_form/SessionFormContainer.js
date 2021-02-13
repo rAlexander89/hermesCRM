@@ -6,14 +6,12 @@ import { withRouter } from 'react-router-dom'
 
 const mSTP = state => {
     return{
-        // errors: state.errors.session
     }
 }
 
 const mDTP = dispatch => {
     return{
         loginUser: user => dispatch(login(user)),
-        signupUser: user => dispatch(signup(user))
     }
 }
 

@@ -18,7 +18,6 @@ class Api::PropertiesController < ApplicationController
 
     def create
         @property = Property.create(property_params)
-        debugger
         if @property.save
             render :show
         else

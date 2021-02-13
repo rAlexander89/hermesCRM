@@ -1,0 +1,19 @@
+.nav-bar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 35px 0px 35px;
+}
+
+
+.logo{
+    font-size: 18px;
+    letter-spacing: 2px;
+    cursor: pointer;
+
+}

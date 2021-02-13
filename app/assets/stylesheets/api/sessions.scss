@@ -1,3 +1,62 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.session-form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 450px;
+    width: 450px;
+    margin-top: -200px;
+    gap: 35px;
+}
+
+.session-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.session-form-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+h1{
+    font-size: 32px;
+    letter-spacing: 2px;
+}
+
+.email-field{
+    // border-radius: 8px 8px 0px 0px;
+}
+
+.password-field{
+    // border-radius: 0px 0px 8px 8px;
+}
+
+.email-field:hover, .password-field:hover{
+    border: 1px solid rgba(60, 60, 61, 0.596)
+}
+
+.email-field:focus, .password-field:focus{
+    border: 1px solid rgba(60, 60, 61, 0.596)
+}
+
+
+.email-field, .password-field{
+    border: 1px solid rgb(218, 220, 223)
+}
+
+.session-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 200px;
+    background: none;
+    cursor: pointer;
+    border: 1px solid rgba(60, 60, 61, 0.596);
+}
