@@ -1,7 +1,8 @@
 .leads-container{
     display: flex;
     flex-direction: column;
-    min-width: 800px;
+    min-width: 1300px;
+    border: 1px solid rgb(22,22,22);
 }
 
 .leads-header{
@@ -13,4 +14,12 @@
     color: white;
     width: 100%;
     height: 35px;
+}
+
+.table-header{
+    background: red;
+    display: table-row;
+    font-weight: bold;
+    // text-align: center;
+
 }

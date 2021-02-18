@@ -1,0 +1,60 @@
+$table-header: rgb(22,22,22);
+$table-header-border: white;
+$table-border: #d9d9d9;
+$row-bg: #f4f2f1;
+
+div {
+  box-sizing: border-box;
+}
+
+.table-container {
+  display: block;
+  width: 100%;
+}
+
+
+.flex-table {
+    width: 100%;
+    display: flex;
+}
+
+.table-header{
+    background: rgb(22,22,22);
+    color: white;
+    border-top: 1px solid white;
+}
+
+
+.flex-row {
+  text-align: center;
+  padding: 0.5em 0.5em;
+  border-right: solid 1px $table-border;
+  border-bottom: solid 1px $table-border;
+}
+
+.flex-table:last-child{
+    border-right: none;
+}
+
+
+#index{
+    width: 50px;
+}
+
+#submitted, #status, #l-a, #o-l{
+    width: 75px;
+}
+
+#list-price, #arv, #offered{
+    width: 140px;
+}
+
+#agent, #phone{
+    width: 150px;
+}
+
+#address{
+    width: 230px;
+    border-right: none;
+
+}
