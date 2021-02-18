@@ -1,26 +1,31 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useRef } from 'react'
 
-function ImportLeads() {
-    return (
-        <form className='file-upload-form'>
-            <div className='file-upload-header'>
-                Upload Leads &#40;.csv&#41;
-            </div>
-            <div className='button-wrap'>
-                <label className='new-button' for='upload'> choose file
-                    <input id='upload' type='file'/>
-                </label>
-            </div>
-            
+function ImportLeads({importProperties}) {
 
-            {/* <div className="custom-file">
-                <div className='button-wrap'>
-                    <input type="file" className="custom-file-input"/>
-                </div>
-            </div> */}
-            <input type="submit" value="UPLOAD" className='upload-leads-button'/>
+    const fileRef = useRef(null)
+
+ 
+    const handeUpload = () => {
+        const data = new FormData()
+        data.append('csv', fileRef.current.files[0]);
+        importProperties(data)
+        .then((res) => {
+            console.log(res)
+            })
+  }
+
+    return(
+        <>
+        <form>
+            <label>
+                upload file
+                <input name="csv" type="file" ref={fileRef}/>
+            </label>
         </form>
+            <div type="submit" onClick={handeUpload}>upload</div>
+        </>
     )
+
 }
 
 export default ImportLeads

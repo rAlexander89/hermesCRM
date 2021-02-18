@@ -27,12 +27,14 @@ class Api::PropertiesController < ApplicationController
     end
 
     def import
-        @properties = Property.import(params[:file])
-        if @properties.save
-            render :index
-        else
-            render json: @properties.errors.full_messages, status: 422
-        end
+        Property.import(params[:csv])
+        render :index
+        # @properties = Property.import(params[:csv])
+        # if @properties.save
+        #     render :index
+        # else
+        #     render json: @properties.errors.full_messages, status: 422
+        # end
     end
     
 
@@ -63,6 +65,7 @@ class Api::PropertiesController < ApplicationController
 
 
     def property_params
-        params.require(:property).permit(:address, :city, :zipcode)
+        params.require(:property).permit(:address, :city, :zipcode, :csv)
+        # params.require(:property).permit(:csv)
     end
 end

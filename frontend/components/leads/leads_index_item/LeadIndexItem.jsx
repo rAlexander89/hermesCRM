@@ -1,7 +1,6 @@
 import React from 'react'
 
 function LeadIndexItem({lead}) {
-    debugger
     return (
         <div className='lead-index-item'>
 

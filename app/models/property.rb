@@ -17,14 +17,17 @@
 #
 class Property < ApplicationRecord
 
+    require 'activerecord-import/base'
+    require 'activerecord-import/active_record/adapters/postgresql_adapter'
+
     validates :address, presence: true
     validates :city, presence: true
     validates :zipcode, presence: true
 
-    def self.import(file)
-        CSV.forEach(file.path, headers: true) do |row|
-            Property.create! row.to_hash
+    def self.import(csv)
+        CSV.foreach(csv.path, headers: true, :header_converters => :symbol,  encoding:'iso-8859-1:utf-8') do |row|
+            property_hash = row.to_hash
+            Property.create! property_hash
         end
     end
-    
 end

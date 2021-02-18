@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import ImportLeads from './ImportLeads'
+import {importProperties} from '../../../actions/property_actions'
 
 const mSTP = state => {
     return{
@@ -9,6 +10,7 @@ const mSTP = state => {
 
 const mDTP = dispatch => {
     return{
+        importProperties: csv => dispatch(importProperties(csv))
     }
 }
 
