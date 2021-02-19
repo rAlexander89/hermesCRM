@@ -46,15 +46,14 @@ div {
 }
 
 #list-price, #arv, #offered{
-    width: 140px;
-}
-
-#agent, #phone{
     width: 150px;
 }
 
-#address{
-    width: 230px;
-    border-right: none;
+#agent, #phone{
+    width: 175px;
+}
 
+#address{
+    width: 399px;
+    border-right: none;
 }
