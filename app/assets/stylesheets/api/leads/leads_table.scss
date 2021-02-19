@@ -41,19 +41,31 @@ div {
     width: 50px;
 }
 
-#submitted, #status, #l-a, #o-l{
-    width: 75px;
+#submitted{
+    width: 100px;
+}
+
+#status, #l-a, #o-l{
+    width: 60px;
 }
 
 #list-price, #arv, #offered{
-    width: 150px;
+    width: 110px;
 }
 
-#agent, #phone{
-    width: 175px;
+#agent{
+    width: 250px;
+}
+
+#phone{
+    width: 135px;
 }
 
 #address{
-    width: 399px;
+    width: 405px;
+}
+
+#last-contact{
+    width: 100px;
     border-right: none;
 }

@@ -23,6 +23,7 @@ function Leads({fetchProperties, currentUser, leads}) {
                     <div class="flex-row" id='agent'>Agent</div>
                     <div class="flex-row" id='phone'>Phone</div>
                     <div class="flex-row" id='address'>Address</div>
+                    <div class="flex-row" id='last-contact'>Last</div>
                 </div>  
                 {leads.reverse().map((lead, i) => (
                  <LeadIndexItemContainer
