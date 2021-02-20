@@ -8,11 +8,11 @@ function LeadIndexItem({lead, index, setSelectedLead, setShowLead}) {
         e.preventDefault();
         setSelectedLead(lead)
         setShowLead(true)
-
         document.querySelector(`.x${index}`).addEventListener('click', function(){
-        document.querySelector('.lead-show-container').classList.toggle('show');
+            if($('.show').length === 0){
+                document.querySelector('.lead-show-container').classList.toggle('show');
+            }
         });
-
     }
 
     return (
