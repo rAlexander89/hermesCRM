@@ -1,15 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import LeadIndexItemContainer from '../leads_index_item/LeadIndexItemContainer'
+import LeadShowContainer from '../leads_show/LeadShowContainer'
 
-function Leads({fetchProperties, currentUser, leads}) {
+
+function Leads({fetchProperties, leads}) {
+
+
+    const [showLead, setShowLead] = useState(false);
+    const [selectedLead, setSelectedLead] = useState(null);
 
     useEffect(() => {
-            fetchProperties()
+        fetchProperties()
     },[])
 
     return (
         <div className='leads-container'>
             <div className='leads-header'>Leads</div>
+            <LeadShowContainer showLead={showLead} setShowLead={setShowLead} selectedLead={selectedLead}/>
             <div class="table-container">
                 <div class="flex-table table-header">
                     <div class="flex-row" id='index'>#</div>
@@ -25,13 +32,16 @@ function Leads({fetchProperties, currentUser, leads}) {
                     <div class="flex-row" id='address'>Address</div>
                     <div class="flex-row" id='last-contact'>Last</div>
                 </div>  
-                {leads.reverse().map((lead, i) => (
+                {leads.map((lead, i) => (
                  <LeadIndexItemContainer
                     index={i}
                     lead={lead}
-                    key={lead.id}/>
-            ))
-            }  
+                    key={lead.id}
+                    setShowLead={setShowLead}
+                    setSelectedLead={setSelectedLead}
+                    setShowLead={setShowLead}
+                    />
+                ))}  
             </div>
         </div>
     )

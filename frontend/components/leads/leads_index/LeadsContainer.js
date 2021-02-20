@@ -5,7 +5,7 @@ import Leads from './Leads'
 const mSTP = state => {
     return{
         currentUser: state.entities.users[state.entities.session.currentUserId],
-        leads: Object.values(state.entities.properties)
+        leads: Object.values(state.entities.properties).reverse()
     }
 }
 
