@@ -1,22 +1,15 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 
 
-function LeadIndexItem({lead, index, setSelectedLead, setShowLead}) {
-
-
-    const showThisLead = (e, lead, setSelectedLead, setShowLead) => {
+function LeadIndexItem({lead, index, setSelectedLead}) {
+    
+    const showThisLead = (e, lead, setSelectedLead) => {
         e.preventDefault();
         setSelectedLead(lead)
-        setShowLead(true)
-        document.querySelector(`.x${index}`).addEventListener('click', function(){
-            if($('.show').length === 0){
-                document.querySelector('.lead-show-container').classList.toggle('show');
-            }
-        });
     }
 
     return (
-        <div className={`lead-index-item x${index}`} onClick={e => showThisLead(e, lead, setSelectedLead, setShowLead)}>
+        <div className={`lead-index-item x${index}`} onDoubleClick={e => showThisLead(e, lead, setSelectedLead)}>
             <div className="flex-row" id='index'>{index + 1}</div>
             <div className="flex-row" id='submitted'>4.23.20</div>
             <div className="flex-row" id='status'>A</div>

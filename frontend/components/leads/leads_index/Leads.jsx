@@ -1,12 +1,10 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useState, } from 'react'
 import LeadIndexItemContainer from '../leads_index_item/LeadIndexItemContainer'
 import LeadShowContainer from '../leads_show/LeadShowContainer'
 
 
 function Leads({fetchProperties, leads}) {
 
-
-    const [showLead, setShowLead] = useState(false);
     const [selectedLead, setSelectedLead] = useState(null);
 
     useEffect(() => {
@@ -16,30 +14,28 @@ function Leads({fetchProperties, leads}) {
     return (
         <div className='leads-container'>
             <div className='leads-header'>Leads</div>
-            <LeadShowContainer showLead={showLead} setShowLead={setShowLead} selectedLead={selectedLead}/>
-            <div class="table-container">
-                <div class="flex-table table-header">
-                    <div class="flex-row" id='index'>#</div>
-                    <div class="flex-row" id='submitted'>O</div>
-                    <div class="flex-row" id='status'>S</div>
-                    <div class="flex-row" id='l-a'>L-A</div>
-                    <div class="flex-row" id='o-l'>O-L</div>
-                    <div class="flex-row" id='list-price'>List Price</div>
-                    <div class="flex-row" id='arv'>ARV</div>
-                    <div class="flex-row" id='offered'>Offered</div>
-                    <div class="flex-row" id='agent'>Agent</div>
-                    <div class="flex-row" id='phone'>Phone</div>
-                    <div class="flex-row" id='address'>Address</div>
-                    <div class="flex-row" id='last-contact'>Last</div>
+            <LeadShowContainer setSelectedLead={setSelectedLead} selectedLead={selectedLead}/>
+            <div className="table-container">
+                <div className="flex-table table-header">
+                    <div className="flex-row" id='index'>#</div>
+                    <div className="flex-row" id='submitted'>O</div>
+                    <div className="flex-row" id='status'>S</div>
+                    <div className="flex-row" id='l-a'>L-A</div>
+                    <div className="flex-row" id='o-l'>O-L</div>
+                    <div className="flex-row" id='list-price'>List Price</div>
+                    <div className="flex-row" id='arv'>ARV</div>
+                    <div className="flex-row" id='offered'>Offered</div>
+                    <div className="flex-row" id='agent'>Agent</div>
+                    <div className="flex-row" id='phone'>Phone</div>
+                    <div className="flex-row" id='address'>Address</div>
+                    <div className="flex-row" id='last-contact'>Last</div>
                 </div>  
                 {leads.map((lead, i) => (
                  <LeadIndexItemContainer
                     index={i}
                     lead={lead}
                     key={lead.id}
-                    setShowLead={setShowLead}
                     setSelectedLead={setSelectedLead}
-                    setShowLead={setShowLead}
                     />
                 ))}  
             </div>
