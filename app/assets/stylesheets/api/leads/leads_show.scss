@@ -2,13 +2,20 @@
     transition: all .2s ease-in-out;
     height: 0px;
     opacity: 0;
-    // height: 600px;
 }
 
 .lead-show-header{
     display: flex;
     justify-content: space-between;
-    margin: 15px 15px 15px 15px;
+    // margin: 15px 15px 15px 15px;
+}
+
+.lead-prime-details{
+    display: flex;        
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    gap: 10px;
 }
 
 .lead-show-address{
@@ -21,3 +28,16 @@
     height: 750px;
 }
 
+#close{
+    cursor: pointer;
+    color: red;
+    font-weight: bolder;
+    font-size: 20px;
+    width: 100px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#sub-date{
+    width: 100px;
+}

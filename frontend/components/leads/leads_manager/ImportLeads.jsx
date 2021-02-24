@@ -17,7 +17,6 @@ function ImportLeads({importProperties}) {
 
     const onFileLoad = e => {
         let newFileName = e.target.files[0].name
-        debugger
         setFileName(newFileName)        
     }
 
