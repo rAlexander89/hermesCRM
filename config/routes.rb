@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :properties do 
         collection { post :import }
       end
+      resources :comments, only: [:create, :update, :destroy]
       resource :session, only: [:create, :destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
