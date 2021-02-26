@@ -12,7 +12,9 @@ class Api::UsersController < ApplicationController
     end
 
     def create
+        debugger
         @user = User.new(user_params)
+        debugger
         if @user.save
             login!(@user)
             render json: @user
@@ -23,6 +25,6 @@ class Api::UsersController < ApplicationController
 
     private
     def user_params
-        params.require(:user).permit(:first_name, :last_name, :password, :email)
+        params.require(:user).permit(:first_name, :last_name, :password, :email, :privileges)
     end
 end

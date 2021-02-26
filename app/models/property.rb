@@ -39,14 +39,61 @@ class Property < ApplicationRecord
     require 'activerecord-import/base'
     require 'activerecord-import/active_record/adapters/postgresql_adapter'
 
-    validates :address, presence: true
-    validates :city, presence: true
-    validates :zipcode, presence: true
+    validates 
+        :address, 
+        :address, 
+        :apn, 
+        :bac,
+        :arv,
+        :arv_offer, 
+        :bath_count, 
+        :bed_count, 
+        :city, 
+        :county, 
+        :gla, 
+        :house_number,
+        :arv,
+        :list_arv,
+        :list_offer,
+        :lot_area,
+        :offer,
+        :offer_date,
+        :offer_text,
+        :state,
+        :status,
+        :st_prefix,
+        :st_suffix,
+        :zipcode,
+        :created_at,
+        :updated_at,
+        :listing_id, #active, #under contract - with us, - not us, pending - with us, pending - without us, fell out - active, closed - with us, closed - without us
+        presence: true
+    validates :status, inclusion: [
+                                    'active', 
+                                    'under contract - with us', 
+                                    'under contract - without us', 
+                                    'pending - with us', 
+                                    'pending - without us', 
+                                    'fell out - active', 
+                                    'closed - with us', 
+                                    'closed - without us'
+                                ]
 
     def self.import(csv)
         CSV.foreach(csv.path, headers: true, :header_converters => :symbol,  encoding:'iso-8859-1:utf-8') do |row|
             property_hash = row.to_hash
             Property.create! property_hash
+
         end
     end
+
+
+    has_many :comments, 
+    foreign_key: :user_id,
+    class_name: :Comment
+
+    belongs_to :listing_agent,
+    foreign_key: :agent_id,
+    class_name: :Agent
+
 end

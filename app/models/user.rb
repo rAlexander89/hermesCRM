@@ -23,24 +23,13 @@ class User < ApplicationRecord
     
     before_validation :ensure_session_token
 
-    validates :email, presence: true, uniqueness: true
+    validates :first_name, presence: true
+    validates :last_name, presence: true
     validates :password, length: {minimum: 6, allow_nil: true}
+    validates :email, presence: true, uniqueness: true
     validates :privileges, inclusion: %w(admin sales_manager sales_assistant sales)
     validates :session_token, presence: true, uniqueness: true
     validates :password_digest, presence: true
-
-    has_many :deals,
-    foreign_key: :property_id,
-    class_name: :Property
-
-    # has_many :comments, 
-    # foreign_key: :user_id,
-    # class_name: :Comment
-
-
-
-
-    
 
 
     attr_reader :password
@@ -61,6 +50,7 @@ class User < ApplicationRecord
     
     def password=(password)
         @password = password
+        debugger
         self.password_digest = BCrypt::Password.create(password)   
     end
 
@@ -77,5 +67,13 @@ class User < ApplicationRecord
             nil
         end 
     end
+
+    has_many :comments, 
+    foreign_key: :user_id,
+    class_name: :Comment
+
+    has_many :deals,
+    foreign_key: :property_id,
+    class_name: :Property
 
 end

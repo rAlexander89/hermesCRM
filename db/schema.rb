@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_014940) do
+ActiveRecord::Schema.define(version: 2021_02_26_055429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2021_02_26_014940) do
     t.string "list_arv", null: false
     t.string "offer", null: false
     t.string "offer_text", null: false
+    t.string "arv", null: false
     t.index ["address"], name: "index_properties_on_address"
     t.index ["city"], name: "index_properties_on_city"
     t.index ["zipcode"], name: "index_properties_on_zipcode"
