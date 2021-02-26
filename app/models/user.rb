@@ -7,6 +7,7 @@
 #  first_name      :string           not null
 #  last_name       :string           not null
 #  password_digest :string           not null
+#  privileges      :string           not null
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
@@ -24,8 +25,23 @@ class User < ApplicationRecord
 
     validates :email, presence: true, uniqueness: true
     validates :password, length: {minimum: 6, allow_nil: true}
+    validates :privileges, inclusion: %w(admin sales_manager sales_assistant sales)
     validates :session_token, presence: true, uniqueness: true
     validates :password_digest, presence: true
+
+    has_many :deals,
+    foreign_key: :property_id,
+    class_name: :Property
+
+    # has_many :comments, 
+    # foreign_key: :user_id,
+    # class_name: :Comment
+
+
+
+
+    
+
 
     attr_reader :password
 

@@ -10,10 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_11_011130) do
+ActiveRecord::Schema.define(version: 2021_02_26_014940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "agents", force: :cascade do |t|
+    t.string "agent_first"
+    t.string "agent_last"
+    t.string "agent_contact"
+    t.string "agent_email"
+    t.integer "agent_id"
+    t.string "agent_broker", null: false
+    t.integer "agent_broker_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "coagents", force: :cascade do |t|
+    t.string "coagent_first"
+    t.string "coagent_last"
+    t.string "coagent_contact"
+    t.string "coagent_email"
+    t.integer "coagent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "comment_txt", null: false
+    t.integer "user_id", null: false
+    t.integer "property_id", null: false
+  end
+
+  create_table "pipeline_joins", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "property_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "properties", force: :cascade do |t|
     t.string "address", null: false
@@ -21,6 +56,25 @@ ActiveRecord::Schema.define(version: 2021_02_11_011130) do
     t.string "zipcode", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "offer_date", null: false
+    t.integer "house_number", null: false
+    t.string "st_prefix"
+    t.string "st_name"
+    t.string "st_suffix"
+    t.string "county", null: false
+    t.string "state", null: false
+    t.integer "bed_count", null: false
+    t.integer "bath_count", null: false
+    t.integer "gla", null: false
+    t.integer "lot_area", null: false
+    t.integer "apn", null: false
+    t.integer "listing_id", null: false
+    t.text "status", null: false
+    t.string "arv_offer", null: false
+    t.string "list_offer", null: false
+    t.string "list_arv", null: false
+    t.string "offer", null: false
+    t.string "offer_text", null: false
     t.index ["address"], name: "index_properties_on_address"
     t.index ["city"], name: "index_properties_on_city"
     t.index ["zipcode"], name: "index_properties_on_zipcode"
@@ -34,6 +88,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_011130) do
     t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "privileges", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["first_name"], name: "index_users_on_first_name"
     t.index ["last_name"], name: "index_users_on_last_name"
