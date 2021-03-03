@@ -2,7 +2,8 @@ import React from 'react'
 import LeadsShowHeaderContainer from './leads_show_header/LeadsShowHeaderContainer'
 import LeadsShowBodyContainer from './leads_show_body/LeadsShowBodyContainer'
 
-function LeadShow({selectedLead, setSelectedLead}) {
+// function LeadShow({selectedLead, setSelectedLead}) {
+function LeadShow({selectedLead, setSelectedLead, fetchProperty}) {
 
 
     const leadData = (selectedLead, setSelectedLead) => {
@@ -11,9 +12,8 @@ function LeadShow({selectedLead, setSelectedLead}) {
 
             return(
                 <>
-                <LeadsShowHeaderContainer selectedLead={selectedLead} setSelectedLead={setSelectedLead}/>
-                <LeadsShowBodyContainer/>
-
+                {/* <LeadsShowHeaderContainer/> */}
+                <LeadsShowBodyContainer selectedLead={selectedLead} setSelectedLead={setSelectedLead}/>
                 </>
             )
         } 

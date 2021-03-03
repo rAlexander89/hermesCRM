@@ -4,7 +4,7 @@
 #
 #  id              :bigint           not null, primary key
 #  address         :string           not null
-#  apn             :integer          not null
+#  apn             :bigint           not null
 #  arv             :string           not null
 #  arv_offer       :string           not null
 #  bac             :string           not null
@@ -31,7 +31,7 @@
 #  zipcode         :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  listing_id      :integer          not null
+#  listing_id      :string           not null
 #
 # Indexes
 #
@@ -72,15 +72,27 @@ class Property < ApplicationRecord
     presence: true
 
     validates :status, inclusion: [
-                                    'active', 
-                                    'under contract - with us', 
-                                    'under contract - without us', 
-                                    'pending - with us', 
-                                    'pending - without us', 
-                                    'fell out - active', 
-                                    'closed - with us', 
-                                    'closed - without us'
+                                    'Coming Soon', 
+                                    'Active', 
+                                    'Active Under Contract', 
+                                    'Hold', 
+                                    'Pending', 
+                                    'Fell out - Active', 
+                                    'Closed', 
                                 ]
+
+    has_many :comments, 
+    foreign_key: :user_id,
+    class_name: :Comment
+
+
+    # belongs_to :board, polymorphic: true
+
+    belongs_to :agent,
+    optional: true,
+    foreign_key: :agent_id,
+    class_name: :Agent
+
 
     def self.import(csv)
         CSV.foreach(csv.path, headers: true, :header_converters => :symbol, skip_blanks: true,  encoding:'iso-8859-1:utf-8') do |row, i|
@@ -89,8 +101,6 @@ class Property < ApplicationRecord
             # row_hash.each.with_index do |k,v, i|
             #     puts i, k,v
             # end
-
-            debugger
             property_hash = 
                 {
                     offer_date_dash: row[:date],
@@ -125,32 +135,21 @@ class Property < ApplicationRecord
 
             # IO.write("../../log/failed_property_insert", row_hash.join(' ') + '\n, mode: 'a')
 
-            # agent_hash = 
-            #     {
-            #         agent_first: row[:firstname],
-            #         agent_last: row[:lastname],
-            #         agent_contact: row[:cell],
-            #         agent_email: row[:email],
-            #         agent_id: row[:agentid],
-            #         agent_broker: row[:officename],
-            #         agent_broker_id: row[:officeid],
-            #         listing_id: row[:listing_id]
-            #     }
+            agent_hash = 
+                {
+                    agent_first: row[:firstname],
+                    agent_last: row[:lastname],
+                    agent_contact: row[:cell],
+                    agent_email: row[:email],
+                    agent_id: row[:agentid],
+                    agent_broker: row[:officename],
+                    agent_broker_id: row[:officeid],
+                    listing_id: row[:listing_id]
+                }
 
-                debugger
-            # property_hash = row.to_hash
+            Agent.create! agent_hash
             Property.create! property_hash
-            # Agent.create! agent_hash
         end
     end
-
-
-    has_many :comments, 
-    foreign_key: :user_id,
-    class_name: :Comment
-
-    # belongs_to :listing_agent,
-    # foreign_key: :agent_id,
-    # class_name: :Agent
 
 end

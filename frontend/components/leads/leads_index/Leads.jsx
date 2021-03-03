@@ -20,11 +20,11 @@ function Leads({fetchProperties, leads}) {
                     <div className="flex-row" id='index'>#</div>
                     <div className="flex-row" id='submitted'>O</div>
                     <div className="flex-row" id='status'>S</div>
-                    <div className="flex-row" id='l-a'>L-A</div>
                     <div className="flex-row" id='o-l'>O-L</div>
+                    <div className="flex-row" id='l-a'>L-A</div>
+                    <div className="flex-row" id='offered'>Offered</div>
                     <div className="flex-row" id='list-price'>List Price</div>
                     <div className="flex-row" id='arv'>ARV</div>
-                    <div className="flex-row" id='offered'>Offered</div>
                     <div className="flex-row" id='agent'>Agent</div>
                     <div className="flex-row" id='phone'>Phone</div>
                     <div className="flex-row" id='address'>Address</div>

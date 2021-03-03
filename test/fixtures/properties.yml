@@ -4,7 +4,7 @@
 #
 #  id              :bigint           not null, primary key
 #  address         :string           not null
-#  apn             :integer          not null
+#  apn             :bigint           not null
 #  arv             :string           not null
 #  arv_offer       :string           not null
 #  bac             :string           not null
@@ -31,7 +31,7 @@
 #  zipcode         :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  listing_id      :integer          not null
+#  listing_id      :string           not null
 #
 # Indexes
 #

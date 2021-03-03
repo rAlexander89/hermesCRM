@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_27_060042) do
+ActiveRecord::Schema.define(version: 2021_03_03_051108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 2021_02_27_060042) do
     t.string "agent_contact"
     t.string "agent_email"
     t.integer "agent_id"
-    t.string "agent_broker", null: false
-    t.integer "agent_broker_id", null: false
+    t.string "agent_broker"
+    t.integer "agent_broker_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "listing_id", default: [], array: true
@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(version: 2021_02_27_060042) do
     t.integer "bath_count", null: false
     t.integer "gla", null: false
     t.integer "lot_area", null: false
-    t.integer "apn", null: false
-    t.integer "listing_id", null: false
+    t.bigint "apn", null: false
+    t.string "listing_id", null: false
     t.text "status", null: false
     t.string "arv_offer", null: false
     t.string "list_offer", null: false

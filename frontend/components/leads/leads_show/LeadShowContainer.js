@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import LeadShow from './LeadShow'
+import { fetchProperty } from '../../../actions/property_actions'
 
 
 const mSTP = state => {
@@ -10,6 +11,7 @@ const mSTP = state => {
 
 const mDTP = dispatch => {
     return{
+        fetchProperty: propertyId => dispatch(fetchProperty(propertyId))
     }
 }
 

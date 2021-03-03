@@ -10,6 +10,7 @@ class Api::PropertiesController < ApplicationController
 
     def show
         @property = Property.find_by(id: params[:id])
+        debugger
         if @property
             render :show
         else
@@ -39,18 +40,18 @@ class Api::PropertiesController < ApplicationController
     
 
 
-    # def update
-    #     @property = Property.find_by(id: params[:id])
-    #     if @property && @property.author_id == current_user.id
-    #         if @property.update(property_params)
-    #             render :show
-    #         else
-    #             render json: @property.errors.full_messages, status: 422
-    #         end
-    #     else
-    #         render json: @property.errors.full_messages, status: 422
-    #     end
-    # end
+    def update
+        @property = Property.find_by(id: params[:id])
+        if @property && @property.author_id == current_user.id
+            if @property.update(property_params)
+                render :show
+            else
+                render json: @property.errors.full_messages, status: 422
+            end
+        else
+            render json: @property.errors.full_messages, status: 422
+        end
+    end
 
     def destroy
         @property = Property.find_by(id: params[:id])

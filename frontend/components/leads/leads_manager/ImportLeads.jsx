@@ -11,6 +11,7 @@ function ImportLeads({importProperties}) {
         data.append('csv', fileRef.current.files[0])
         importProperties(data)
         .then((res) => {
+            console.log('success')
             console.log(res)
             })
     }

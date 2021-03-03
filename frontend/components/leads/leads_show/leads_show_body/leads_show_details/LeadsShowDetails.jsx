@@ -1,6 +1,12 @@
 import React from 'react'
 
-function LeadsShowDetails() {
+function LeadsShowDetails({selectedLead}) {
+
+    function addComma(num){
+         return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+
     return (
     <div className='lead-show-listing-detail'>
         <div className='lead-show-contact-header'>
@@ -9,18 +15,15 @@ function LeadsShowDetails() {
         <div className='lead-details'>
             <div className='lead-detail'>
                 <div className='detail-left'>
-                    Status                
+                    Status
+          
                 </div>
                 <div className='detail-right'>
                     <select>
                         <option>Active</option>
-                        <option>Active - fell out</option>
-                        <option>Under Contract - with us</option>
-                        <option>Under Contract - not with us</option>
-                        <option>Pending - with us</option>
-                        <option>Pending - not with us</option>
-                        <option>Closed - with us</option>
-                        <option>Closed - not with us</option>
+                        <option>Under Contract</option>
+                        <option>Pending</option>
+                        <option>Closed</option>
                     </select>              
                 </div>
             </div>
@@ -29,7 +32,7 @@ function LeadsShowDetails() {
                     Address                
                 </div>
                   <div className='detail-right'>
-                    123 Fake St, Little Town, 90579              
+                    {selectedLead.address}             
                 </div>
             </div>
             <div className='lead-detail'>
@@ -37,23 +40,23 @@ function LeadsShowDetails() {
                     Offer/List/ARV                
                 </div>
                   <div className='detail-right'>
-                    654,456/854,456/1,254,456
+                    {addComma(selectedLead.offer)}/{addComma(selectedLead.list_price)}/{addComma(selectedLead.arv)}
                 </div>
             </div>
-             <div className='lead-detail'>
+             {/* <div className='lead-detail'>
                 <div className='detail-left'>
-                    Max Offer                
+                    Potential Max Offer                
                 </div>
                   <div className='detail-right'>
                     1,254,456
                 </div>
-            </div>
+            </div> */}
             <div className='lead-detail'>
                 <div className='detail-left'>
                     Bed/Bath               
                 </div>
                   <div className='detail-right'>
-                    3/2
+                    {selectedLead.bed_count}/{selectedLead.bath_count}
                 </div>
             </div>
             <div className='lead-detail'>
@@ -61,7 +64,7 @@ function LeadsShowDetails() {
                     GLA/LOT                
                 </div>
                   <div className='detail-right'>
-                    2,000/6,000
+                      {addComma(selectedLead.gla)}/{addComma(selectedLead.lot_area)}
                 </div>
             </div>
         </div>
