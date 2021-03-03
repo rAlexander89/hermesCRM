@@ -33,7 +33,8 @@ class Api::AgentsController < ApplicationController
                 :agent_id,
                 :agent_broker,
                 :agent_broker_id,
-                :agent_broker_id
+                :agent_broker_id,
+                listing_id:
         )
     end
 end

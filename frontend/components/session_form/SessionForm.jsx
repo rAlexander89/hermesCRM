@@ -8,6 +8,7 @@ const SessionForm = ({loginUser}) => {
 
     const handleClick = (e) => {
         e.preventDefault()
+        e.stopPropagation()
         let formData = inputForm.current
 
         const user = {
@@ -28,7 +29,7 @@ const SessionForm = ({loginUser}) => {
             <div className='session-form-header'>
                 <h1>Flipping Unleashed</h1>
             </div>
-            <form ref={inputForm} className='session-form' autoComplete="off">
+            <form ref={inputForm} className='session-form' autoComplete="off" onSubmit={handleClick}>
                 <input
                     type='email'
                     className='email-field'
@@ -42,8 +43,8 @@ const SessionForm = ({loginUser}) => {
                     placeholder='password'
                     label={'password'}
                     name={'password'}/>
+                <button type='submit' className='session-button'> LOG IN </button>
             </form>
-                <div type='submit' className='session-button' onClick={handleClick}> LOG IN </div>
         </div>
     )
 }

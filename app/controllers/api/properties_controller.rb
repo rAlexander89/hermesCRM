@@ -67,30 +67,7 @@ class Api::PropertiesController < ApplicationController
     def property_params
         params.require(:property)
             .permit(
-                :address,
-                :city,
-                :zipcode,
-                :offer_date,
-                :house_number
-                :st_prefix,
-                :st_suffix,
-                :county,
-                :state,
-                :bed_count,
-                :bath_count,
-                :gla,
-                :lot_area,
-                :apn,
-                :listing_id,
-                :status,
-                :arv,
-                :arv_offer,
-                :list_offer,
-                :list_arv,
-                :offer,
-                :offer_text,
-                :bac, #remember to add this to schema
-                :csv,
+                :address, :apn, :bac, :arv, :arv_offer, :bath_count, :bed_count, :city, :county, :gla, :house_number, :arv, :arv_offer , :list_arv, :list_offer, :list_price, :lot_area, :offer, :offer_date, :offer_text, :state, :status, :st_name, :st_prefix, :st_suffix, :zipcode, :listing_id, :csv
                 )
         # params.require(:property).permit(:csv)
     end

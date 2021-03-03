@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_055429) do
+ActiveRecord::Schema.define(version: 2021_02_27_060042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2021_02_26_055429) do
     t.integer "agent_broker_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "listing_id", default: [], array: true
   end
 
   create_table "coagents", force: :cascade do |t|
@@ -76,6 +77,10 @@ ActiveRecord::Schema.define(version: 2021_02_26_055429) do
     t.string "offer", null: false
     t.string "offer_text", null: false
     t.string "arv", null: false
+    t.string "bac", null: false
+    t.string "list_price", null: false
+    t.string "offer_date_dash"
+    t.string "previous_status"
     t.index ["address"], name: "index_properties_on_address"
     t.index ["city"], name: "index_properties_on_city"
     t.index ["zipcode"], name: "index_properties_on_zipcode"
