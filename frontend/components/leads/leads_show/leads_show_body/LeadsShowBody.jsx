@@ -8,7 +8,7 @@ function LeadsShowBody({selectedLead, setSelectedLead}) {
             {/* property details  */}
             <LeadsShowDetailsContainer selectedLead={selectedLead}/>
             {/* agent contact/log  */}
-            <LeadShowContactContainer/>
+            <LeadShowContactContainer property_id={selectedLead.id}/>
             
         </div>
     )

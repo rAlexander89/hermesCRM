@@ -1,7 +1,7 @@
 import React from 'react'
-import LeadShowCommentInputContainer from '../lead_show_contact/lead_show_comment_input/LeadShowCommentInputContainer'
+import CreateCommentContainer from '../../../../comments/create_comment/CreateCommentContainer'
 
-function LeadShowContact() {
+function LeadShowContact({property_id}) {
     return (
         <div className='lead-show-contact-container'>
             <div className='lead-show-contact-header'>
@@ -19,7 +19,7 @@ function LeadShowContact() {
 
                 </div>
                 <div className='lead-show-contact-log'>
-                    <LeadShowCommentInputContainer/>
+                    <CreateCommentContainer property_id={property_id}/>
                 </div>
             </div>
             

@@ -50,7 +50,6 @@ class User < ApplicationRecord
     
     def password=(password)
         @password = password
-        debugger
         self.password_digest = BCrypt::Password.create(password)   
     end
 

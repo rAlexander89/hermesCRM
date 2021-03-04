@@ -10,7 +10,6 @@ class Api::PropertiesController < ApplicationController
 
     def show
         @property = Property.find_by(id: params[:id])
-        debugger
         if @property
             render :show
         else

@@ -16,7 +16,7 @@ export const fetchComment = propertyID => {
     })
 };
 
-export const fetchPinComments = propertyID => {
+export const fetchPropertyComments = propertyID => {
     return $.ajax({
         method: 'GET',
         url: `/api/pins/${propertyID}/comments`
@@ -24,7 +24,6 @@ export const fetchPinComments = propertyID => {
 }
 
 export const createComment = (comment) => {
-    
     return $.ajax({
         method: 'POST',
         url: '/api/comments',
@@ -38,7 +37,7 @@ export const updateComment = comment => {
     return $.ajax({
         method: 'PATCH',
         url: `/api/comments/${comment.id}`,
-        data: { comment }
+        data: comment
     })
 };
 

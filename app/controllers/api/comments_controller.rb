@@ -1,35 +1,38 @@
 class Api::CommentsController < ApplicationController
+  before_action :require_login
+  
 
-    def show
-        @comment = Comment.find_by(id: params[:id])
-        render :show
-    end
+  def index
+    @comments = Comment.all
+    render :index
+  end
 
-    def create
-        @comment = Comment.new(comment_params)
-        if @comment.save
-            render json: @comment
-        else
-            render json: @comment.errors.full_messages, status: 422
-        end
+   def create
+    @comment = Comment.new(comment_params);
+    debugger
+    if @comment.save
+      @comments = Comment.where(property_id: params[:comment][:property_id])
+      render :index
+    else
+      render json: comment.errors.full_messages, status: 422 
     end
+  end
 
-    def update
-        @comment = Comment.find_by(id: params[:id])
-        if @comment && @comment.update(comment_params)
-            render json: @comment
-        else
-            render json: @comment.errors.full_messages, status: 422
-        end
-    end
+  def show  # Doesn't show an individual comment. Shows comments that belong to an object.
+    @comments = Comment.where(property_id: params[:property_id])
+    render :index
+  end
 
-    def destroy
-        @comment = Comment.find_by(id: params[:id])
-        @comment.destroy unless @comment.nil?
-    end
+  def destroy
+      @comment = Comment.find_by(id: params[:id])
+      @comment.destroy
+  end
 
-    private
-    def comment_params
-        params.require(:comment).permit(:user_id, :property_id, :comment_txt)
-    end
+  private
+
+  def comment_params
+    debugger
+    params.require(:comment).permit(:comment_txt, :user_id, :property_id, :privileges)
+  end
+
 end

@@ -16,7 +16,6 @@ function LeadsShowDetails({selectedLead}) {
             <div className='lead-detail'>
                 <div className='detail-left'>
                     Status
-          
                 </div>
                 <div className='detail-right'>
                     <select>
@@ -43,7 +42,11 @@ function LeadsShowDetails({selectedLead}) {
                     {addComma(selectedLead.offer)}/{addComma(selectedLead.list_price)}/{addComma(selectedLead.arv)}
                 </div>
             </div>
-             {/* <div className='lead-detail'>
+             {/* 
+            sales managers and up will be able to
+            see this data.  
+             
+             <div className='lead-detail'>
                 <div className='detail-left'>
                     Potential Max Offer                
                 </div>

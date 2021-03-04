@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_03_051108) do
+ActiveRecord::Schema.define(version: 2021_03_04_024000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2021_03_03_051108) do
     t.string "comment_txt", null: false
     t.integer "user_id", null: false
     t.integer "property_id", null: false
+    t.string "privileges", null: false
   end
 
   create_table "pipeline_joins", force: :cascade do |t|

@@ -6,7 +6,6 @@ function LeadShowCommentInput() {
 
     const handleClick = () => {
         let formData = commentForm.current
-        debugger
         console.log('hi')
 
     }

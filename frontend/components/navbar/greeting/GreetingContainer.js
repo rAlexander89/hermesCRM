@@ -3,9 +3,10 @@ import { logout } from '../../../actions/session_actions'
 
 import Greeting from './Greeting';
 
-const mSTP = state => {
-    return{
-        currentUser: state.entities.users[state.entities.session.currentUserId],
+const mSTP = ({entities: { users, session }}) => {
+    
+    return {
+        currentUser: users[session.currentUserId],
     }
 }
 

@@ -11,3 +11,11 @@ export const fetchUsers = () => {
         url: 'api/users'
     })
 }
+
+export const createUser = user => {
+    return $.ajax({
+        method: 'POST',
+        url: 'api/users'
+    })
+
+}

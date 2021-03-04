@@ -11,10 +11,8 @@ class Api::AgentsController < ApplicationController
     end
 
     def create
-        debugger
         @agent = Agent.new(agent_params)
         @agent.properties.build
-        debugger
         if @agent.save
             login!(@agent)
             render json: @agent
