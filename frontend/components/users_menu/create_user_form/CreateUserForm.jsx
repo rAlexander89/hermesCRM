@@ -8,6 +8,7 @@ function CreateUserForm() {
         e.preventDefault();
 
         let formData = inputForm.current
+        debugger
 
         const user = {
             first_name: formData['first-name'].value,
@@ -17,12 +18,16 @@ function CreateUserForm() {
             privileges: formData['email'].value
         }
 
-        createUser(user)
-            .then(() => {
-                inputForm.current.reset()
-                console.log('user created')
-                history.push('/dash')
-            })
+        debugger
+
+        console.log('hi')
+
+        // createUser(user)
+        //     .then(() => {
+        //         inputForm.current.reset()
+        //         console.log('user created')
+        //         history.push('/dash')
+        //     })
     }
 
 
@@ -32,7 +37,7 @@ function CreateUserForm() {
                 <h5>Create User</h5>
              </div>
                 <div className='create-user-container-body'>
-                <form ref={newUser} className='session-form' autoComplete="off" onSubmit={handleClick}>
+                <form ref={newUser} className='create-user-form' autoComplete="off" onSubmit={handleClick}>
                     <input
                         type='text'
                         className='name-field'
@@ -64,44 +69,45 @@ function CreateUserForm() {
                         label={'password'}
                         name={'password2'}/>
                     <div>
-            </div>
 
-            <div className="switch">
-                <h5 id='priority-label'>Privileges:</h5>
-                <div className='group-radio'>
-                    <input name="priority_switch" 
-                        className='select-radio'
-                        id="low_form" 
-                        type="radio"
-                        name={'admin'}
-                        value={1} />
-                        <label for="low_form">Admin</label>
 
-                    <input name="priority_switch" 
-                        className='select-radio'
-                        id="medium_form"
-                        type="radio"
-                        name={'admin'}
-                        value={2} />
-                        <label for="medium_form">Sales Manager</label>
+                    <br/>
+                    <h5 id='priority-label'>Privileges</h5> 
+                <div className="switch">
+                    <div className='group-radio'>
+                        <input name="priority_switch" 
+                            id="admin" 
+                            type="radio"
+                            name={'admin'}
+                            value={'admin'} />
+                            <label for="admin">Admin</label>
+
+                        <input name="priority_switch" 
+                            id="sales_manager"
+                            type="radio"
+                            name={'admin'}
+                            value={'sales_manager'} />
+                            <label for="sales_manager">Sales Manager</label>
+                    </div>
+
+                    <div className='group-radio'>
+                        <input name="priority_switch" 
+                            id="agent_lead"
+                            type="radio"
+                            value={'agent_lead'} />
+                            <label for="agent_lead">Agent Lead</label>
+
+                        <input name="priority_switch" 
+                            id="agent" 
+                            type="radio"
+                            value={'agent'}  />
+                            <label for="agent">Agent</label>
+                    </div>
                 </div>
 
-                <div className='group-radio'>
-                    <input name="priority_switch" 
-                        className='select-radio'
-                        id="medium_form"
-                        type="radio"
-                        value={2} />
-                        <label for="medium_form">Agent Lead</label>
-
-                    <input name="priority_switch" 
-                        className='select-radio'
-                        id="high_form" 
-                        type="radio"
-                        value={3}  />
-                        <label for="high_form">Agent</label>
-                </div>
             </div>
+
+            
                     <button type='submit' className='session-button'> CREATE </button>
                 </form>
             </div>
