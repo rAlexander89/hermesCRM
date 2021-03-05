@@ -1,5 +1,4 @@
 
-
 .options > label{
     font-size: 18px;
     display: block;
@@ -24,16 +23,46 @@
     margin: 0 30px 0 0;
 }
 
-
 .communications-menu{
 
 }
-
-
 
 .logout-menu{
     cursor: pointer;
 
 }
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  height:fit-content;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+// .dropdown-content p, a {
+.dropdown-item {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-item:hover{
+    background-color: rgb(22,22,22);
+    color: white;
+}
+
+.show {display: block;}
 
 

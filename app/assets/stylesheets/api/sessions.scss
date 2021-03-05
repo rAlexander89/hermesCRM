@@ -37,16 +37,16 @@ h1{
     // border-radius: 0px 0px 8px 8px;
 }
 
-.email-field:hover, .password-field:hover{
+.name-field:hover, .email-field:hover, .password-field:hover{
     border: 1px solid rgba(60, 60, 61, 0.596)
 }
 
-.email-field:focus, .password-field:focus{
+.name-field:focus, .email-field:focus, .password-field:focus{
     border: 1px solid rgba(60, 60, 61, 0.596)
 }
 
 
-.email-field, .password-field{
+.name-field, .email-field, .password-field{
     border: 1px solid rgb(218, 220, 223)
 }
 
@@ -60,3 +60,75 @@ h1{
     cursor: pointer;
     border: 1px solid rgba(60, 60, 61, 0.596);
 }
+
+
+.radio-toolbar{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 14px;
+}
+
+#low_form{
+    background: red;
+}
+
+.switch input[type='radio']:checked + label{
+    color: black;
+}
+
+.switch label:hover{
+    color: black;
+    transition: color 500ms ease-out;
+}
+
+.switch label{
+    color: rgba(60, 60, 61, 0.596);
+    z-index: 3;
+    transition: color 500ms ease-out;
+    background: red;
+    width: 75px;
+}
+
+.group-radio{
+    display: flex;
+    justify-content: space-around;
+}
+
+#priority-label{
+    margin-bottom: 5px;
+}
+
+.switch{
+    content: '';
+    position: relative;
+    width: 95%;
+    height: 25px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.label{
+    font-size: 14px;
+    color: rgb(27,31,29);
+}
+
+
+.switch::after{
+    content: '';
+    position: absolute;
+    width: 98%;
+    height: 18px;
+    transition: all 0.4s;
+}
+
+.create-user-container div{
+    margin-bottom: 25px;
+}
+

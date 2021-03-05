@@ -15,7 +15,15 @@ export const fetchUsers = () => {
 export const createUser = user => {
     return $.ajax({
         method: 'POST',
-        url: 'api/users'
+        url: 'api/users',
+        data: user
     })
+}
 
+export const deleteUser = userId => {
+    return $.ajax({
+        method: 'POST',
+        url: 'api/users',
+        data: userId
+    })
 }

@@ -6,6 +6,7 @@ import { AuthRoute, ProtectedRoute } from '../utils/route_util'
 import NavBarContainer from './navbar/NavBarContainer'
 import SplashContainer from './splash/SplashContainer'
 import DashboardContainer from './dashboard/DashboardContainer'
+import UserMenuContainer from './users_menu/UserMenuContainer'
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                 <Switch>
                     <AuthRoute exact path ='/' component={SplashContainer}/>
                     <ProtectedRoute exact path='/dash' component={DashboardContainer}/>
+                    <ProtectedRoute exact path='/user-menu' component={UserMenuContainer}/>
                 </Switch>
             </div>
         </div>
