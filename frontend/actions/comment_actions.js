@@ -5,7 +5,6 @@ export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
 
 export const receiveComments = comments => {
-    debugger
     return{
         type: RECEIVE_COMMENTS,
         comments
@@ -13,7 +12,6 @@ export const receiveComments = comments => {
 }
 
 export const receiveComment = data => {
-    debugger
     return {
         type: RECEIVE_COMMENT,
         property_id: data.property_id,
@@ -46,7 +44,6 @@ export const fetchComment = commentId => dispatch => {
 
 
 export const createComment = comment => dispatch => {
-    debugger
     return CommentAPIUtil.createComment(comment)
         .then(comment => dispatch(receiveComments(comment))
         )

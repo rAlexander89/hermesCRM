@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 import LeadsShowBody from './LeadsShowBody'
 
-const mSTP = state => {
+const mSTP = ({entities: {users, session}}) => {
+
     return{
+        currentUser: users[session.currentUserId]
     }
 }
 

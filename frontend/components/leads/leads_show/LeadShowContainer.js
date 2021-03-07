@@ -3,7 +3,8 @@ import LeadShow from './LeadShow'
 import { fetchProperty } from '../../../actions/property_actions'
 
 
-const mSTP = state => {
+const mSTP = ({entities: {properties}}, ownProps) => {
+
     return{
     }
 

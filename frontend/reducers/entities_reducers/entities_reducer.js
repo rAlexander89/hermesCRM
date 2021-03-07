@@ -8,7 +8,7 @@ import sessionReducer from './session_reducer'
 export default combineReducers({
     users: usersReducer,
     properties: propertiesReducer,
-    commentsReducer: commentsReducer,
+    comments: commentsReducer,
     session: sessionReducer
 
 });

@@ -1,7 +1,6 @@
 class Api::CommentsController < ApplicationController
   before_action :require_login
   
-
   def index
     @comments = Comment.all
     render :index
@@ -9,7 +8,6 @@ class Api::CommentsController < ApplicationController
 
    def create
     @comment = Comment.new(comment_params);
-    debugger
     if @comment.save
       @comments = Comment.where(property_id: params[:comment][:property_id])
       render :index
@@ -31,7 +29,7 @@ class Api::CommentsController < ApplicationController
   private
 
   def comment_params
-    debugger
+    params.inspect
     params.require(:comment).permit(:comment_txt, :user_id, :property_id, :privileges)
   end
 

@@ -7,8 +7,6 @@ function MenuItems({logout}) {
             <p className='dropdown-item'><Link to='/user-menu'>User Menu</Link></p>
             <p className='dropdown-item' onClick={() => logout()}>Log Out</p>
         </div>
-        // <div class='menu-dropdown'>
-        // </div>
     )
 }
 

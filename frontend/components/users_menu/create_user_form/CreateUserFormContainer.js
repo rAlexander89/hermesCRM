@@ -1,6 +1,8 @@
 
 import CreateUserForm from './CreateUserForm'
 import { connect } from 'react-redux'
+import {createUser} from '../../../actions/user_actions'
+
 
 const mSTP = (state) => {
     return{
@@ -9,6 +11,7 @@ const mSTP = (state) => {
 
 const mDTP = dispatch => {
     return{
+        createUser: user => dispatch(createUser(user))
     }
 }
 

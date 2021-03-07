@@ -1,42 +1,36 @@
 import React, {useRef} from 'react'
-import {createUser} from '../../../actions/user_actions'
 
-function CreateUserForm() {
+function CreateUserForm({createUser}) {
     const newUser = useRef(null)
 
     const handleClick = (e) => {
         e.preventDefault();
 
-        let formData = inputForm.current
-        debugger
+        let formData = newUser.current
 
         const user = {
             first_name: formData['first-name'].value,
             last_name: formData['last-name'].value,
             password: formData['password'].value,
             email: formData['email'].value,
-            privileges: formData['email'].value
+            privileges: formData['privilege'].value
         }
 
-        debugger
-
-        console.log('hi')
-
-        // createUser(user)
-        //     .then(() => {
-        //         inputForm.current.reset()
-        //         console.log('user created')
-        //         history.push('/dash')
-        //     })
+        createUser(user)
+            .then(() => {
+                inputForm.current.reset()
+                console.log('user created')
+                history.push('/dash')
+            })
     }
 
 
-    return (
+    return(
     <div className='create-user-container'>
             <div className='create-user-container-header'>
                 <h5>Create User</h5>
              </div>
-                <div className='create-user-container-body'>
+            <div className='create-user-container-body'>
                 <form ref={newUser} className='create-user-form' autoComplete="off" onSubmit={handleClick}>
                     <input
                         type='text'
@@ -78,14 +72,14 @@ function CreateUserForm() {
                         <input name="priority_switch" 
                             id="admin" 
                             type="radio"
-                            name={'admin'}
+                            name={'privilege'}
                             value={'admin'} />
                             <label for="admin">Admin</label>
 
                         <input name="priority_switch" 
                             id="sales_manager"
                             type="radio"
-                            name={'admin'}
+                            name={'privilege'}
                             value={'sales_manager'} />
                             <label for="sales_manager">Sales Manager</label>
                     </div>
@@ -94,20 +88,21 @@ function CreateUserForm() {
                         <input name="priority_switch" 
                             id="agent_lead"
                             type="radio"
+                            name={'privilege'}
                             value={'agent_lead'} />
                             <label for="agent_lead">Agent Lead</label>
 
                         <input name="priority_switch" 
                             id="agent" 
                             type="radio"
+                            name={'privilege'}
                             value={'agent'}  />
                             <label for="agent">Agent</label>
                     </div>
                 </div>
 
-            </div>
-
-            
+                    </div>
+ 
                     <button type='submit' className='session-button'> CREATE </button>
                 </form>
             </div>

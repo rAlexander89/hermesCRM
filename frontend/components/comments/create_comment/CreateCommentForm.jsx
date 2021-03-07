@@ -18,6 +18,9 @@ function CreateCommentForm({currentUser, property_id, createComment}) {
             privileges: privileges
         }
 
+        console.log(comment)
+
+
         createComment(comment)
             .then(res => console.log(res))
     }

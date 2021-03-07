@@ -19,7 +19,7 @@ export const fetchComment = propertyID => {
 export const fetchPropertyComments = propertyID => {
     return $.ajax({
         method: 'GET',
-        url: `/api/pins/${propertyID}/comments`
+        url: `/api/properties/${propertyID}/comments`
     })
 }
 
@@ -27,9 +27,9 @@ export const createComment = (comment) => {
     return $.ajax({
         method: 'POST',
         url: '/api/comments',
-        data: comment,
-        contentType: false,
-        processData: false
+        data: {comment},
+        // contentType: false,
+        // processData: false
     })
 };
 

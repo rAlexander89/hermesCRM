@@ -2,11 +2,13 @@ Rails.application.routes.draw do
   root to: 'static_pages#root'
     namespace :api, defaults: { format: :json } do
       resources :users, only: [:index, :create, :show] 
-      resources :properties, only: [:index, :show, :create, :update, :destroy ]
+      resources :properties, only: [:index, :show, :create, :update, :destroy ] do 
+        resource :comments, only: [:show]
+      end
       resources :properties do 
         collection { post :import }
       end
-      resources :comments, only: [:show, :create, :destroy]
+      resources :comments, only: [:create, :update, :destroy, :index]
       resources :agents, only: [:show, :create, :destroy, :index]
       resource :session, only: [:create, :destroy]
   end

@@ -1,11 +1,12 @@
 import React from 'react'
 import { Switch } from 'react-router-dom'
 
-import { AuthRoute, ProtectedRoute } from '../utils/route_util'
+import { AuthRoute, ProtectedRoute, Route } from '../utils/route_util'
 
 import NavBarContainer from './navbar/NavBarContainer'
 import SplashContainer from './splash/SplashContainer'
 import DashboardContainer from './dashboard/DashboardContainer'
+import LeadShowContainer from './leads/leads_show/LeadShowContainer'
 import UserMenuContainer from './users_menu/UserMenuContainer'
 
 
@@ -20,7 +21,8 @@ function App() {
                 <Switch>
                     <AuthRoute exact path ='/' component={SplashContainer}/>
                     <ProtectedRoute exact path='/dash' component={DashboardContainer}/>
-                    <ProtectedRoute exact path='/user-menu' component={UserMenuContainer}/>
+                    {/* <ProtectedRoute exact path='/properties/:propertyId' component={LeadShowContainer}/> */}
+                    {/* <ProtectedRoute exact path='/user-menu' component={UserMenuContainer}/> */}
                 </Switch>
             </div>
         </div>

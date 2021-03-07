@@ -27,10 +27,9 @@ class User < ApplicationRecord
     validates :last_name, presence: true
     validates :password, length: {minimum: 6, allow_nil: true}
     validates :email, presence: true, uniqueness: true
-    validates :privileges, inclusion: %w(admin sales_manager sales_assistant sales)
+    validates :privileges, inclusion: %w(admin sales_manager agent_lead sales)
     validates :session_token, presence: true, uniqueness: true
     validates :password_digest, presence: true
-
 
     attr_reader :password
 
@@ -66,6 +65,8 @@ class User < ApplicationRecord
             nil
         end 
     end
+
+    
 
     has_many :comments, 
     foreign_key: :user_id,

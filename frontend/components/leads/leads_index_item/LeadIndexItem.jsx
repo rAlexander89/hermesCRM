@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react'
+import { useHistory } from 'react-router-dom'
 
 
 function LeadIndexItem({lead, index, setSelectedLead}) {
+    const history = useHistory()
 
 
     function addComma(num){
@@ -25,7 +27,6 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
         e.preventDefault();
         setSelectedLead(lead)
     }
-
 
 
     return (
