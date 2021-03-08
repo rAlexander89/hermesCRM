@@ -4,8 +4,10 @@ function ShowPropertyComments({fetchPropertyComments, property_id, comments}) {
 
     useEffect(() => {
         fetchPropertyComments(property_id)
-    }, [])
+    }, [property_id])
+
     debugger
+
 
 
     return (
