@@ -1,6 +1,5 @@
 .lead-show-contact-container{
     border: 1px solid #d9d9d9;
-    // width: 775px;
     width: 50%;
     height: 750px;
 }
@@ -25,15 +24,15 @@
 
 .comment-box {
     /* Cosmetic */
-    margin-left: 30px;
-    margin-top: 50px;
+    // margin-left: 30px;
+    // margin-top: 50px;
     resize: none;
+    border: none;
 
-    // border-radius: 7px;
-    border-color: #BABABA;
-    // box-shadow: 1px 5px 2px #EDEDED;    
+    // border-color: #BABABA;
     height: 130px;
-    width: 300px; /* Was 470px */
+    width: calc(100% - 35px); /* Was 470px */
+    // width: 300px; /* Was 470px */
 
     /* Text */
     font-family: "Helvetica Neue", sans-serif;
@@ -48,3 +47,51 @@
     outline: none;
     border-color: #7AB0E6
 }
+
+.convo-item{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 15px;
+}
+
+.convo-author{
+    font-weight: bold;
+    letter-spacing: 1;
+}
+
+.agent-contact-container{
+    height: 115px;
+}
+
+.contact-log-container{
+    height: 635px;
+    overflow-y: auto;
+}
+
+.conversation-log{
+    height: 435px;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+.comment-form{
+    display: flex;
+    flex-direction: row;
+}
+
+.comment-button{
+    font-size: 18px;
+    font-weight: 600;
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    height: 164px;
+    background: rgb(22,22,22);
+    color: white;
+    width: 35px;
+    cursor: pointer;
+    border: none;
+}
+

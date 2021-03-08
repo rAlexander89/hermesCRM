@@ -18,25 +18,19 @@ function CreateCommentForm({currentUser, property_id, createComment}) {
             privileges: privileges
         }
 
-        console.log(comment)
-
-
         createComment(comment)
-            .then(res => console.log(res))
     }
 
     return (
-        <div>
-            <form ref={commentForm} onSubmit={handleClick} autoComplete="off">
-                   <textarea
-                   className='comment-box'
-                    placeholder="Comment here..."
-                    label={'comment'}
-                    name={'comment'}
-                    />
-                  <button type='submit' className='session-button'> POST </button>
-            </form>
-        </div>
+        <form className='comment-form' ref={commentForm} onSubmit={handleClick} autoComplete="off">
+            <textarea
+                className='comment-box'
+                placeholder="Comment here..."
+                label={'comment'}
+                name={'comment'}
+            />
+            <button type='submit' className='comment-button'> + </button>
+        </form>
     )
 }
 

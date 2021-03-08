@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react'
+import ShowPropertyCommentItemContainer from './show_property_comment_item/ShowPropertyCommentItemContainer'
 
 function ShowPropertyComments({fetchPropertyComments, property_id, comments}) {
 
@@ -6,15 +7,14 @@ function ShowPropertyComments({fetchPropertyComments, property_id, comments}) {
         fetchPropertyComments(property_id)
     }, [property_id])
 
-    debugger
-
-
 
     return (
-        <div>
-            hi
-            {comments.map((comment, i) => (
-                comment.comment_txt
+        <div className='conversation-log'>
+            {comments.map((comment) => (
+                <ShowPropertyCommentItemContainer
+                    key={comment.id}
+                    comment={comment}
+                />
             ))}
         </div>
     )
