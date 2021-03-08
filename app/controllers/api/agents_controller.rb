@@ -12,7 +12,7 @@ class Api::AgentsController < ApplicationController
 
     def create
         @agent = Agent.new(agent_params)
-        @agent.properties.build
+        # @agent.properties.build
         if @agent.save
             login!(@agent)
             render json: @agent
@@ -34,6 +34,6 @@ class Api::AgentsController < ApplicationController
                 :agent_broker_id,
                 :agent_broker_id,
                 listing_id:
-        )
+            )
     end
 end

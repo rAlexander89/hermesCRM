@@ -28,6 +28,8 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
         setSelectedLead(lead)
     }
 
+    debugger
+
 
     return (
         <div className={`lead-index-item x${index}`} onDoubleClick={e => showThisLead(e, lead, setSelectedLead)}>

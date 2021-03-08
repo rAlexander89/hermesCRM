@@ -19,6 +19,7 @@ function CreateCommentForm({currentUser, property_id, createComment}) {
         }
 
         createComment(comment)
+            .then(() => e.target.reset())
     }
 
     return (

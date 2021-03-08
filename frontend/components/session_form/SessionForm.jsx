@@ -27,7 +27,7 @@ const SessionForm = ({loginUser}) => {
     return (
         <div className='session-form-container'>
             <div className='session-form-header'>
-                <h1>Flipping Unleashed</h1>
+                <h1>Hermes CRM</h1>
             </div>
             <form ref={inputForm} className='session-form' autoComplete="off" onSubmit={handleClick}>
                 <input

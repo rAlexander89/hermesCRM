@@ -144,7 +144,7 @@ class Property < ApplicationRecord
                     agent_id: row[:agentid],
                     agent_broker: row[:officename],
                     agent_broker_id: row[:officeid],
-                    listing_id: row[:listing_id]
+                    listing_id: [row[:listing_id]]
                 }
 
             Agent.create! agent_hash

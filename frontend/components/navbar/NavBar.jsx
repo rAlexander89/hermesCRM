@@ -8,7 +8,7 @@ function NavBar({}) {
         <div className='nav-bar'>
             <div className='header'>
                 <div className='logo'>
-                    <h2><Link to='/dash'>Flipping Unleashed</Link></h2>
+                    <h2><Link to='/dash'>Hermes CRM</Link></h2>
                 </div>
                 <div className='user-session'>
                     <GreetingContainer/>
