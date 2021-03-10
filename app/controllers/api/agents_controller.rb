@@ -21,6 +21,16 @@ class Api::AgentsController < ApplicationController
         end
     end
 
+    def find_by_listing_id
+        debugger
+        @agent = Agent.where (":listing_id = ANY (listing_id)")
+        if @agent
+            render json: @agent
+        else
+            render json: @agent.errors.full_messages, status: 422
+        end
+    end
+
     private
     def agent_params
         params.require(:agent)
@@ -33,7 +43,7 @@ class Api::AgentsController < ApplicationController
                 :agent_broker,
                 :agent_broker_id,
                 :agent_broker_id,
-                listing_id:
+                :listing_id
             )
     end
 end

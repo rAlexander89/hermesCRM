@@ -90,7 +90,7 @@ class Property < ApplicationRecord
 
     belongs_to :agent,
     optional: true,
-    foreign_key: :agent_id,
+    foreign_key: :listing_id,
     class_name: :Agent
 
 

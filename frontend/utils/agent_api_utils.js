@@ -1,7 +1,8 @@
-export const fetchAgent = userId => {
+export const fetchAgentByListingId = listing_id => {
     return $.ajax({
         method: 'GET',
-        url: `/api/users/${userId}`
+        url: '/api/agents/find_by_listing_id',
+        data: {listing_id}
     })
 };
 

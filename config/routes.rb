@@ -9,7 +9,11 @@ Rails.application.routes.draw do
         collection { post :import }
       end
       resources :comments, only: [:create, :update, :destroy, :index]
-      resources :agents, only: [:show, :create, :destroy, :index]
+      resources :agents, only: [:show, :create, :destroy, :index] do
+        collection do 
+          get 'find_by_listing_id'
+        end
+      end
       resource :session, only: [:create, :destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

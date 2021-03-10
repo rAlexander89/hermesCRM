@@ -16,11 +16,15 @@
 #
 class Agent < ApplicationRecord
 
-    validate :agent_first, :agent_last, :agent_contact, :agent_email, :agent_id, :agent_broker, :agent_broker_id
+    validate :agent_first, :agent_last, :agent_contact, :agent_email, :agent_id, :agent_broker, :agent_broker_id, :listing_id
 
+
+    # has_many :properties, 
+    # foreign_key: :property_id, 
+    # class_name: :Property
 
     has_many :properties, 
-    foreign_key: :property_id, 
+    foreign_key: :listing_id, 
     class_name: :Property
     
     #this line is new. helps to create nested forms

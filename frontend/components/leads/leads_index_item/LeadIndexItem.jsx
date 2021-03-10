@@ -2,7 +2,14 @@ import React, {useEffect} from 'react'
 import { useHistory } from 'react-router-dom'
 
 
-function LeadIndexItem({lead, index, setSelectedLead}) {
+function LeadIndexItem({lead, index, setSelectedLead, fetchAgentByListingId, agent}) {
+
+    useEffect(() => {
+        fetchAgentByListingId(lead.listing_id)
+
+    }, [lead.listing_id])
+
+
     const history = useHistory()
 
 
@@ -28,7 +35,6 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
         setSelectedLead(lead)
     }
 
-    debugger
 
 
     return (
