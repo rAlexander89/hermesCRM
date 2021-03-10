@@ -11,7 +11,6 @@ export const receiveAgent = agent => {
 
 
 export const fetchAgentByListingId = listingId => dispatch => {
-    debugger
     return AgentApiUtil.fetchAgentByListingId(listingId)
         .then(agent => dispatch(receiveAgent(agent)))
 }

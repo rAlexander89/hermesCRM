@@ -4,10 +4,10 @@ import { useHistory } from 'react-router-dom'
 
 function LeadIndexItem({lead, index, setSelectedLead, fetchAgentByListingId, agent}) {
 
-    useEffect(() => {
-        fetchAgentByListingId(lead.listing_id)
+    // useEffect(() => {
+    //     fetchAgentByListingId(lead.listing_id)
 
-    }, [lead.listing_id])
+    // }, [lead.listing_id])
 
 
     const history = useHistory()
@@ -34,8 +34,6 @@ function LeadIndexItem({lead, index, setSelectedLead, fetchAgentByListingId, age
         e.preventDefault();
         setSelectedLead(lead)
     }
-
-
 
     return (
         <div className={`lead-index-item x${index}`} onDoubleClick={e => showThisLead(e, lead, setSelectedLead)}>

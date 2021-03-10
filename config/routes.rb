@@ -14,6 +14,7 @@ Rails.application.routes.draw do
           get 'find_by_listing_id'
         end
       end
+      resources :agent_properties, only: [:create, :show]
       resource :session, only: [:create, :destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

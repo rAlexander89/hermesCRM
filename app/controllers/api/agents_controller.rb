@@ -21,15 +21,18 @@ class Api::AgentsController < ApplicationController
         end
     end
 
-    def find_by_listing_id
-        debugger
-        @agent = Agent.where (":listing_id = ANY (listing_id)")
-        if @agent
-            render json: @agent
-        else
-            render json: @agent.errors.full_messages, status: 422
-        end
-    end
+    # def find_by_listing_id
+        # @agent = Agent.find_by(listing_id: params[:listing_id])
+        # @agent = Agent.where (":listing_id = ANY (listing_id)")
+        # @agent = Agent.where ("params[:listing_id] = ANY (listing_id)")
+        # render :show
+        # debugger
+        # if @agent
+            # render json: @agent
+        # else
+            # render json: @agent.errors.full_messages, status: 422
+        # end
+    # end
 
     private
     def agent_params
