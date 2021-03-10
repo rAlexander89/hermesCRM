@@ -1,0 +1,1 @@
+json.extract! agent_property, :id, :user_id, :agent_id, :property_id, :listing_id

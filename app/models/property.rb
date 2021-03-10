@@ -147,8 +147,20 @@ class Property < ApplicationRecord
                     listing_id: [row[:listing_id]]
                 }
 
-            Agent.create! agent_hash
+            Agent.create! agent_hash 
             Property.create! property_hash
+            debugger
+            
+            agent_property_hash = 
+            {
+                    agent_id: Agent.last.id
+                    property_id: Property.last.id
+                    listing_url: Property.last.listing_id
+            }
+
+            AgentProperty.create!        
+
+            end
         end
     end
 
