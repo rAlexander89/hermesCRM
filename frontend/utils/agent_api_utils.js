@@ -6,10 +6,19 @@ export const fetchAgentByListingId = listing_id => {
     })
 };
 
-export const fetchUsers = () => {
+// export const fetchAgentByLicense = agent_id => {
+//     return $.ajax({
+//         method: 'GET',
+//         url: '/api/agents/fetch_agent_by_agent_license',
+//         data: {agent_id}
+//     })
+// }
+
+export const fetchAgentByLicense = agent_id => {
     return $.ajax({
         method: 'GET',
-        url: 'api/users'
+        url: '/api/agents/fetch_agent_by_agent_license',
+        data: {agent_id}
     })
 }
 

@@ -1,6 +1,7 @@
 json.properties do 
     json.extract! @property, 
     :address, 
+    :agent_id, 
     :city, 
     :zipcode, 
     :st_prefix,

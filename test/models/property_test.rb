@@ -31,6 +31,7 @@
 #  zipcode         :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  agent_id        :string           not null
 #  listing_id      :string           not null
 #
 # Indexes

@@ -6,8 +6,13 @@ class Api::AgentsController < ApplicationController
     end
 
     def show
-        @agent = Agent.find_by(id: params[:id])
+        @agent = Agent.find_by(id: params[:id].to_i)
         render :show
+    end
+
+    def fetch_agent_by_agent_license
+        @agent = Agent.find_by(agent_id: params[:agent_id])
+        render json: @agent
     end
 
     def create
@@ -21,19 +26,6 @@ class Api::AgentsController < ApplicationController
         end
     end
 
-    # def find_by_listing_id
-        # @agent = Agent.find_by(listing_id: params[:listing_id])
-        # @agent = Agent.where (":listing_id = ANY (listing_id)")
-        # @agent = Agent.where ("params[:listing_id] = ANY (listing_id)")
-        # render :show
-        # debugger
-        # if @agent
-            # render json: @agent
-        # else
-            # render json: @agent.errors.full_messages, status: 422
-        # end
-    # end
-
     private
     def agent_params
         params.require(:agent)
@@ -44,7 +36,6 @@ class Api::AgentsController < ApplicationController
                 :agent_email,
                 :agent_id,
                 :agent_broker,
-                :agent_broker_id,
                 :agent_broker_id,
                 :listing_id
             )

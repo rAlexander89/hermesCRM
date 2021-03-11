@@ -31,6 +31,7 @@
 #  zipcode         :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  agent_id        :string           not null
 #  listing_id      :string           not null
 #
 # Indexes
@@ -45,6 +46,7 @@ class Property < ApplicationRecord
     require 'activerecord-import/active_record/adapters/postgresql_adapter'
 
     validates :address, 
+    :agent_id,
     :apn, 
     :bac, 
     :arv, 
@@ -85,12 +87,9 @@ class Property < ApplicationRecord
     foreign_key: :user_id,
     class_name: :Comment
 
-
-    # belongs_to :board, polymorphic: true
-
     belongs_to :agent,
     optional: true,
-    foreign_key: :listing_id,
+    foreign_key: :agent_id,
     class_name: :Agent
 
 
@@ -98,9 +97,6 @@ class Property < ApplicationRecord
         CSV.foreach(csv.path, headers: true, :header_converters => :symbol, skip_blanks: true,  encoding:'iso-8859-1:utf-8') do |row, i|
             row_hash = row.to_hash
 
-            # row_hash.each.with_index do |k,v, i|
-            #     puts i, k,v
-            # end
             property_hash = 
                 {
                     offer_date_dash: row[:date],
@@ -129,9 +125,10 @@ class Property < ApplicationRecord
                     gla: row[:gla],
                     listing_id: row[:listing_id],
                     status: row[:status],
-                    previous_status: row[:previous_status]
-                }
+                    previous_status: row[:previous_status],
+                    agent_id: row[:agentid],
 
+                }
 
             # IO.write("../../log/failed_property_insert", row_hash.join(' ') + '\n, mode: 'a')
 
@@ -144,24 +141,11 @@ class Property < ApplicationRecord
                     agent_id: row[:agentid],
                     agent_broker: row[:officename],
                     agent_broker_id: row[:officeid],
-                    listing_id: [row[:listing_id]]
                 }
 
             Agent.create! agent_hash 
             Property.create! property_hash
-            debugger
-            
-            agent_property_hash = 
-            {
-                    agent_id: Agent.last.id
-                    property_id: Property.last.id
-                    listing_url: Property.last.listing_id
-            }
 
-            AgentProperty.create!        
-
-            end
         end
     end
-
 end

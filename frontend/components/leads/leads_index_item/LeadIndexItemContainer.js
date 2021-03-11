@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
 import LeadIndexItem from './LeadIndexItem'
-import { fetchAgentByListingId } from '../../../actions/agent_actions'
+// import { fetchAgentByLicense } from '../../../actions/agent_actions'
 
 const mSTP = ({entities: {agents}}) => {
     return{
-        agent: Object.values(agents)
+        agent: agents
     }
 }
 
 const mDTP = dispatch => {
     return {
-        fetchAgentByListingId: listingId => dispatch(fetchAgentByListingId(listingId))
+        // fetchAgentByLicense: agent_id => dispatch(fetchAgentByLicense(agent_id))
     }
 }
 

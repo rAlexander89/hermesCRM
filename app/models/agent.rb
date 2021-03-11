@@ -15,11 +15,11 @@
 #
 class Agent < ApplicationRecord
 
-    validate :agent_first, :agent_last, :agent_contact, :agent_email, :agent_id, :agent_broker, :agent_broker_id, :listing_id
+    validate :agent_first, :agent_last, :agent_contact, :agent_email, :agent_id, :agent_broker, :agent_broker_id
 
     has_many :properties, 
     foreign_key: :agent_id, 
-    class_name: :AgentProperty
+    class_name: :Property
     
 
 

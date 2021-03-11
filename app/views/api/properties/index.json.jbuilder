@@ -4,6 +4,7 @@
         json.extract! property,
             :id,
             :address, 
+            :agent_id, 
             :city, 
             :zipcode, 
             :st_prefix,

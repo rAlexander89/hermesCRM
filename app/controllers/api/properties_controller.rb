@@ -36,6 +36,7 @@ class Api::PropertiesController < ApplicationController
         #     render json: @properties.errors.full_messages, status: 422
         # end
     end
+
     
 
 
@@ -63,12 +64,10 @@ class Api::PropertiesController < ApplicationController
         end
     end
 
-
     def property_params
         params.require(:property)
             .permit(
-                :address, :apn, :bac, :arv, :arv_offer, :bath_count, :bed_count, :city, :county, :gla, :house_number, :arv, :arv_offer , :list_arv, :list_offer, :list_price, :lot_area, :offer, :offer_date, :offer_text, :state, :status, :st_name, :st_prefix, :st_suffix, :zipcode, :listing_id, :csv
+                :address, :agent_id, :apn, :bac, :arv, :arv_offer, :bath_count, :bed_count, :city, :county, :gla, :house_number, :arv, :arv_offer , :list_arv, :list_offer, :list_price, :lot_area, :offer, :offer_date, :offer_text, :state, :status, :st_name, :st_prefix, :st_suffix, :zipcode, :listing_id, :csv
                 )
-        # params.require(:property).permit(:csv)
     end
 end

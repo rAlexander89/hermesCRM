@@ -13,6 +13,8 @@ export const fetchProperty = propertyId => {
     })
 };
 
+
+
 export const createProperty = property => {
     return $.ajax({
         method: 'POST',

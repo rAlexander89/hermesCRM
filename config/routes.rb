@@ -11,10 +11,9 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :update, :destroy, :index]
       resources :agents, only: [:show, :create, :destroy, :index] do
         collection do 
-          get 'find_by_listing_id'
+          get 'fetch_agent_by_agent_license'
         end
       end
-      resources :agent_properties, only: [:create, :show]
       resource :session, only: [:create, :destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
