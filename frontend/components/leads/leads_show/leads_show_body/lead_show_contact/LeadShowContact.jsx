@@ -2,7 +2,12 @@ import React from 'react'
 import CreateCommentContainer from '../../../../comments/create_comment/CreateCommentContainer'
 import ShowPropertyCommentsContainer from '../../../../comments/show_comment/ShowPropertyCommentsContainer'
 
-function LeadShowContact({property_id}) {
+function LeadShowContact({property_id, agent}) {
+
+    function formatContact(num){
+        let number = num.replaceAll(' ','').replaceAll('-','.').replace('(','').replace(')','')
+        return number
+    }
 
     if (property_id){
         return (
@@ -14,11 +19,11 @@ function LeadShowContact({property_id}) {
                     <div className='lead-show-contact-body'>
                         <div className='lead-show-contact-data'>
                             <div className='lead-show-contact-name-email'>
-                                <p>Tony Mark Johnson Stevens</p>
-                                <p>TonyMarkjphnson@stevens.com</p>
+                                <p>{agent.agent_first} {agent.agent_last}</p>
+                                <p>{agent.agent_email}</p>
                             </div>
                             <div>
-                                213.965.4604
+                                {formatContact(agent.agent_contact)}
                             </div>
                         </div>
                     </div>

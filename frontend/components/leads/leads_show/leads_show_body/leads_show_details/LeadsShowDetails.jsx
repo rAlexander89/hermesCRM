@@ -6,6 +6,12 @@ function LeadsShowDetails({selectedLead}) {
          return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
+    function potentialMaxOffer(arv){
+        let arv_int = parseInt(arv.replaceAll(',',''))
+        debugger
+        return addComma(Math.floor(arv_int * 0.73))
+    }
+
 
     return (
     <div className='lead-show-listing-detail'>
@@ -42,18 +48,15 @@ function LeadsShowDetails({selectedLead}) {
                     {addComma(selectedLead.offer)}/{addComma(selectedLead.list_price)}/{addComma(selectedLead.arv)}
                 </div>
             </div>
-             {/* 
-            sales managers and up will be able to
-            see this data.  
-             
+            {/* sales managers and up will be able to see this data.   */}
              <div className='lead-detail'>
                 <div className='detail-left'>
                     Potential Max Offer                
                 </div>
                   <div className='detail-right'>
-                    1,254,456
+                      {potentialMaxOffer(selectedLead.arv)}                    
                 </div>
-            </div> */}
+            </div>
             <div className='lead-detail'>
                 <div className='detail-left'>
                     Bed/Bath               

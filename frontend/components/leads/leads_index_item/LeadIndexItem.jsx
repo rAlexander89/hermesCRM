@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-// import { useHistory } from 'react-router-dom'
 import {fetchAgentByLicense} from '../../../utils/agent_api_utils'
 
 
@@ -10,9 +9,6 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
         fetchAgentByLicense(lead.agent_id)
             .then(res => setAgent(res))     
     }, [lead.agent_id])
-
-
-    // const history = useHistory()
 
 
     function addComma(num){
@@ -32,23 +28,26 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
         return acronym
     }
     
-    const showThisLead = (e, lead, setSelectedLead) => {
+    const showThisLead = (e, lead, agent, setSelectedLead) => {
         e.preventDefault();
-        setSelectedLead(lead)
+        
+        const showData = {
+            lead: lead, 
+            agent:agent
+        }
+
+        setSelectedLead(showData)
     }
 
 
     function formatContact(num){
-        let number = num.replaceAll('-','.').replace('(','').replace(')','').replaceAll(' ','')
-        console.log(number)
+        let number = num.replaceAll(' ','').replaceAll('-','.').replace('(','').replace(')','')
         return number
     }
 
-    debugger
-
     if (agent){
         return (
-            <div className={`lead-index-item x${index}`} onDoubleClick={e => showThisLead(e, lead, setSelectedLead)}>
+            <div className={`lead-index-item x${index}`} onDoubleClick={e => showThisLead(e, lead, agent, setSelectedLead)}>
                 <div className="flex-row" id='index'>{index + 1}</div>
                 <div className="flex-row" id='submitted'>{offerDate(lead.offer_date_dash)}</div>
                 <div className="flex-row" id='status'>{truncStatus(lead.status)}</div>
