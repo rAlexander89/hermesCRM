@@ -6,7 +6,6 @@ const agentsReducer = (state = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_AGENT:
-            // return Object.assign({}, state, {action.agent});
             return Object.assign({}, state, action.agent);
         default:
             return state;

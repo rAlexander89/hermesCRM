@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Switch } from 'react-router-dom'
 import LeadIndexItemContainer from '../leads_index_item/LeadIndexItemContainer'
 import LeadShowContainer from '../leads_show/LeadShowContainer'
-import { ProtectedRoute } from '../../../utils/route_util'
-
 
 function Leads({fetchProperties, leads}) {
     const [selectedLead, setSelectedLead] = useState(null);
@@ -12,15 +9,10 @@ function Leads({fetchProperties, leads}) {
         fetchProperties();
     },[]);
 
-
-
     return (
         <div className='leads-container'>
             <div className='leads-header'>Leads</div>
-            {/* <Switch> */}
-                {/* <ProtectedRoute exact path='/properties/:propertyId' component={LeadShowContainer}/> */}
                 <LeadShowContainer selectedLead={selectedLead} setSelectedLead={setSelectedLead}/>
-            {/* </Switch> */}
             <div className="table-container">
                 <div className="flex-table table-header">
                     <div className="flex-row" id='index'>#</div>

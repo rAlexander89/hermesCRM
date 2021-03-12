@@ -39,7 +39,7 @@ export const updateProperty = property => {
     return $.ajax({
         method: 'PATCH',
         url: `/api/properties/${property.id}`,
-        data: { property }
+        data: {property} 
     })
 };
 

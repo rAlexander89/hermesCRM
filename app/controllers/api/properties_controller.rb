@@ -42,7 +42,7 @@ class Api::PropertiesController < ApplicationController
 
     def update
         @property = Property.find_by(id: params[:id])
-        if @property && @property.author_id == current_user.id
+        if @property 
             if @property.update(property_params)
                 render :show
             else
@@ -67,7 +67,35 @@ class Api::PropertiesController < ApplicationController
     def property_params
         params.require(:property)
             .permit(
-                :address, :agent_id, :apn, :bac, :arv, :arv_offer, :bath_count, :bed_count, :city, :county, :gla, :house_number, :arv, :arv_offer , :list_arv, :list_offer, :list_price, :lot_area, :offer, :offer_date, :offer_text, :state, :status, :st_name, :st_prefix, :st_suffix, :zipcode, :listing_id, :csv
+                :address, 
+                :agent_id, 
+                :apn, 
+                :bac, 
+                :arv, 
+                :arv_offer, 
+                :bath_count, 
+                :bed_count, 
+                :city, 
+                :county, 
+                :gla, 
+                :house_number, 
+                :arv, 
+                :arv_offer, 
+                :list_arv, 
+                :list_offer, 
+                :list_price, 
+                :lot_area, 
+                :offer, 
+                :offer_date_dash, 
+                :offer_text, 
+                :state, 
+                :status, 
+                :st_name, 
+                :st_prefix, 
+                :st_suffix, 
+                :zipcode, 
+                :listing_id, 
+                :csv
                 )
     end
 end
