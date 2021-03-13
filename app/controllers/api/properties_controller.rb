@@ -37,17 +37,11 @@ class Api::PropertiesController < ApplicationController
         # end
     end
 
-    
-
-
     def update
         @property = Property.find_by(id: params[:id])
-        if @property 
-            if @property.update(property_params)
-                render :show
-            else
-                render json: @property.errors.full_messages, status: 422
-            end
+        debugger
+        if @property && @property.update(property_params)
+            render :show
         else
             render json: @property.errors.full_messages, status: 422
         end
@@ -71,7 +65,7 @@ class Api::PropertiesController < ApplicationController
                 :agent_id, 
                 :apn, 
                 :bac, 
-                :arv, 
+                :arv,
                 :arv_offer, 
                 :bath_count, 
                 :bed_count, 
@@ -79,8 +73,6 @@ class Api::PropertiesController < ApplicationController
                 :county, 
                 :gla, 
                 :house_number, 
-                :arv, 
-                :arv_offer, 
                 :list_arv, 
                 :list_offer, 
                 :list_price, 

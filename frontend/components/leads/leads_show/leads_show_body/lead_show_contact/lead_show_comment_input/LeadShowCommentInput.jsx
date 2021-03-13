@@ -20,8 +20,8 @@ function LeadShowCommentInput() {
                     label={'comment'}
                     name={'comment'}
                     />
-            </form>
                 <div type='submit' onClick={handleClick}> Post </div>
+            </form>
         </div>
     )
 }

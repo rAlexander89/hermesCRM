@@ -4,8 +4,8 @@ import OptionsContainer from '../options/OptionsContainer'
 
 function Greeting({currentUser, logout}) {
 
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show");
+    function toggleShow() {
+        document.getElementById("menuDropdown-Nav").classList.toggle("show");
     }
 
     // Close the dropdown if the user clicks outside of it
@@ -25,24 +25,16 @@ function Greeting({currentUser, logout}) {
         }
     }
 
-
-
-
     const personalGreeting = () => (
-
         <div className='user-bar'>
 
             <div className="dropdown">
-                <div onClick={myFunction} className='greeting-name'>
+                <div onClick={toggleShow} className='greeting-name'>
                         Hello, {currentUser.first_name}.
                 </div>
 
                 <MenuItemsContainer/>
             </div>
-
-            {/* <div className='logout-menu'>
-                <p onClick={() => logout()}>Log Out</p>
-            </div> */}
         </div>
     )
 

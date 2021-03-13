@@ -5,7 +5,6 @@ function ImportLeads({importProperties}) {
 
     const fileRef = useRef(null)
 
-
     const handeUpload = () => {
         const data = new FormData()
         data.append('csv', fileRef.current.files[0])

@@ -1,4 +1,4 @@
-import * as APIUtil from '../utils/session_api_util';
+import * as APIUtil from '../utils/api/session_api_util';
 
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';

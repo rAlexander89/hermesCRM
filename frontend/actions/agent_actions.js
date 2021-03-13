@@ -1,4 +1,4 @@
-import * as AgentApiUtil from '../utils/agent_api_utils'
+import * as AgentApiUtil from '../utils/api/agent_api_utils'
 
 export const RECEIVE_AGENT = 'RECEIVE_AGENT'
 

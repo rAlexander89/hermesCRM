@@ -1,4 +1,4 @@
-import * as PropertyAPIUtil from '../utils/property_api_util'
+import * as PropertyAPIUtil from '../utils/api/property_api_util'
 
 export const RECEIVE_PROPERTIES = 'RECEIVE_PROPERTIES'
 export const RECEIVE_CSV = 'RECEIVE_CSV'

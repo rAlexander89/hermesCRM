@@ -1,13 +1,9 @@
 import React from 'react'
 import CreateCommentContainer from '../../../../comments/create_comment/CreateCommentContainer'
 import ShowPropertyCommentsContainer from '../../../../comments/show_comment/ShowPropertyCommentsContainer'
+import {formatContact} from '../../../../../utils/misc/formatting/formatting'
 
 function LeadShowContact({property_id, agent}) {
-
-    function formatContact(num){
-        let number = num.replaceAll(' ','').replaceAll('-','.').replace('(','').replace(')','')
-        return number
-    }
 
     if (property_id){
         return (

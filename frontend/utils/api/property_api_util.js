@@ -7,13 +7,10 @@ export const fetchProperties = () => {
 
 export const fetchProperty = propertyId => {
     return $.ajax({
-        // url: `/api/properties/${pinId.author_id}/boards/${pinId.board_id}/pins/${pinId.pin_id}`,
         url: `/api/properties/${propertyId}`,
         method: 'GET'
     })
 };
-
-
 
 export const createProperty = property => {
     return $.ajax({
@@ -36,6 +33,7 @@ export const importProperties = csv => {
 }
 
 export const updateProperty = property => {
+    debugger
     return $.ajax({
         method: 'PATCH',
         url: `/api/properties/${property.id}`,
