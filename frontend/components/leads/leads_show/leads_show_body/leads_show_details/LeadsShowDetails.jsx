@@ -1,17 +1,14 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { addComma } from '../../../../../utils/misc/formatting/formatting'
 import { potentialMaxOffer } from '../../../../../utils/misc/calculators/calculators'
 import { updateProperty } from '../../../../../utils/api/property_api_util'
-// import { changeStatus } from '../../../../../utils/misc/lead_change_status/lead_change_status'
 
 function LeadsShowDetails({selectedLead}) {
-
-
-    function changeStatus(e){
-        e.preventDefault()
-        selectedLead.status = e.target.value
-        updateProperty(selectedLead)
-        // updateProperty(selectedLead)
+    
+   function changeStatus(e){
+       e.preventDefault()
+       selectedLead["status"] = e.target.value
+       updateProperty(selectedLead)
     }
 
         return (
@@ -25,19 +22,12 @@ function LeadsShowDetails({selectedLead}) {
                             Status
                         </div>
                         <div className='detail-right'>
-                            {/* <select defaultValue={selectedLead.status} onChange={e => changeStatus(e, selectedLead)}> */}
                             <select defaultValue={selectedLead.status} onChange={changeStatus}>
                                 <option value='Active'>Active</option>
                                 <option value='Under Contract'>Under Contract</option>
                                 <option value='Pending'>Pending</option>
                                 <option value='Closed'>Closed</option>
-                            </select>  
-                            {/* <select value={status} onChange={e => changeStatus(e, selectedLead)}>
-                                <option defaultValue={status === 'Active'}>Active</option>
-                                <option defaultValue={status === 'Under Contract'}>Under Contract</option>
-                                <option defaultValue={status === 'Pending'}>Pending</option>
-                                <option defaultValue={status === 'Closed'}>Closed</option>
-                            </select>               */}
+                            </select>       
                         </div>
                     </div>
                     <div className='lead-detail'>

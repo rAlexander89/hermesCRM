@@ -76,10 +76,9 @@ class Property < ApplicationRecord
     validates :status, inclusion: [
                                     'Coming Soon', 
                                     'Active', 
-                                    'Active Under Contract', 
+                                    'Under Contract', 
                                     'Hold', 
                                     'Pending', 
-                                    'Fell out - Active', 
                                     'Closed', 
                                 ]
 

@@ -41,6 +41,7 @@ class Api::PropertiesController < ApplicationController
         @property = Property.find_by(id: params[:id])
         debugger
         if @property && @property.update(property_params)
+            debugger
             render :show
         else
             render json: @property.errors.full_messages, status: 422
@@ -88,6 +89,6 @@ class Api::PropertiesController < ApplicationController
                 :zipcode, 
                 :listing_id, 
                 :csv
-                )
+        )
     end
 end
