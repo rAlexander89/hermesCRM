@@ -22,6 +22,7 @@
 #  offer_date      :date             not null
 #  offer_date_dash :string
 #  offer_text      :string           not null
+#  pipeline        :string           default("Unassigned")
 #  previous_status :string
 #  st_name         :string
 #  st_prefix       :string
@@ -74,13 +75,22 @@ class Property < ApplicationRecord
     presence: true
 
     validates :status, inclusion: [
-                                    'Coming Soon', 
-                                    'Active', 
-                                    'Under Contract', 
-                                    'Hold', 
+                                    'Coming Soon',
+                                    'Active',
+                                    'Under Contract',
+                                    'Hold',
                                     'Pending', 
-                                    'Closed', 
-                                ]
+                                    'Closed',
+                               ]
+    validates :pipeline, inclusion: [
+        'Unassigned',
+        'Contact',
+        'Counter Received',
+        'Responded To Counter',
+        'Under Contract',
+        'Contingencies Removed',
+        'Closed',
+    ]
 
     has_many :comments, 
     foreign_key: :user_id,

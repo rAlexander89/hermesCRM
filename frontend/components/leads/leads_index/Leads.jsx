@@ -4,6 +4,7 @@ import LeadShowContainer from '../leads_show/LeadShowContainer'
 
 function Leads({fetchProperties, leads}) {
     const [selectedLead, setSelectedLead] = useState(null);
+    const [selectTab, setSelectedTab] = useState('Unassigned')
 
     useEffect(() => {
         fetchProperties();
@@ -12,6 +13,26 @@ function Leads({fetchProperties, leads}) {
     return (
         <div className='leads-container'>
             <div className='leads-header'>Leads</div>
+                <div className='flex-table table-header'>
+                    <div className="flex-row lead-selector " id='unassigned'>
+                        Unassigned
+                    </div>
+                     <div className="flex-row" id='counter-received'>
+                        Counter Recieved
+                    </div>
+                     <div className="flex-row" id='counter-responded'>
+                        Counter Responded                    
+                    </div>
+                     <div className="flex-row" id='under-contract'>
+                        Under Contract                     
+                    </div>
+                     <div className="flex-row" id='contingencies-removed'>
+                        Contingencies Removed                     
+                    </div>
+                     <div className="flex-row" id='closed'>
+                        Closed                     
+                    </div>
+                </div>
                 <LeadShowContainer selectedLead={selectedLead} setSelectedLead={setSelectedLead}/>
             <div className="table-container">
                 <div className="flex-table table-header">

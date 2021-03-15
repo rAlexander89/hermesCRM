@@ -12,6 +12,13 @@ export const fetchProperty = propertyId => {
     })
 };
 
+export const fetchUnassignedProperties = () => {
+    return $.ajax({
+        method: 'GET',
+        url: '/api/properties/fetch_unassigned_properties'
+    })
+}
+
 export const createProperty = property => {
     return $.ajax({
         method: 'POST',
@@ -33,7 +40,6 @@ export const importProperties = csv => {
 }
 
 export const updateProperty = property => {
-    debugger
     return $.ajax({
         method: 'PATCH',
         url: `/api/properties/${property.id}`,

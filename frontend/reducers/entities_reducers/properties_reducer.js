@@ -1,6 +1,7 @@
 import {
     RECEIVE_PROPERTY,
     RECEIVE_PROPERTIES,
+    RECEIVE_UNASSIGNED_PROPERTIES,
     REMOVE_PROPERTY
 } from '../../actions/property_actions'
 
@@ -9,6 +10,8 @@ const propertiesReducer = (state = {}, action) => {
     
     switch (action.type) {
         case RECEIVE_PROPERTIES:
+            return Object.assign({}, state, action.properties)
+        case RECEIVE_UNASSIGNED_PROPERTIES:
             return Object.assign({}, state, action.properties)
         case RECEIVE_PROPERTY:
             let { property } = action.property

@@ -9,6 +9,16 @@ export function offerDate(date){
     return date.replace(/\//g,'.')
 }
 
+// changes Rails date-time format to our apps preffered date format ex: 2021-03-14T06:19:02.974Z -> 03.14.21
+export function updateDate(date){
+    let cutTime = date.split('T')[0]
+    let seperateByDash = cutTime.split('-')
+    let month = seperateByDash[1]
+    let day = seperateByDash[2]
+    let year = seperateByDash[0].substring(2)
+    return `${month}.${day}.${year}`
+}
+
 // truncates offer ratios (O-L, L-A) down to the 100th point ex: 0.2131231231 -> 0.21
 export function truncDigits(num){
     return num.substring(0,4)

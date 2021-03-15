@@ -1,6 +1,7 @@
 import * as PropertyAPIUtil from '../utils/api/property_api_util'
 
 export const RECEIVE_PROPERTIES = 'RECEIVE_PROPERTIES'
+export const RECEIVE_UNASSIGNED_PROPERTIES = 'RECEIVE_UNASSIGNED_PROPERTIES'
 export const RECEIVE_CSV = 'RECEIVE_CSV'
 export const RECEIVE_PROPERTY = 'RECEIVE_PROPERTY'
 export const REMOVE_PROPERTY = "REMOVE_PROPERTY"
@@ -12,6 +13,14 @@ export const receiveProperties = properties => {
         properties
     }
 }
+
+export const receiveUnassignedProperties = properties => {
+    return{
+        type: RECEIVE_UNASSIGNED_PROPERTIES,
+        properties
+    }
+}
+
 
 export const receiveProperty = property => {
     return{

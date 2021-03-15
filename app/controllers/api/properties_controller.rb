@@ -8,6 +8,12 @@ class Api::PropertiesController < ApplicationController
         render :index
     end
 
+    def fetch_unassigned_properties
+        @properties = Property.all.where(pipeline: 'Unassigned')
+        debugger
+        render :index
+    end
+
     def show
         @property = Property.find_by(id: params[:id])
         if @property
@@ -39,10 +45,8 @@ class Api::PropertiesController < ApplicationController
 
     def update
         @property = Property.find_by(id: params[:id])
-        debugger
         if @property && @property.update(property_params)
-            debugger
-            render :show
+                render :show
         else
             render json: @property.errors.full_messages, status: 422
         end

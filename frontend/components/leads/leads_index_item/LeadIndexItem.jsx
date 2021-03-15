@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {fetchAgentByLicense} from '../../../utils/api/agent_api_utils'
-import {addComma, offerDate, truncDigits, truncStatus, formatContact} from '../../../utils/misc/formatting/formatting'
+import {addComma, offerDate, truncDigits, truncStatus, formatContact, updateDate} from '../../../utils/misc/formatting/formatting'
 
 
 function LeadIndexItem({lead, index, setSelectedLead}) {
@@ -23,7 +23,6 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
         setSelectedLead(showData)
     }
 
-
     if (agent){
         return(
             <div className={`lead-index-item x${index}`} onDoubleClick={e => showThisLead(e, lead, agent, setSelectedLead)}>
@@ -38,7 +37,8 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
                 <div className="flex-row" id='agent-name'>{agent.agent_first} {agent.agent_last}</div>
                 <div className="flex-row" id='phone'>{formatContact(agent.agent_contact)}</div>
                 <div className="flex-row" id='address'> {lead.address}</div>
-                <div className="flex-row" id='last-contact'> 4.25.20 </div>
+                <div className="flex-row" id='last-contact'> {updateDate(lead.updated_at)} </div>
+                {/* <div className="flex-row" id='last-contact'> 4.25.20 </div> */}
             </div>
         ) 
     } else { 
