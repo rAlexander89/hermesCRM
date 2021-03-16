@@ -6,7 +6,7 @@ Rails.application.routes.draw do
         resource :comments, only: [:show]
         collection do 
           get 'fetch_unassigned_properties'
-          get 'fetch_contact_properties'
+          get 'fetch_contacted_properties'
           get 'fetch_counter_received_properties'
           get 'fetch_responded_to_counter_properties'
           get 'fetch_under_contract_properties'

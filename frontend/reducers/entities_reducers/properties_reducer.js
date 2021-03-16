@@ -15,7 +15,7 @@ const propertiesReducer = (state = {}, action) => {
             return Object.assign({}, state, {unassignedProperties: action.properties})
         case RECEIVE_PROPERTY:
             let { property } = action.property
-            return Object.assign({}, state, { [property.id]: property })
+            return Object.assign({}, state, { property: property })
         case REMOVE_PROPERTY:
             let newState = Object.assign({}, state);
             delete newState[action.propertyId];

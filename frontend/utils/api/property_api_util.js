@@ -19,6 +19,13 @@ export const fetchUnassignedProperties = () => {
     })
 }
 
+export const fetchContactedProperties = () => {
+    return $.ajax({
+        method: 'GET',
+        url: '/api/properties/fetch_contacted_properties'
+    })
+}
+
 export const createProperty = property => {
     return $.ajax({
         method: 'POST',

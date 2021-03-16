@@ -17,8 +17,8 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
         e.preventDefault();
         
         const showData = {
-            lead: lead, 
-            agent:agent
+            property_id: lead.id, 
+            agent: agent
         }
         setSelectedLead(showData)
     }
@@ -38,13 +38,11 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
                 <div className="flex-row" id='phone'>{formatContact(agent.agent_contact)}</div>
                 <div className="flex-row" id='address'> {lead.address}</div>
                 <div className="flex-row" id='last-contact'> {updateDate(lead.updated_at)} </div>
-                {/* <div className="flex-row" id='last-contact'> 4.25.20 </div> */}
             </div>
         ) 
     } else { 
         return null
     }
-
 }
 
 export default LeadIndexItem

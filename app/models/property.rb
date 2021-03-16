@@ -11,6 +11,7 @@
 #  bath_count      :integer          not null
 #  bed_count       :integer          not null
 #  city            :string           not null
+#  contacted       :boolean          default(FALSE)
 #  county          :string           not null
 #  gla             :integer          not null
 #  house_number    :integer          not null
@@ -54,7 +55,7 @@ class Property < ApplicationRecord
     :arv_offer, 
     :bath_count, 
     :bed_count, 
-    :city, 
+    :city,
     :county, 
     :gla, 
     :house_number, 
@@ -84,13 +85,15 @@ class Property < ApplicationRecord
                                ]
     validates :pipeline, inclusion: [
         'Unassigned',
-        'Contact',
+        'Contacted',
         'Counter Received',
         'Responded To Counter',
         'Under Contract',
         'Contingencies Removed',
         'Closed',
     ]
+
+    validates :contacted, inclusion: { in: [ true, false ] }
 
     has_many :comments, 
     foreign_key: :user_id,

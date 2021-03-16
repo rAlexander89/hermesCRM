@@ -8,7 +8,8 @@ const mSTP = ({entities: {users, session, properties }}) => {
     properties.unassignedProperties !== undefined ? 
         unassignedProperties = Object.values(properties.unassignedProperties).reverse() 
         :
-        unassignedProperties = 'empty'
+        unassignedProperties = false
+        
         
     return{
         currentUser: users[session.currentUserId],

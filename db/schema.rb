@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_15_012459) do
+ActiveRecord::Schema.define(version: 2021_03_16_024353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 2021_03_15_012459) do
     t.string "previous_status"
     t.string "agent_id", null: false
     t.string "pipeline", default: "Unassigned"
+    t.boolean "contacted", default: false
     t.index ["address"], name: "index_properties_on_address"
     t.index ["city"], name: "index_properties_on_city"
     t.index ["zipcode"], name: "index_properties_on_zipcode"

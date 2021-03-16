@@ -6,6 +6,7 @@
             :address, 
             :agent_id, 
             :city, 
+            :contacted,
             :zipcode, 
             :st_prefix,
             :st_name,
