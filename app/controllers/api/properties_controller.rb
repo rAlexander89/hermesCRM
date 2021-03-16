@@ -10,7 +10,6 @@ class Api::PropertiesController < ApplicationController
 
     def fetch_unassigned_properties
         @properties = Property.all.where(pipeline: 'Unassigned')
-        debugger
         render :index
     end
 

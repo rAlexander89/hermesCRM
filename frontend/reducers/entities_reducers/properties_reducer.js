@@ -12,7 +12,7 @@ const propertiesReducer = (state = {}, action) => {
         case RECEIVE_PROPERTIES:
             return Object.assign({}, state, action.properties)
         case RECEIVE_UNASSIGNED_PROPERTIES:
-            return Object.assign({}, state, action.properties)
+            return Object.assign({}, state, {unassignedProperties: action.properties})
         case RECEIVE_PROPERTY:
             let { property } = action.property
             return Object.assign({}, state, { [property.id]: property })

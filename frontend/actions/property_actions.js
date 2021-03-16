@@ -56,6 +56,13 @@ export const fetchProperties = () => dispatch => {
             error => dispatch(receivePropertyErrors(error.responseJSON)))
 }
 
+export const fetchUnassignedProperties = () => dispatch => {
+    return PropertyAPIUtil.fetchUnassignedProperties()
+        .then(properties => dispatch(receiveUnassignedProperties(properties))),
+            error => dispatch(receivePropertyErrors(error.responseJSON))
+
+}
+
 export const fetchProperty = propertyId => dispatch => {
     return PropertyAPIUtil.fetchProperty(propertyId)
         .then(property => dispatch(receiveProperty(property))),

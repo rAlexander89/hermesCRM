@@ -43,9 +43,38 @@ div {
     border-right: none;
 }
 
-#unassigned, #counter-received, #counter-responded, 
-#under-contract, #contingencies-removed, #closed{
-    width: 258px;
+.unassigned, .counter-received, .counter-responded, 
+.under-contract,.closed{
+    width: 259px;
+    cursor: pointer;
+    text-align: center;
+    padding: 0.5em 0.5em;
+    border-right: solid 1px $table-border;
+}
+
+.contingencies-removed{
+    width: 260px;
+    cursor: pointer;
+    text-align: center;
+    padding: 0.5em 0.5em;
+    border-right: solid 1px $table-border;
+}
+
+.unassigned{
+    border-left: 1px solid white; 
+}
+
+.unassigned:hover, .counter-received:hover, .counter-responded:hover, 
+.under-contract:hover,.closed:hover,.contingencies-removed:hover{
+    background:white;
+    color: rgb(22,22,22);
+}
+
+
+
+#selected{
+    background: white;
+    color: rgb(22,22,22);
 }
 
 
@@ -60,11 +89,14 @@ div {
 #status, #l-a, #o-l{
     width: 60px;
 }
-
 #list-price, #arv, #offered{
     width: 110px;
 }
 
+#selected{
+    background: white;
+    color: rgb(22,22,22);
+}
 #agent{
     width: 350px;
     background: pink;
@@ -76,7 +108,7 @@ div {
 }
 
 #phone{
-    width: 135px;
+    width: 140px;
 }
 
 #address{

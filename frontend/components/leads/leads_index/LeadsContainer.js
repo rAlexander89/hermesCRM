@@ -1,17 +1,25 @@
 import { connect } from 'react-redux';
-import { fetchProperties } from '../../../actions/property_actions'
+import { fetchProperties, fetchUnassignedProperties } from '../../../actions/property_actions'
 import Leads from './Leads'
 
-const mSTP = state => {
+const mSTP = ({entities: {users, session, properties }}) => {
+    let unassignedProperties;
+    
+    properties.unassignedProperties !== undefined ? 
+        unassignedProperties = Object.values(properties.unassignedProperties).reverse() 
+        :
+        unassignedProperties = 'empty'
+        
     return{
-        currentUser: state.entities.users[state.entities.session.currentUserId],
-        leads: Object.values(state.entities.properties).reverse()
+        currentUser: users[session.currentUserId],
+        unassignedProperties: unassignedProperties
     }
 }
 
 const mDTP = dispatch => {
     return {
-        fetchProperties: () => dispatch(fetchProperties())
+        fetchProperties: () => dispatch(fetchProperties()),
+        fetchUnassignedProperties: () => dispatch(fetchUnassignedProperties())
     }
 }
 

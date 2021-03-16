@@ -2,34 +2,64 @@ import React, { useEffect, useState } from 'react'
 import LeadIndexItemContainer from '../leads_index_item/LeadIndexItemContainer'
 import LeadShowContainer from '../leads_show/LeadShowContainer'
 
-function Leads({fetchProperties, leads}) {
+function Leads({
+    fetchProperties, 
+    leads,
+    unassignedProperties, 
+    fetchUnassignedProperties}){
+
+
     const [selectedLead, setSelectedLead] = useState(null);
     const [selectTab, setSelectedTab] = useState('Unassigned')
 
     useEffect(() => {
-        fetchProperties();
-    },[]);
+        fetchUnassignedProperties();
+        debugger
+    },[selectTab]);
+
+    function toggleLeadType(e){
+        e.preventDefault();
+        selectTab !== e.target.value ? setSelectedTab(e.target.value) : null
+    }
+
+    function showLeads(unassignedProperties){
+        if (unassignedProperties === 'empty'){
+            return 'empty shit bro' 
+        } else {
+            return(
+                unassignedProperties.map((lead, i) => (
+                 <LeadIndexItemContainer
+                    index={i}
+                    lead={lead}
+                    key={lead.id}
+                    setSelectedLead={setSelectedLead}               
+                    />
+                ))
+
+            )
+        }
+    }
 
     return (
         <div className='leads-container'>
             <div className='leads-header'>Leads</div>
                 <div className='flex-table table-header'>
-                    <div className="flex-row lead-selector " id='unassigned'>
+                     <div className='unassigned' id='selected'>
                         Unassigned
                     </div>
-                     <div className="flex-row" id='counter-received'>
+                     <div className='counter-received' id=''>
                         Counter Recieved
                     </div>
-                     <div className="flex-row" id='counter-responded'>
+                     <div className='counter-responded' id=''>
                         Counter Responded                    
                     </div>
-                     <div className="flex-row" id='under-contract'>
+                     <div className='under-contract' id=''>
                         Under Contract                     
                     </div>
-                     <div className="flex-row" id='contingencies-removed'>
+                     <div className='contingencies-removed' id=''>
                         Contingencies Removed                     
                     </div>
-                     <div className="flex-row" id='closed'>
+                     <div className='closed' id=''>
                         Closed                     
                     </div>
                 </div>
@@ -49,14 +79,16 @@ function Leads({fetchProperties, leads}) {
                     <div className="flex-row" id='address'>Address</div>
                     <div className="flex-row" id='last-contact'>Last</div>
                 </div>  
-                {leads.map((lead, i) => (
+                {showLeads(unassignedProperties)}
+                {/* {unassignedProperties.map((lead, i) => (
+                // {leads.map((lead, i) => (
                  <LeadIndexItemContainer
                     index={i}
                     lead={lead}
                     key={lead.id}
                     setSelectedLead={setSelectedLead}               
                     />
-                ))}  
+                ))}   */}
             </div>
         </div>
     )
