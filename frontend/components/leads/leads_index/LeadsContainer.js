@@ -1,24 +1,29 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { fetchProperties, fetchUnassignedProperties } from '../../../actions/property_actions'
+import { sortLeads } from '../../../utils/misc/sorting/sorting'
 import Leads from './Leads'
 
-const mSTP = ({entities: {users, session, properties }}) => {
-    let unassignedProperties;
+const mSTP = ({entities: { users, session, properties }}) => {
+    let unsorted;
     
-    properties.unassignedProperties !== undefined ? 
-        unassignedProperties = Object.values(properties.unassignedProperties).reverse() 
+    // properties.unassignedProperties !== undefined ? 
+    //     unassignedProperties = Object.values(properties.unassignedProperties).reverse() 
+    //     :
+    //     unassignedProperties = false
+
+    properties !== undefined ? 
+        unsorted = Object.values(properties).reverse() 
         :
-        unassignedProperties = false
-        
+        unsorted = false
         
     return{
         currentUser: users[session.currentUserId],
-        unassignedProperties: unassignedProperties
+        sorted: sortLeads(unsorted)
     }
 }
 
 const mDTP = dispatch => {
-    return {
+    return{
         fetchProperties: () => dispatch(fetchProperties()),
         fetchUnassignedProperties: () => dispatch(fetchUnassignedProperties())
     }

@@ -1,4 +1,4 @@
-export const fetchProperties = () => {
+export const fetchPipeline = () => {
     return $.ajax({
         method: 'GET',
         url: '/api/properties/'
@@ -36,20 +36,10 @@ export const createProperty = property => {
     })
 };
 
-// export const importProperties = csv => {
-//     return $.ajax({
-//         method: 'POST',
-//         url: '/api/properties/import',
-//         data: csv,
-//         contentType: false,
-//         processData: false
-//     })
-// }
-
 export const importProperties = csv => {
     return $.ajax({
         method: 'POST',
-        url: '/api/csv/import',
+        url: '/api/properties/import',
         data: csv,
         contentType: false,
         processData: false

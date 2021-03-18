@@ -24,6 +24,7 @@
             :list_arv,
             :offer,
             :offer_text,
+            :pipeline,
             :arv,
             :bac,
             :list_price,

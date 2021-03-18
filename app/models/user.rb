@@ -65,9 +65,7 @@ class User < ApplicationRecord
             nil
         end 
     end
-
-    
-
+ 
     has_many :comments, 
     foreign_key: :user_id,
     class_name: :Comment
@@ -75,5 +73,9 @@ class User < ApplicationRecord
     has_many :deals,
     foreign_key: :property_id,
     class_name: :Property
+
+    has_many :pipelines,
+    foreign_key: :user_id,
+    class_name: :Pipeline
 
 end

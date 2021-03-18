@@ -1,4 +1,6 @@
 class Api::AgentsController < ApplicationController
+
+    helper_method :create
     
     def index
         @agents = Agent.all 
@@ -17,9 +19,7 @@ class Api::AgentsController < ApplicationController
 
     def create
         @agent = Agent.new(agent_params)
-        # @agent.properties.build
         if @agent.save
-            login!(@agent)
             render json: @agent
         else
             render json: @agent.errors.full_messages, status: 422

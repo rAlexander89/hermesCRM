@@ -23,7 +23,6 @@
 #  offer_date      :date             not null
 #  offer_date_dash :string
 #  offer_text      :string           not null
-#  pipeline        :string           default("Unassigned")
 #  previous_status :string
 #  st_name         :string
 #  st_prefix       :string

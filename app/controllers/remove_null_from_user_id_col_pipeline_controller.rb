@@ -1,0 +1,2 @@
+class RemoveNullFromUserIdColPipelineController < ApplicationController
+end

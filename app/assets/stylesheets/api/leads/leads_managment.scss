@@ -26,13 +26,16 @@
 }
 
 .file-select-button{
+    cursor: pointer;
     display: flex;
     align-items: center;
     height: 35px;
     height: 100%;
     padding-left: 15px;
     padding-right: 15px;
+    border-left: 1px solid rgb(22,22,22);
 }
+
 
 .file-upload-form div {
     height: 100%;
@@ -71,6 +74,10 @@
     padding-right: 15px;
     border-left: 1px solid rgb(22,22,22);
     cursor: pointer;
+}
+
+.file-select-button:hover{
+    border-left: 1px solid white;
 }
 
 .file-upload-submit:hover, .file-select-button:hover{

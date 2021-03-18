@@ -37,6 +37,7 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
                 <div className="flex-row" id='agent-name'>{agent.agent_first} {agent.agent_last}</div>
                 <div className="flex-row" id='phone'>{formatContact(agent.agent_contact)}</div>
                 <div className="flex-row" id='address'> {lead.address}</div>
+                <div className="flex-row" id='agent-name'> N/A </div>
                 <div className="flex-row" id='last-contact'> {updateDate(lead.updated_at)} </div>
             </div>
         ) 

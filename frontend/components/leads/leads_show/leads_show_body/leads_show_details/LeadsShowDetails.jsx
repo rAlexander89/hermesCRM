@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { addComma } from '../../../../../utils/misc/formatting/formatting'
 import { potentialMaxOffer } from '../../../../../utils/misc/calculators/calculators'
 import { updateProperty } from '../../../../../utils/api/property_api_util'
@@ -11,12 +11,11 @@ function LeadsShowDetails({property_id, property, fetchProperty}) {
         fetchProperty(property_id)
     }, [property_id])
     
-   function changeStatus(e){
+    function changeStatus(e){
        e.preventDefault()
        property["status"] = e.target.value
        updateProperty(property)
     }
-
 
     function changeContacted(e, contacted){
         e.preventDefault()
@@ -28,7 +27,6 @@ function LeadsShowDetails({property_id, property, fetchProperty}) {
             })
     }
 
-    
     if(property){
         return (
             <div className='lead-show-listing-detail'>

@@ -1,5 +1,3 @@
-require 'byebug'
-
 class Api::PropertiesController < ApplicationController
     before_action :require_login
 
@@ -27,10 +25,13 @@ class Api::PropertiesController < ApplicationController
         end
     end
 
+    # def self.create(property_params)
     def create
-        @property = Property.create(property_params)
-        if @property.save
+        @property = Property.new(property_params)
+        if @property.save 
+            if Pipeline.create(property_id: @property.id)
             render :index
+            end
         else
             render json: @property.errors.full_messages, status: 422
         end
@@ -58,12 +59,10 @@ class Api::PropertiesController < ApplicationController
 
     def destroy
         @property = Property.find_by(id: params[:id])
-        if @property && @property.author_id == current_user.id
-            if @property.destroy
+        if @property && @property.destroy
                 render json: @property.id
-            else
+        else
                 render json: @property.errors.full_messages, status: 422
-            end
         end
     end
 

@@ -2,93 +2,132 @@ import React, { useEffect, useState } from 'react'
 import LeadIndexItemContainer from '../leads_index_item/LeadIndexItemContainer'
 import LeadShowContainer from '../leads_show/LeadShowContainer'
 
-function Leads({unassignedProperties, fetchUnassignedProperties}){
-
-
-    const [selectedLead, setSelectedLead] = useState(null);
+// function Leads({unassignedProperties, fetchUnassignedProperties, fetchProperties, properties}){
+// function Leads({unassignedProperties, fetchProperties, properties}){
+function Leads({fetchProperties, sorted, setSelectedLead, selectedLead}){
+    
     const [selectPipeline, setSelectPipeline] = useState('Unassigned')
 
     useEffect(() => {
-        fetchUnassignedProperties();
+        fetchProperties()
     },[]);
 
-    useEffect(() => {
-        switch(selectPipeline){
-            case('Unassigned'):
-            fetchUnassignedProperties();
-            case('Contacted'):
-            return null;
-
-        }
-        fetchUnassignedProperties();
-    },[selectPipeline]);
 
     function toggleLeadType(e){
         e.preventDefault();
         selectPipeline !== e.target.innerText ? setSelectPipeline(e.target.innerText) : null
-    }
 
+    }
 
     function dispositionSelector(selectPipeline){
         switch(selectPipeline){
             case('Unassigned'):
                 return(
-                    unassignedProperties ? unassignedProperties.map((lead, i) => (
+                    sorted.unassigned.length !== 0 ? sorted.unassigned.map((lead, i) => (
                         <LeadIndexItemContainer
                             index={i}
-                            lead={lead}
-                            key={lead.id}
+                            lead={lead.id}
+                            key={lead.id.id}
                             setSelectedLead={setSelectedLead}               
                             />
-                    )) : null    
+                    )) : 
+                    <div>
+                        'no unassigned properties or loading properties'    
+                    </div>
                 );
             case('Contacted'):
                 return(
+                   sorted.contacted.length !== 0 ? sorted.contacted.map((lead, i) => (
+                        <LeadIndexItemContainer
+                            index={i}
+                            lead={lead.id}
+                            key={lead.id.id}
+                            setSelectedLead={setSelectedLead}               
+                            />
+                    )) : 
                     <div>
-                        sdjfdsljflskj
+                        'no unassigned properties or loading properties'        
                     </div>
                 );
             case('Counter Received'):
                 return(
-                      <div className=''>
-                          dasddsada 656
-                      </div>
-
+                      sorted.counterReceived.length !== 0 ? sorted.counterReceived.map((lead, i) => (
+                        <LeadIndexItemContainer
+                            index={i}
+                            lead={lead.id}
+                            key={lead.id.id}
+                            setSelectedLead={setSelectedLead}               
+                            />
+                    )) : 
+                    <div>
+                        'no unassigned properties or loading properties'      
+                    </div>
                 );
             case('Counter Responded'):
                 return(
-                          <div>
-                        
+                    sorted.respondedToCounter.length !== 0 ? sorted.respondedToCounter.map((lead, i) => (
+                        <LeadIndexItemContainer
+                            index={i}
+                            lead={lead.id}
+                            key={lead.id.id}
+                            setSelectedLead={setSelectedLead}               
+                            />
+                    )) : 
+                    <div>
+                        'no unassigned properties or loading properties'       
                     </div>
 
                 );
             case('Under Contract'):
                 return(
-                          <div>
-                        
+                    sorted.underContract.length !== 0 ? sorted.underContract.map((lead, i) => (
+                        <LeadIndexItemContainer
+                            index={i}
+                            lead={lead.id}
+                            key={lead.id.id}
+                            setSelectedLead={setSelectedLead}               
+                            />
+                    )) : 
+                    <div>
+                        'no unassigned properties or loading properties'    
                     </div>
 
                 );
             case('Contingencies Removed'):
                 return(
-                          <div>
-                        
+                    sorted.contingenciesRemoved.length !== 0 ? sorted.contingenciesRemoved.map((lead, i) => (
+                        <LeadIndexItemContainer
+                            index={i}
+                            lead={lead.id}
+                            key={lead.id.id}
+                            setSelectedLead={setSelectedLead}               
+                            />
+                    )) : 
+                    <div>
+                        'no unassigned properties or loading properties'     
                     </div>
-
-                );
+                )
             case('Closed'):
                 return(
-                          <div>
-                        
+                    sorted.underContract.length !== 0 ? sorted.underContract.map((lead, i) => (
+                        <LeadIndexItemContainer
+                            index={i}
+                            lead={lead.id}
+                            key={lead.id.id}
+                            setSelectedLead={setSelectedLead}               
+                            />
+                    )) : 
+                    <div>
+                        'no unassigned properties or loading properties'        
                     </div>
 
                 )
-
         } 
 
     }
 
-    return (
+    if (sorted){
+        return (
         <div className='leads-container'>
             <div className='leads-header'>Leads</div>
                 <LeadShowContainer selectedLead={selectedLead} setSelectedLead={setSelectedLead}/>
@@ -96,8 +135,11 @@ function Leads({unassignedProperties, fetchUnassignedProperties}){
                      <div className='unassigned' id='selected' onClick={toggleLeadType}>
                         Unassigned
                     </div>
+                     <div className='contacted' onClick={toggleLeadType}>
+                        Contacted
+                    </div>
                      <div className='counter-received' id='' onClick={toggleLeadType}>
-                        Counter Recieved
+                        Counter Received
                     </div>
                      <div className='counter-responded' id='' onClick={toggleLeadType}>
                         Counter Responded                    
@@ -122,15 +164,16 @@ function Leads({unassignedProperties, fetchUnassignedProperties}){
                     <div className="flex-row" id='offered'>Offered</div>
                     <div className="flex-row" id='list-price'>List Price</div>
                     <div className="flex-row" id='arv'>ARV</div>
-                    <div className="flex-row" id='agent-name'>Agent</div>
+                    <div className="flex-row" id='agent-name'> Listing Agent</div>
                     <div className="flex-row" id='phone'>Phone</div>
                     <div className="flex-row" id='address'>Address</div>
+                    <div className="flex-row" id='agent-name'> Assigned Agent </div>
                     <div className="flex-row" id='last-contact'>Last</div>
                 </div>  
                 {dispositionSelector(selectPipeline)}
             </div>
         </div>
-    )
+    )} else { return null }
 }
 
 export default Leads

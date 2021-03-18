@@ -14,10 +14,13 @@ Rails.application.routes.draw do
           get 'fetch_closed_properties'
         end
       end
-      resources :properties do 
+      resources :properties do ## current method of importing properties
         collection { post :import }
       end
-      resources :pipeline_joins, only: [:index, :show, :create, :update, :destroy]
+      resources :csv do 
+        collection { post :import }
+      end
+      resources :pipeline, only: [:index, :show, :create, :update, :destroy]
       resources :comments, only: [:create, :update, :destroy, :index]
       resources :agents, only: [:show, :create, :destroy, :index] do
         collection do 
