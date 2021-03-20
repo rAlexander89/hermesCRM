@@ -8,10 +8,6 @@ export const fetchPipeline = pipeline_status => {
             return null;
 
     }
-    // return $.ajax({
-    //     method: 'GET',
-    //     url: `/api/pipeline/${pipeline_status}`
-    // })
 };
 
 export const updateProperty = property => {

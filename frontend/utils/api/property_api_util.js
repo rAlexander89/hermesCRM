@@ -36,16 +36,6 @@ export const createProperty = property => {
     })
 };
 
-// export const importProperties = csv => {
-//     return $.ajax({
-//         method: 'POST',
-//         url: '/api/properties/import',
-//         data: csv,
-//         contentType: false,
-//         processData: false
-//     })
-// }
-
 export const importProperties = csv => {
     return $.ajax({
         method: 'POST',

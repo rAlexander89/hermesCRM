@@ -25,7 +25,6 @@ class Api::PropertiesController < ApplicationController
         end
     end
 
-    # def self.create(property_params)
     def create
         @property = Property.new(property_params)
         if @property.save 
@@ -40,12 +39,6 @@ class Api::PropertiesController < ApplicationController
     def import
         Property.import(params[:csv])
         render :index
-        # @properties = Property.import(params[:csv])
-        # if @properties.save
-        #     render :index
-        # else
-        #     render json: @properties.errors.full_messages, status: 422
-        # end
     end
 
     def update
