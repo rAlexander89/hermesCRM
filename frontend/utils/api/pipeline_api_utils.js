@@ -23,7 +23,6 @@ export const updateProperty = property => {
 };
 
 export const fetchUnassignedPipeline = () => {
-    debugger
     return $.ajax({
         method: 'GET',
         url: '/api/pipeline/fetch_unassigned_properties'

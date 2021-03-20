@@ -19,110 +19,127 @@ function Leads({fetchUnassignedPipeline, pipeline, setSelectedLead, selectedLead
         selectPipeline !== e.target.innerText ? setSelectPipeline(e.target.innerText) : null
     }
 
-    function dispositionSelector(selectPipeline){
-        switch(selectPipeline){
-            case('Unassigned'):
-            debugger
-                return(
-                    pipeline.length !== 0 ? pipeline.map((lead, i) => (
-                        <LeadIndexItemContainer
-                            index={i}
-                            lead={lead.id}
-                            key={lead.id.id}
-                            setSelectedLead={setSelectedLead}               
-                            />
-                    )) : 
-                    <div>
-                        'no unassigned properties or loading properties'    
-                    </div>
-                );
-            case('Contacted'):
-                return(
-                   sorted.contacted.length !== 0 ? sorted.contacted.map((lead, i) => (
-                        <LeadIndexItemContainer
-                            index={i}
-                            lead={lead.id}
-                            key={lead.id.id}
-                            setSelectedLead={setSelectedLead}               
-                            />
-                    )) : 
-                    <div>
-                        'no unassigned properties or loading properties'        
-                    </div>
-                );
-            case('Counter Received'):
-                return(
-                      sorted.counterReceived.length !== 0 ? sorted.counterReceived.map((lead, i) => (
-                        <LeadIndexItemContainer
-                            index={i}
-                            lead={lead.id}
-                            key={lead.id.id}
-                            setSelectedLead={setSelectedLead}               
-                            />
-                    )) : 
-                    <div>
-                        'no unassigned properties or loading properties'      
-                    </div>
-                );
-            case('Counter Responded'):
-                return(
-                    sorted.respondedToCounter.length !== 0 ? sorted.respondedToCounter.map((lead, i) => (
-                        <LeadIndexItemContainer
-                            index={i}
-                            lead={lead.id}
-                            key={lead.id.id}
-                            setSelectedLead={setSelectedLead}               
-                            />
-                    )) : 
-                    <div>
-                        'no unassigned properties or loading properties'       
-                    </div>
+    // function dispositionSelector(selectPipeline){
+    //     switch(selectPipeline){
+    //         case('Unassigned'):
+    //             return(
+    //                 pipeline.length !== 0 ? pipeline.map((lead, i) => (
+    //                     <LeadIndexItemContainer
+    //                         index={i}
+    //                         lead={lead}
+    //                         key={lead.id}
+    //                         setSelectedLead={setSelectedLead}               
+    //                         />
+    //                 )) : 
+    //                 <div>
+    //                     'no unassigned properties or loading properties'    
+    //                 </div>
+    //             );
+    //         case('Contacted'):
+    //             return(
+    //                sorted.contacted.length !== 0 ? sorted.contacted.map((lead, i) => (
+    //                     <LeadIndexItemContainer
+    //                         index={i}
+    //                         lead={lead.id}
+    //                         key={lead.id.id}
+    //                         setSelectedLead={setSelectedLead}               
+    //                         />
+    //                 )) : 
+    //                 <div>
+    //                     'no unassigned properties or loading properties'        
+    //                 </div>
+    //             );
+    //         case('Counter Received'):
+    //             return(
+    //                   sorted.counterReceived.length !== 0 ? sorted.counterReceived.map((lead, i) => (
+    //                     <LeadIndexItemContainer
+    //                         index={i}
+    //                         lead={lead.id}
+    //                         key={lead.id.id}
+    //                         setSelectedLead={setSelectedLead}               
+    //                         />
+    //                 )) : 
+    //                 <div>
+    //                     'no unassigned properties or loading properties'      
+    //                 </div>
+    //             );
+    //         case('Counter Responded'):
+    //             return(
+    //                 sorted.respondedToCounter.length !== 0 ? sorted.respondedToCounter.map((lead, i) => (
+    //                     <LeadIndexItemContainer
+    //                         index={i}
+    //                         lead={lead.id}
+    //                         key={lead.id.id}
+    //                         setSelectedLead={setSelectedLead}               
+    //                         />
+    //                 )) : 
+    //                 <div>
+    //                     'no unassigned properties or loading properties'       
+    //                 </div>
 
-                );
-            case('Under Contract'):
-                return(
-                    sorted.underContract.length !== 0 ? sorted.underContract.map((lead, i) => (
-                        <LeadIndexItemContainer
-                            index={i}
-                            lead={lead.id}
-                            key={lead.id.id}
-                            setSelectedLead={setSelectedLead}               
-                            />
-                    )) : 
-                    <div>
-                        'no unassigned properties or loading properties'    
-                    </div>
+    //             );
+    //         case('Under Contract'):
+    //             return(
+    //                 sorted.underContract.length !== 0 ? sorted.underContract.map((lead, i) => (
+    //                     <LeadIndexItemContainer
+    //                         index={i}
+    //                         lead={lead.id}
+    //                         key={lead.id.id}
+    //                         setSelectedLead={setSelectedLead}               
+    //                         />
+    //                 )) : 
+    //                 <div>
+    //                     'no unassigned properties or loading properties'    
+    //                 </div>
 
-                );
-            case('Contingencies Removed'):
-                return(
-                    sorted.contingenciesRemoved.length !== 0 ? sorted.contingenciesRemoved.map((lead, i) => (
-                        <LeadIndexItemContainer
-                            index={i}
-                            lead={lead.id}
-                            key={lead.id.id}
-                            setSelectedLead={setSelectedLead}               
-                            />
-                    )) : 
-                    <div>
-                        'no unassigned properties or loading properties'     
-                    </div>
-                )
-            case('Closed'):
-                return(
-                    sorted.underContract.length !== 0 ? sorted.underContract.map((lead, i) => (
-                        <LeadIndexItemContainer
-                            index={i}
-                            lead={lead.id}
-                            key={lead.id.id}
-                            setSelectedLead={setSelectedLead}               
-                            />
-                    )) : 
-                    <div>
-                        'no unassigned properties or loading properties'        
-                    </div>
-                )
-        } 
+    //             );
+    //         case('Contingencies Removed'):
+    //             return(
+    //                 sorted.contingenciesRemoved.length !== 0 ? sorted.contingenciesRemoved.map((lead, i) => (
+    //                     <LeadIndexItemContainer
+    //                         index={i}
+    //                         lead={lead.id}
+    //                         key={lead.id.id}
+    //                         setSelectedLead={setSelectedLead}               
+    //                         />
+    //                 )) : 
+    //                 <div>
+    //                     'no unassigned properties or loading properties'     
+    //                 </div>
+    //             )
+    //         case('Closed'):
+    //             return(
+    //                 sorted.underContract.length !== 0 ? sorted.underContract.map((lead, i) => (
+    //                     <LeadIndexItemContainer
+    //                         index={i}
+    //                         lead={lead.id}
+    //                         key={lead.id.id}
+    //                         setSelectedLead={setSelectedLead}               
+    //                         />
+    //                 )) : 
+    //                 <div>
+    //                     'no unassigned properties or loading properties'        
+    //                 </div>
+    //             )
+    //     } 
+    // }
+
+     function dispositionSelector(pipeline){
+        return(
+            <>
+               { 
+               pipeline.map((lead, i) => (
+                <LeadIndexItemContainer
+                    index={i}
+                    lead={lead}
+                    key={lead.id}
+                    setSelectedLead={setSelectedLead}               
+                    />
+                ))
+                }
+            </>
+        )
+            
     }
 
     if (pipeline){
@@ -169,7 +186,8 @@ function Leads({fetchUnassignedPipeline, pipeline, setSelectedLead, selectedLead
                     <div className="flex-row" id='agent-name'> Assigned Agent </div>
                     <div className="flex-row" id='last-contact'>Last</div>
                 </div>  
-                {dispositionSelector(selectPipeline)}
+                {/* {dispositionSelector(selectPipeline)} */}
+                {dispositionSelector(pipeline)}
             </div>
         </div>
     )} else { return null }
