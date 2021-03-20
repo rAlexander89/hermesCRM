@@ -4,26 +4,27 @@ import LeadShowContainer from '../leads_show/LeadShowContainer'
 
 // function Leads({unassignedProperties, fetchUnassignedProperties, fetchProperties, properties}){
 // function Leads({unassignedProperties, fetchProperties, properties}){
-function Leads({fetchProperties, sorted, setSelectedLead, selectedLead}){
+// function Leads({fetchProperties, sorted, setSelectedLead, selectedLead}){
+function Leads({fetchUnassignedPipeline, pipeline, setSelectedLead, selectedLead}){
     
     const [selectPipeline, setSelectPipeline] = useState('Unassigned')
 
     useEffect(() => {
-        fetchProperties()
+        fetchUnassignedPipeline()
     },[]);
-
 
     function toggleLeadType(e){
         e.preventDefault();
+        console.log('howdddyyy')
         selectPipeline !== e.target.innerText ? setSelectPipeline(e.target.innerText) : null
-
     }
 
     function dispositionSelector(selectPipeline){
         switch(selectPipeline){
             case('Unassigned'):
+            debugger
                 return(
-                    sorted.unassigned.length !== 0 ? sorted.unassigned.map((lead, i) => (
+                    pipeline.length !== 0 ? pipeline.map((lead, i) => (
                         <LeadIndexItemContainer
                             index={i}
                             lead={lead.id}
@@ -120,13 +121,11 @@ function Leads({fetchProperties, sorted, setSelectedLead, selectedLead}){
                     <div>
                         'no unassigned properties or loading properties'        
                     </div>
-
                 )
         } 
-
     }
 
-    if (sorted){
+    if (pipeline){
         return (
         <div className='leads-container'>
             <div className='leads-header'>Leads</div>

@@ -1,31 +1,24 @@
 import { connect } from 'react-redux'
-import { fetchProperties, fetchUnassignedProperties } from '../../../actions/property_actions'
-import { sortLeads } from '../../../utils/misc/sorting/sorting'
+import { fetchUnassignedPipeline } from '../../../actions/pipeline_actions'
 import Leads from './Leads'
 
-const mSTP = ({entities: { users, session, properties }}) => {
-    let unsorted;
+const mSTP = ({entities: { users, session, pipeline }}) => {
+    let properties;
     
-    // properties.unassignedProperties !== undefined ? 
-    //     unassignedProperties = Object.values(properties.unassignedProperties).reverse() 
-    //     :
-    //     unassignedProperties = false
-
-    properties !== undefined ? 
-        unsorted = Object.values(properties).reverse() 
+    Object.values(pipeline).length !== 0 ? 
+        properties = Object.values(pipeline).reverse() 
         :
-        unsorted = false
+        properties = false
         
     return{
         currentUser: users[session.currentUserId],
-        sorted: sortLeads(unsorted)
+        pipeline: properties
     }
 }
 
 const mDTP = dispatch => {
     return{
-        fetchProperties: () => dispatch(fetchProperties()),
-        fetchUnassignedProperties: () => dispatch(fetchUnassignedProperties())
+        fetchUnassignedPipeline: pipeline_status => dispatch(fetchUnassignedPipeline(pipeline_status))
     }
 }
 

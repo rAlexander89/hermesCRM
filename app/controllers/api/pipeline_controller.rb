@@ -1,7 +1,5 @@
 class Api::PipelineController < ApplicationController
 
-    helper_method :create
-
     def index
         @pipelines = Pipeline.all
         render :index
@@ -9,6 +7,12 @@ class Api::PipelineController < ApplicationController
 
     def show
         @pipeline = Pipeline.all.where(pipeline_status: params[:pipeline_status])
+        render :index
+    end
+
+     def fetch_unassigned_properties
+        @pipeline = Pipeline.all.where(pipeline_status: 'Unassigned')
+        render :index
     end
 
     def create

@@ -4,7 +4,15 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :create, :show] 
       resources :properties, only: [:index, :show, :create, :update, :destroy ] do 
         resource :comments, only: [:show]
-        collection do 
+      end
+      resources :properties do ## current method of importing properties
+        collection { post :import }
+      end
+      resources :csv do 
+        collection { post :import }
+      end
+      resources :pipeline, only: [:index, :show, :create, :update, :destroy] do
+         collection do 
           get 'fetch_unassigned_properties'
           get 'fetch_contacted_properties'
           get 'fetch_counter_received_properties'
@@ -14,13 +22,6 @@ Rails.application.routes.draw do
           get 'fetch_closed_properties'
         end
       end
-      resources :properties do ## current method of importing properties
-        collection { post :import }
-      end
-      resources :csv do 
-        collection { post :import }
-      end
-      resources :pipeline, only: [:index, :show, :create, :update, :destroy]
       resources :comments, only: [:create, :update, :destroy, :index]
       resources :agents, only: [:show, :create, :destroy, :index] do
         collection do 
