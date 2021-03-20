@@ -6,7 +6,7 @@ function LeadsShowBody({ currentUser, selectedLead }) {
     return (
         <div className='leads-show-body-container'>
             {/* property details  */}
-            <LeadsShowDetailsContainer property_id={selectedLead.property_id} currentUser={currentUser}/>
+            <LeadsShowDetailsContainer property_id={selectedLead.property_id} pipeline={selectedLead.pipeline} currentUser={currentUser}/>
             {/* agent contact/log  */}
             <LeadShowContactContainer agent={selectedLead.agent} property_id={selectedLead.property_id} currentUser={currentUser}/>
             

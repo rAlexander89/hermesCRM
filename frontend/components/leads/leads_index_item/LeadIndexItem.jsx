@@ -22,12 +22,13 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
 
 
     
-    const showThisLead = (e, property, agent, setSelectedLead) => {
+    const showThisLead = (e, property, lead, agent, setSelectedLead) => {
         e.preventDefault();
         
         const showData = {
             property_id: property.id, 
-            agent: agent
+            agent: agent,
+            pipeline: lead
         }
         setSelectedLead(showData)
     }
@@ -35,7 +36,7 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
 
     if (agent){
         return(
-            <div className={`lead-index-item x${index}`} onDoubleClick={e => showThisLead(e, property, agent, setSelectedLead)}>
+            <div className={`lead-index-item x${index}`} onDoubleClick={e => showThisLead(e, property, lead, agent, setSelectedLead)}>
                 <div className="flex-row" id='index'>{index + 1}</div>
                 <div className="flex-row" id='submitted'>{offerDate(property.offer_date_dash)}</div>
                 <div className="flex-row" id='status'>{truncStatus(property.status)}</div>

@@ -11,7 +11,6 @@
 #  bath_count      :integer          not null
 #  bed_count       :integer          not null
 #  city            :string           not null
-#  contacted       :boolean          default(FALSE)
 #  county          :string           not null
 #  gla             :integer          not null
 #  house_number    :integer          not null

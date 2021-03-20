@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :properties, only: [:index, :show, :create, :update, :destroy ] do 
         resource :comments, only: [:show]
       end
-      resources :properties do ## current method of importing properties
+      resources :properties do
         collection { post :import }
       end
       resources :csv do 

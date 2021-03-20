@@ -8,7 +8,7 @@ json.property do
     :bed_count,
     :bath_count,
     :city, 
-    :contacted,
+    # :contacted,
     :zipcode, 
     :st_prefix,
     :st_name,

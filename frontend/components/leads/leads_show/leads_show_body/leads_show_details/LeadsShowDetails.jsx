@@ -2,10 +2,13 @@ import React, { useEffect } from 'react'
 import { addComma } from '../../../../../utils/misc/formatting/formatting'
 import { potentialMaxOffer } from '../../../../../utils/misc/calculators/calculators'
 import { updateProperty } from '../../../../../utils/api/property_api_util'
+import { updatePipeline } from '../../../../../utils/api/pipeline_api_utils'
 
-function LeadsShowDetails({property_id, property, fetchProperty}) {
+function LeadsShowDetails({property_id, pipeline, property, fetchProperty}) {
 
-    let contacted = property.contacted ? true : false
+    let contacted = pipeline.contacted ? true : false
+    console.log(pipeline.id)
+    console.log(contacted)
 
     useEffect(() => {
         fetchProperty(property_id)
@@ -17,14 +20,14 @@ function LeadsShowDetails({property_id, property, fetchProperty}) {
        updateProperty(property)
     }
 
-    function changeContacted(e, contacted){
+    function changeContacted(e, contacted, pipeline){
         e.preventDefault()
         contacted = !contacted
-        property["contacted"] = contacted
-        updateProperty(property)
-            .then(res => {
-                fetchProperty(property_id)
-            })
+        pipeline["contacted"] = contacted
+        updatePipeline(pipeline)
+            // .then(res => {
+            //     fetchProperty(property_id)
+            // })
     }
 
     if(property){
@@ -94,7 +97,7 @@ function LeadsShowDetails({property_id, property, fetchProperty}) {
                             Contacted?                
                         </div>
                         <div className='detail-right'>
-                            <div className='contact-checkbox' onClick={e =>changeContacted(e, contacted)}>
+                            <div className='contact-checkbox' onClick={e =>changeContacted(e, contacted, pipeline)}>
                                 {contacted ? 'X' : ' '}
                             </div>      
                         </div>

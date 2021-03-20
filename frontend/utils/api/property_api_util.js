@@ -12,13 +12,6 @@ export const fetchProperty = propertyId => {
     })
 };
 
-export const fetchUnassignedProperties = () => {
-    return $.ajax({
-        method: 'GET',
-        url: '/api/properties/fetch_unassigned_properties'
-    })
-}
-
 export const fetchContactedProperties = () => {
     return $.ajax({
         method: 'GET',

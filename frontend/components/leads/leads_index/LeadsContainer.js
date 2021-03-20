@@ -1,24 +1,24 @@
 import { connect } from 'react-redux'
-import { fetchUnassignedPipeline } from '../../../actions/pipeline_actions'
+import { fetchPipeline } from '../../../actions/pipeline_actions'
 import Leads from './Leads'
 
 const mSTP = ({entities: { users, session, pipeline }}) => {
-    let properties;
+    let list;
     
     Object.values(pipeline).length !== 0 ? 
-        properties = Object.values(pipeline).reverse() 
+        list = Object.values(pipeline).reverse() 
         :
-        properties = false
+        list = false
         
     return{
         currentUser: users[session.currentUserId],
-        pipeline: properties
+        pipeline: list
     }
 }
 
 const mDTP = dispatch => {
     return{
-        fetchUnassignedPipeline: pipeline_status => dispatch(fetchUnassignedPipeline(pipeline_status))
+        fetchPipeline: pipeline_status => dispatch(fetchPipeline(pipeline_status))
     }
 }
 

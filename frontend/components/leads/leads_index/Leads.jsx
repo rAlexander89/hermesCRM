@@ -1,38 +1,34 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import LeadIndexItemContainer from '../leads_index_item/LeadIndexItemContainer'
 import LeadShowContainer from '../leads_show/LeadShowContainer'
 
-function Leads({fetchUnassignedPipeline, pipeline, setSelectedLead, selectedLead}){
+function Leads({fetchPipeline, pipeline, setSelectedLead, selectedLead}){
     
     const [selectPipeline, setSelectPipeline] = useState('Unassigned')
 
     useEffect(() => {
-        fetchUnassignedPipeline()
-    },[]);
+        fetchPipeline(selectPipeline)          
+    },[selectPipeline]);
 
     function toggleLeadType(e){
         e.preventDefault();
-        console.log('howdddyyy')
         selectPipeline !== e.target.innerText ? setSelectPipeline(e.target.innerText) : null
     }
 
      function dispositionSelector(pipeline){
         return(
             <>
-               { 
-               pipeline.map((lead, i) => (
-                <LeadIndexItemContainer
-                    index={i}
-                    lead={lead}
-                    key={lead.id}
-                    setSelectedLead={setSelectedLead}               
-                    />
-                ))
-                }
-            </>
-        )
-            
-    }
+            {pipeline.length > 0 ?
+                    pipeline.map((lead, i) => (
+                        <LeadIndexItemContainer
+                            index={i}
+                            lead={lead}
+                            key={lead.id}
+                            setSelectedLead={setSelectedLead}              
+                            />
+                    )) : ' Looks like you aint got that kind of thing!'
+            }
+        </>)}
 
     if (pipeline){
         return (

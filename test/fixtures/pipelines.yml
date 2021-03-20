@@ -3,6 +3,7 @@
 # Table name: pipelines
 #
 #  id              :bigint           not null, primary key
+#  contacted       :boolean          default(FALSE)
 #  pipeline_status :string           default("Unassigned"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

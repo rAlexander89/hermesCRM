@@ -6,16 +6,6 @@ class Api::PropertiesController < ApplicationController
         render :index
     end
 
-    def fetch_unassigned_properties
-        @properties = Property.all.where(pipeline: 'Unassigned')
-        render :index
-    end
-
-       def fetch_contacted_properties
-        @properties = Property.all.where(pipeline: 'Contact')
-        render :index
-    end
-
     def show
         @property = Property.find_by(id: params[:id])
         if @property
@@ -72,7 +62,7 @@ class Api::PropertiesController < ApplicationController
                 :bed_count, 
                 :city, 
                 :county, 
-                :contacted,
+                # :contacted,
                 :gla, 
                 :house_number, 
                 :list_arv, 

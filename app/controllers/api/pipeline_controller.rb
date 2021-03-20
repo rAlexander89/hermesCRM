@@ -10,8 +10,13 @@ class Api::PipelineController < ApplicationController
         render :index
     end
 
-     def fetch_unassigned_properties
+    def fetch_unassigned_properties
         @pipeline = Pipeline.all.where(pipeline_status: 'Unassigned')
+        render :index
+    end
+    
+    def fetch_contacted_properties
+        @pipeline = Pipeline.all.where(contacted: true)
         render :index
     end
 
@@ -25,8 +30,10 @@ class Api::PipelineController < ApplicationController
     end
 
     def update
-        @pipeline = Property.find_by(id: params[:id])
+        @pipeline = Pipeline.find_by(id: params[:id])
+        debugger
         if @pipeline && @pipeline.update(pipeline_params)
+            debugger
             render :show
         else
             render json: @pipeline.errors.full_messages, status: 422

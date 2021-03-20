@@ -4,6 +4,7 @@
             :id,
             :user_id,
             :property_id,
-            :pipeline_status
+            :pipeline_status,
+            :contacted
     end
 end
