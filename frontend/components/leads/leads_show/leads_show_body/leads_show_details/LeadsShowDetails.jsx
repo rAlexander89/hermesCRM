@@ -1,17 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { addComma } from '../../../../../utils/misc/formatting/formatting'
 import { potentialMaxOffer } from '../../../../../utils/misc/calculators/calculators'
 import { updateProperty } from '../../../../../utils/api/property_api_util'
 import { updatePipeline } from '../../../../../utils/api/pipeline_api_utils'
 
 function LeadsShowDetails({property_id, pipeline, property, fetchProperty}) {
-
-    let contacted = pipeline.contacted ? true : false
-    console.log(pipeline.id)
-    console.log(contacted)
+    const [contacted, setContacted] = useState(false)
 
     useEffect(() => {
         fetchProperty(property_id)
+        setContacted(pipeline.contacted)
     }, [property_id])
     
     function changeStatus(e){
@@ -22,12 +20,11 @@ function LeadsShowDetails({property_id, pipeline, property, fetchProperty}) {
 
     function changeContacted(e, contacted, pipeline){
         e.preventDefault()
-        contacted = !contacted
-        pipeline["contacted"] = contacted
+        pipeline["contacted"] = !contacted
         updatePipeline(pipeline)
-            // .then(res => {
-            //     fetchProperty(property_id)
-            // })
+            .then(res => {
+                setContacted(res.contacted)
+            })
     }
 
     if(property){

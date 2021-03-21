@@ -31,10 +31,8 @@ class Api::PipelineController < ApplicationController
 
     def update
         @pipeline = Pipeline.find_by(id: params[:id])
-        debugger
         if @pipeline && @pipeline.update(pipeline_params)
-            debugger
-            render :show
+                render :show
         else
             render json: @pipeline.errors.full_messages, status: 422
         end
@@ -43,6 +41,6 @@ class Api::PipelineController < ApplicationController
     private
 
     def pipeline_params
-        params.require(:pipeline).permit(:pipeline_status, :property_id, :user_id)
+        params.require(:pipeline).permit(:pipeline_status, :property_id, :user_id, :contacted)
     end
 end
