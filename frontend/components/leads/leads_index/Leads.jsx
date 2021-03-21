@@ -30,6 +30,7 @@ function Leads({fetchPipeline, pipeline, setSelectedLead, selectedLead}){
             }
         </>)}
 
+
     if (pipeline){
         return (
         <div className='leads-container'>

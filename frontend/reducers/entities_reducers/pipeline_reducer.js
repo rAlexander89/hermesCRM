@@ -5,7 +5,7 @@ const pipelineReducer = (state = {}, action) => {
 
     switch(action.type){
         case RECEIVE_PIPELINE:
-            return Object.assign({}, state, action.pipeline);
+            return action.pipeline;
         default:
             return state;
     }

@@ -9,7 +9,9 @@ const mSTP = ({entities: { users, session, pipeline }}) => {
         list = Object.values(pipeline).reverse() 
         :
         list = false
-        
+
+        debugger
+
     return{
         currentUser: users[session.currentUserId],
         pipeline: list

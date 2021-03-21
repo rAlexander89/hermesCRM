@@ -11,7 +11,7 @@ class Api::PipelineController < ApplicationController
     end
 
     def fetch_unassigned_properties
-        @pipeline = Pipeline.all.where(pipeline_status: 'Unassigned')
+        @pipeline = Pipeline.all.where(pipeline_status: 'Unassigned').where.not(contacted: true)
         render :index
     end
     
