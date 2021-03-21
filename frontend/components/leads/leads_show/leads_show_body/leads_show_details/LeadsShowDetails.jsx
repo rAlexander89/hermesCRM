@@ -43,8 +43,11 @@ function LeadsShowDetails({property_id, pipeline, property, fetchProperty, curre
                             <select className='status-select' defaultValue={pipeline.pipeline_status === 'Unassigned' ? 'Active' : pipeline.pipeline_status } onChange={updateStatus}>
                                 <option value='Coming Soon'>Coming Soon</option>
                                 <option value='Active'>Active</option>
+                                <option value='Counter Received'>Counter Received</option>
+                                <option value='Counter Responded'>Counter Responded</option>
                                 <option value='Under Contract'>Under Contract</option>
                                 <option value='Pending'>Pending</option>
+                                <option value='Contingencies Removed'> Contingencies Removed</option>
                                 <option value='Hold'>Hold</option>
                                 <option value='Closed'>Closed</option>
                             </select>       
