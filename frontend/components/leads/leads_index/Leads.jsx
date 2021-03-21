@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState } from 'react'
 import LeadIndexItemContainer from '../leads_index_item/LeadIndexItemContainer'
 import LeadShowContainer from '../leads_show/LeadShowContainer'
 
@@ -18,21 +18,18 @@ function Leads({fetchPipeline, pipeline, setSelectedLead, selectedLead}){
      function dispositionSelector(pipeline){
         return(
             <>
-            {pipeline.length > 0 ?
-                    pipeline.map((lead, i) => (
-                        <LeadIndexItemContainer
-                            index={i}
-                            lead={lead}
-                            key={lead.id}
-                            setSelectedLead={setSelectedLead}              
-                            />
-                    )) : ' Looks like you aint got that kind of thing!'
-            }
+            {pipeline.map((lead, i) => (
+                    <LeadIndexItemContainer
+                        index={i}
+                        lead={lead}
+                        key={lead.id}
+                        setSelectedLead={setSelectedLead}              
+                        />
+            ))}
         </>)}
 
-
-    if (pipeline){
-        return (
+        
+    return (
         <div className='leads-container'>
             <div className='leads-header'>Leads</div>
                 <LeadShowContainer selectedLead={selectedLead} setSelectedLead={setSelectedLead}/>
@@ -75,10 +72,10 @@ function Leads({fetchPipeline, pipeline, setSelectedLead, selectedLead}){
                     <div className="flex-row" id='agent-name'> Assigned Agent </div>
                     <div className="flex-row" id='last-contact'>Last</div>
                 </div>  
-                {dispositionSelector(pipeline)}
+                {pipeline ? dispositionSelector(pipeline) : 'Looks like you aint got that kind of thing!'}
             </div>
         </div>
-    )} else { return null }
+    )
 }
 
 export default Leads

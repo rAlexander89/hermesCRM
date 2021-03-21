@@ -11,12 +11,12 @@ class Api::PipelineController < ApplicationController
     end
 
     def fetch_unassigned_properties
-        @pipeline = Pipeline.all.where(pipeline_status: 'Unassigned').where.not(contacted: true)
+        @pipeline = Pipeline.where(pipeline_status: 'Unassigned').or(Pipeline.where(pipeline_status: 'Active')).where.not(contacted: true)
         render :index
     end
     
     def fetch_contacted_properties
-        @pipeline = Pipeline.all.where(contacted: true)
+        @pipeline = Pipeline.where(contacted: true)
         render :index
     end
 
@@ -32,7 +32,7 @@ class Api::PipelineController < ApplicationController
     def update
         @pipeline = Pipeline.find_by(id: params[:id])
         if @pipeline && @pipeline.update(pipeline_params)
-                render :show
+                    render :show
         else
             render json: @pipeline.errors.full_messages, status: 422
         end

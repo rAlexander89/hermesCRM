@@ -1,30 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import { addComma } from '../../../../../utils/misc/formatting/formatting'
 import { potentialMaxOffer } from '../../../../../utils/misc/calculators/calculators'
-import { updateProperty } from '../../../../../utils/api/property_api_util'
 import { updatePipeline } from '../../../../../utils/api/pipeline_api_utils'
 
-function LeadsShowDetails({property_id, pipeline, property, fetchProperty}) {
+function LeadsShowDetails({property_id, pipeline, property, fetchProperty, currentUserId}) {
+
     const [contacted, setContacted] = useState(false)
 
     useEffect(() => {
         fetchProperty(property_id)
         setContacted(pipeline.contacted)
     }, [property_id])
-    
-    function changeStatus(e){
-       e.preventDefault()
-       property["status"] = e.target.value
-       updateProperty(property)
-    }
 
-    function changeContacted(e, contacted, pipeline){
+    function updateStatus(e){
         e.preventDefault()
-        pipeline["contacted"] = !contacted
-        updatePipeline(pipeline)
+        if (e.target.classList.value === 'status-select'){
+            pipeline['pipeline_status'] = e.target.value
+            updatePipeline(pipeline)
+        } else if (e.target.classList.value === 'contact-checkbox'){
+            pipeline['contacted'] = !contacted
+            debugger
+            pipeline['user_id'] = currentUserId
+            updatePipeline(pipeline)
             .then(res => {
                 setContacted(res.contacted)
             })
+        }
     }
 
     if(property){
@@ -39,7 +40,7 @@ function LeadsShowDetails({property_id, pipeline, property, fetchProperty}) {
                             Status
                         </div>
                         <div className='detail-right'>
-                            <select defaultValue={property.status} onChange={changeStatus}>
+                            <select className='status-select' defaultValue={pipeline.pipeline_status === 'Unassigned' ? 'Active' : pipeline.pipeline_status } onChange={updateStatus}>
                                 <option value='Coming Soon'>Coming Soon</option>
                                 <option value='Active'>Active</option>
                                 <option value='Under Contract'>Under Contract</option>
@@ -94,7 +95,7 @@ function LeadsShowDetails({property_id, pipeline, property, fetchProperty}) {
                             Contacted?                
                         </div>
                         <div className='detail-right'>
-                            <div className='contact-checkbox' onClick={e =>changeContacted(e, contacted, pipeline)}>
+                            <div className='contact-checkbox' onClick={updateStatus}>
                                 {contacted ? 'X' : ' '}
                             </div>      
                         </div>

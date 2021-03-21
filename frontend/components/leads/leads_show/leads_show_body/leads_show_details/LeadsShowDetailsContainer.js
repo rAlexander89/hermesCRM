@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import LeadsShowDetails from './LeadsShowDetails'
 import { fetchProperty } from '../../../../../actions/property_actions'
 
-const mSTP = ({entities: {properties}}) => {
+const mSTP = ({entities: {properties, users, session}}) => {
     let property;
 
     properties.property !== undefined ? 
@@ -11,6 +11,7 @@ const mSTP = ({entities: {properties}}) => {
         property = false
 
     return{
+        currentUserId: session.currentUserId,
         property: property 
     }
 }

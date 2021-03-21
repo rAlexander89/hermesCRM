@@ -10,8 +10,6 @@ const mSTP = ({entities: { users, session, pipeline }}) => {
         :
         list = false
 
-        debugger
-
     return{
         currentUser: users[session.currentUserId],
         pipeline: list

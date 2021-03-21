@@ -13,14 +13,15 @@
 class Pipeline < ApplicationRecord
 
     validates :pipeline_status, inclusion: [
-        'Unassigned',
-        'Contacted',
-        'Counter Received',
-        'Responded To Counter',
-        'Under Contract',
-        'Contingencies Removed',
-        'Pending',
+        'Active',
         'Closed',
+        'Contingencies Removed',
+        'Counter Received',
+        'Hold',
+        'Responded To Counter',
+        'Pending',
+        'Unassigned',
+        'Under Contract'
     ]
 
     validates :property_id, presence: true
