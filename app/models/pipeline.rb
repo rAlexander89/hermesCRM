@@ -18,7 +18,7 @@ class Pipeline < ApplicationRecord
         'Contingencies Removed',
         'Counter Received',
         'Hold',
-        'Responded To Counter',
+        'Counter Responded',
         'Pending',
         'Unassigned',
         'Under Contract'

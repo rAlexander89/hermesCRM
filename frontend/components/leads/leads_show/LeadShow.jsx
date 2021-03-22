@@ -1,5 +1,4 @@
 import React from 'react'
-import LeadsShowHeaderContainer from './leads_show_header/LeadsShowHeaderContainer'
 import LeadsShowBodyContainer from './leads_show_body/LeadsShowBodyContainer'
 
 

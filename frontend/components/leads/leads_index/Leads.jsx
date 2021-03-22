@@ -1,32 +1,31 @@
-import React, { useEffect, useState } from 'react'
+// import React, { useEffect, useState } from 'react'
+import React, {useState} from 'react'
 import LeadIndexItemContainer from '../leads_index_item/LeadIndexItemContainer'
 import LeadShowContainer from '../leads_show/LeadShowContainer'
 
 function Leads({pipeline, setSelectedLead, selectedLead, selectPipeline, setSelectPipeline, contacted, setContacted}){
-    
-    // const [selectPipeline, setSelectPipeline] = useState('Unassigned')
 
-    // useEffect(() => {
-        // fetchPipeline(selectPipeline)          
-    // },[selectPipeline]);
+    
 
     function toggleLeadType(e){
         e.preventDefault();
         selectPipeline !== e.target.innerText ? setSelectPipeline(e.target.innerText) : null
     }
 
-     function dispositionSelector(pipeline){
+    function dispositionSelector(pipeline){
         return(
             <>
-            {pipeline.map((lead, i) => (
-                    <LeadIndexItemContainer
-                        index={i}
-                        lead={lead}
-                        key={lead.id}
-                        setSelectedLead={setSelectedLead}              
-                        />
-            ))}
-        </>)}
+                {pipeline.map((lead, i) => (
+                        <LeadIndexItemContainer
+                            index={i}
+                            lead={lead}
+                            key={lead.id}
+                            setSelectedLead={setSelectedLead}              
+                            />
+                ))}
+            </>
+        )
+    }
 
         
     return (
@@ -34,25 +33,25 @@ function Leads({pipeline, setSelectedLead, selectedLead, selectPipeline, setSele
             <div className='leads-header'>Leads</div>
                 <LeadShowContainer selectedLead={selectedLead} setSelectedLead={setSelectedLead} contacted={contacted} setContacted={setContacted}/>
                 <div className='flex-table table-header'>
-                     <div className='unassigned' id='selected' onClick={toggleLeadType}>
+                     <div className='unassigned' id={selectPipeline === 'Unassigned' ? 'selected' : null } onClick={toggleLeadType}>
                         Unassigned
                     </div>
-                     <div className='contacted' onClick={toggleLeadType}>
+                     <div className='contacted' id={selectPipeline === 'Contacted' ? 'selected' : null } onClick={toggleLeadType}>
                         Contacted
                     </div>
-                     <div className='counter-received' id='' onClick={toggleLeadType}>
+                     <div className='counter-received' id={selectPipeline === 'Counter Received' ? 'selected' : null }  onClick={toggleLeadType}>
                         Counter Received
                     </div>
-                     <div className='counter-responded' id='' onClick={toggleLeadType}>
+                     <div className='counter-responded' id={selectPipeline === 'Counter Responded' ? 'selected' : null } onClick={toggleLeadType}>
                         Counter Responded                    
                     </div>
-                     <div className='under-contract' id='' onClick={toggleLeadType}>
+                     <div className='under-contract' id={selectPipeline === 'Under Contract' ? 'selected' : null } onClick={toggleLeadType}>
                         Under Contract                     
                     </div>
-                     <div className='contingencies-removed' id='' onClick={toggleLeadType}>
+                     <div className='contingencies-removed' id={selectPipeline === 'Contingencies Removed' ? 'selected' : null } onClick={toggleLeadType}>
                         Contingencies Removed                     
                     </div>
-                     <div className='closed' id='' onClick={toggleLeadType}>
+                     <div className='closed' id={selectPipeline === 'Closed' ? 'selected' : null } onClick={toggleLeadType}>
                         Closed                     
                     </div>
                 </div>

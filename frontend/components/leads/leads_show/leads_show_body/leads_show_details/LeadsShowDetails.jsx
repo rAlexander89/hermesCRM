@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { addComma } from '../../../../../utils/misc/formatting/formatting'
 import { potentialMaxOffer } from '../../../../../utils/misc/calculators/calculators'
 import { updatePipeline } from '../../../../../utils/api/pipeline_api_utils'
@@ -18,6 +18,7 @@ function LeadsShowDetails({property_id, pipeline, property, fetchProperty, curre
         } else if (e.target.classList.value === 'contact-checkbox'){
             pipeline['contacted'] = !contacted
             // pipeline['user_id'] = currentUserId
+            // need to add user ID to pipeline record when a user is assigned
             updatePipeline(pipeline)
             .then(res => {
                 setContacted(res.contacted)
