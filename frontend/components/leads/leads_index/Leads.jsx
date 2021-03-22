@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import LeadIndexItemContainer from '../leads_index_item/LeadIndexItemContainer'
 import LeadShowContainer from '../leads_show/LeadShowContainer'
 
-function Leads({fetchPipeline, pipeline, setSelectedLead, selectedLead}){
+function Leads({pipeline, setSelectedLead, selectedLead, selectPipeline, setSelectPipeline, contacted, setContacted}){
     
-    const [selectPipeline, setSelectPipeline] = useState('Unassigned')
+    // const [selectPipeline, setSelectPipeline] = useState('Unassigned')
 
-    useEffect(() => {
-        fetchPipeline(selectPipeline)          
-    },[selectPipeline]);
+    // useEffect(() => {
+        // fetchPipeline(selectPipeline)          
+    // },[selectPipeline]);
 
     function toggleLeadType(e){
         e.preventDefault();
@@ -32,7 +32,7 @@ function Leads({fetchPipeline, pipeline, setSelectedLead, selectedLead}){
     return (
         <div className='leads-container'>
             <div className='leads-header'>Leads</div>
-                <LeadShowContainer selectedLead={selectedLead} setSelectedLead={setSelectedLead}/>
+                <LeadShowContainer selectedLead={selectedLead} setSelectedLead={setSelectedLead} contacted={contacted} setContacted={setContacted}/>
                 <div className='flex-table table-header'>
                      <div className='unassigned' id='selected' onClick={toggleLeadType}>
                         Unassigned

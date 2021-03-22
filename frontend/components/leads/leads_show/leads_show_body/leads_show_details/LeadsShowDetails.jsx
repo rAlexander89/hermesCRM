@@ -3,9 +3,7 @@ import { addComma } from '../../../../../utils/misc/formatting/formatting'
 import { potentialMaxOffer } from '../../../../../utils/misc/calculators/calculators'
 import { updatePipeline } from '../../../../../utils/api/pipeline_api_utils'
 
-function LeadsShowDetails({property_id, pipeline, property, fetchProperty, currentUserId}) {
-
-    const [contacted, setContacted] = useState(false)
+function LeadsShowDetails({property_id, pipeline, property, fetchProperty, currentUserId, contacted, setContacted}) {
 
     useEffect(() => {
         fetchProperty(property_id)
@@ -19,8 +17,7 @@ function LeadsShowDetails({property_id, pipeline, property, fetchProperty, curre
             updatePipeline(pipeline)
         } else if (e.target.classList.value === 'contact-checkbox'){
             pipeline['contacted'] = !contacted
-            debugger
-            pipeline['user_id'] = currentUserId
+            // pipeline['user_id'] = currentUserId
             updatePipeline(pipeline)
             .then(res => {
                 setContacted(res.contacted)

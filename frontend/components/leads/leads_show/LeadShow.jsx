@@ -1,16 +1,16 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import LeadsShowHeaderContainer from './leads_show_header/LeadsShowHeaderContainer'
 import LeadsShowBodyContainer from './leads_show_body/LeadsShowBodyContainer'
 
 
 
-function LeadShow({selectedLead}) {
+function LeadShow({selectedLead, contacted, setContacted}) {
     
     const leadData = (selectedLead) => {
         if (selectedLead){
             document.querySelector('.lead-show-container').classList.add('show');
             return(
-                    <LeadsShowBodyContainer selectedLead={selectedLead}/>
+                    <LeadsShowBodyContainer contacted={contacted} setContacted={setContacted} selectedLead={selectedLead}/>
             )
         } else {
             return null
