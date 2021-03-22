@@ -16,10 +16,11 @@ Rails.application.routes.draw do
           get 'fetch_unassigned_properties'
           get 'fetch_contacted_properties'
           get 'fetch_counter_received_properties'
-          get 'fetch_responded_to_counter_properties'
+          get 'fetch_counter_responded_properties'
           get 'fetch_under_contract_properties'
           get 'fetch_contingencies_removed_properties'
           get 'fetch_closed_properties'
+          get 'fetch_hold_properties'
         end
       end
       resources :comments, only: [:create, :update, :destroy, :index]

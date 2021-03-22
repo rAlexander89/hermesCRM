@@ -9,7 +9,6 @@ function LeadsShowBody({ currentUser, selectedLead, contacted, setContacted }) {
             <LeadsShowDetailsContainer contacted={contacted} setContacted={setContacted} property_id={selectedLead.property_id} pipeline={selectedLead.pipeline} currentUser={currentUser}/>
             {/* agent contact/log  */}
             <LeadShowContactContainer agent={selectedLead.agent} property_id={selectedLead.property_id} currentUser={currentUser}/>
-            
         </div>
     )
 }

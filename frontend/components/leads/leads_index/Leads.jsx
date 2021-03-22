@@ -1,12 +1,10 @@
-// import React, { useEffect, useState } from 'react'
-import React, {useState} from 'react'
+import React from 'react'
 import LeadIndexItemContainer from '../leads_index_item/LeadIndexItemContainer'
 import LeadShowContainer from '../leads_show/LeadShowContainer'
 
 function Leads({pipeline, setSelectedLead, selectedLead, selectPipeline, setSelectPipeline, contacted, setContacted}){
 
     
-
     function toggleLeadType(e){
         e.preventDefault();
         selectPipeline !== e.target.innerText ? setSelectPipeline(e.target.innerText) : null
@@ -16,17 +14,16 @@ function Leads({pipeline, setSelectedLead, selectedLead, selectPipeline, setSele
         return(
             <>
                 {pipeline.map((lead, i) => (
-                        <LeadIndexItemContainer
-                            index={i}
-                            lead={lead}
-                            key={lead.id}
-                            setSelectedLead={setSelectedLead}              
-                            />
+                    <LeadIndexItemContainer
+                        index={i}
+                        lead={lead}
+                        key={lead.id}
+                        setSelectedLead={setSelectedLead}              
+                        />
                 ))}
             </>
         )
     }
-
         
     return (
         <div className='leads-container'>

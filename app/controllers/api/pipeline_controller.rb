@@ -20,6 +20,32 @@ class Api::PipelineController < ApplicationController
         render :index
     end
 
+    def fetch_counter_received_properties
+        @pipeline = Pipeline.where(pipeline_status: 'Counter Received')
+    end
+
+    def fetch_counter_responded_properties
+        @pipeline = Pipeline.where(pipeline_status: 'Counter Responded')
+    end
+
+    def fetch_under_contract_properties
+        @pipeline = Pipeline.where(pipeline_status: 'Under Contract')
+    end
+
+    def fetch_contingencies_removed_properties
+        @pipeline = Pipeline.where(pipeline_status: 'Contingencies Removed')
+    end
+
+     def fetch_closed_properties
+        @pipeline = Pipeline.where(pipeline_status: 'Hold')
+    end
+
+    def fetch_closed_properties
+        @pipeline = Pipeline.where(pipeline_status: 'Closed')
+    end
+
+
+
     def create
         @pipeline = Pipeline.new(pipeline_params)
         if @pipeline.save
@@ -32,7 +58,7 @@ class Api::PipelineController < ApplicationController
     def update
         @pipeline = Pipeline.find_by(id: params[:id])
         if @pipeline && @pipeline.update(pipeline_params)
-                    render :show
+            render :show
         else
             render json: @pipeline.errors.full_messages, status: 422
         end
