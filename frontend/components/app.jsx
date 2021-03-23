@@ -22,7 +22,7 @@ function App() {
                     <AuthRoute exact path ='/' component={SplashContainer}/>
                     <ProtectedRoute exact path='/dash' component={DashboardContainer}/>
                     {/* <ProtectedRoute exact path='/properties/:propertyId' component={LeadShowContainer}/> */}
-                    {/* <ProtectedRoute exact path='/user-menu' component={UserMenuContainer}/> */}
+                    <ProtectedRoute exact path='/user-menu' component={UserMenuContainer}/>
                 </Switch>
             </div>
         </div>

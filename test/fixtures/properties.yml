@@ -22,12 +22,10 @@
 #  offer_date      :date             not null
 #  offer_date_dash :string
 #  offer_text      :string           not null
-#  previous_status :string
 #  st_name         :string
 #  st_prefix       :string
 #  st_suffix       :string
 #  state           :string           not null
-#  status          :text             not null
 #  zipcode         :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

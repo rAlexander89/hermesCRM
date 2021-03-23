@@ -35,11 +35,12 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
 
 
     if (agent){
+        debugger
         return(
             <div className={`lead-index-item x${index}`} onDoubleClick={e => showThisLead(e, property, lead, agent, setSelectedLead)}>
                 <div className="flex-row" id='index'>{index + 1}</div>
                 <div className="flex-row" id='submitted'>{offerDate(property.offer_date_dash)}</div>
-                <div className="flex-row" id='status'>{truncStatus(property.status)}</div>
+                <div className="flex-row" id='status'>{truncStatus(lead.listing_status)}</div>
                 <div className="flex-row" id='o-l'>{truncDigits(property.list_offer)}</div>
                 <div className="flex-row" id='l-a'>{truncDigits(property.list_arv)}</div>
                 <div className="flex-row" id='offered'>{property.offer}</div>

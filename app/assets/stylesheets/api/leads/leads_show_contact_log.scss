@@ -1,7 +1,7 @@
 .lead-show-contact-container{
     border: 1px solid #d9d9d9;
     width: 50%;
-    height: 750px;
+    height: 100%;
 }
 
 .lead-show-contact-data{
@@ -23,23 +23,15 @@
 
 
 .comment-box {
-    /* Cosmetic */
-    // margin-left: 30px;
-    // margin-top: 50px;
     resize: none;
     border: none;
-
-    // border-color: #BABABA;
-    height: 130px;
-    width: calc(100% - 35px); /* Was 470px */
-    // width: 300px; /* Was 470px */
-
-    /* Text */
+    height: 100%;
+    width: calc(100% - 35px);
     font-family: "Helvetica Neue", sans-serif;
     font-size: 15px;
     font-weight: normal;
     color: #7A7A7A;
-
+    box-sizing: border-box;
     padding: 10px;    
 }
 
@@ -66,18 +58,20 @@
 }
 
 .contact-log-container{
-    height: 635px;
+    height: 100%;
     overflow-y: auto;
 }
 
 .conversation-log{
-    height: 435px;
+    height: 350px;
     border-bottom: 1px solid #d9d9d9;
 }
 
 .comment-form{
+    height: 148px;
     display: flex;
     flex-direction: row;
+    // border-bottom: 1px solid #d9d9d9;
 }
 
 .comment-button{
@@ -87,7 +81,7 @@
     cursor: pointer;
     justify-content: center;
     align-items: center;
-    height: 164px;
+    height: 100%;
     background: rgb(22,22,22);
     color: white;
     width: 35px;

@@ -62,7 +62,6 @@ class Api::PropertiesController < ApplicationController
                 :bed_count, 
                 :city, 
                 :county, 
-                # :contacted,
                 :gla, 
                 :house_number, 
                 :list_arv, 
@@ -73,13 +72,12 @@ class Api::PropertiesController < ApplicationController
                 :offer_date_dash, 
                 :offer_text, 
                 :state, 
-                :status, 
                 :st_name, 
                 :st_prefix, 
                 :st_suffix, 
                 :zipcode, 
                 :listing_id, 
-                :csv
+                # :csv
         )
     end
 end

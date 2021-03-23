@@ -4,6 +4,7 @@
 #
 #  id              :bigint           not null, primary key
 #  contacted       :boolean          default(FALSE)
+#  listing_status  :string           default("Active"), not null
 #  pipeline_status :string           default("Unassigned"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

@@ -3,13 +3,23 @@ import LeadsShowBodyContainer from './leads_show_body/LeadsShowBodyContainer'
 
 
 
-function LeadShow({selectedLead, contacted, setContacted}) {
+function LeadShow({selectedLead, 
+    contacted, setContacted, 
+    listingStatus, setListingStatus,
+    pipelineStatus, setPipelineStatus
+
+}) {
     
     const leadData = (selectedLead) => {
         if (selectedLead){
             document.querySelector('.lead-show-container').classList.add('show');
             return(
-                    <LeadsShowBodyContainer contacted={contacted} setContacted={setContacted} selectedLead={selectedLead}/>
+                    <LeadsShowBodyContainer 
+                        contacted={contacted} setContacted={setContacted} 
+                        selectedLead={selectedLead}
+                        listingStatus={listingStatus} setListingStatus={setListingStatus}
+                        pipelineStatus={pipelineStatus} setPipelineStatus={setPipelineStatus}
+                    />
             )
         } else {
             return null

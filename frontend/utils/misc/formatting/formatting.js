@@ -26,12 +26,14 @@ export function truncDigits(num){
 
 // truncates status to a singletter ex: Active -> A, Pending -> P
 export function truncStatus(status){
+    debugger
     let acronym = status.split(/\s/).reduce((response,word)=> response+=word.slice(0,1),'')
     return acronym
 }
 
 // formats phone number from (xxx)-xxx-xxxx -> xxx.xxx.xxxx
 export function formatContact(num){
+    if (!num) return 'none'
     let number = num.replaceAll(' ','').replaceAll('-','.').replace('(','').replace(')','')
     return number
 }

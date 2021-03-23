@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_20_043416) do
+ActiveRecord::Schema.define(version: 2021_03_23_025730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2021_03_20_043416) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "contacted", default: false
+    t.string "listing_status", default: "Active", null: false
   end
 
   create_table "properties", force: :cascade do |t|
@@ -74,7 +75,6 @@ ActiveRecord::Schema.define(version: 2021_03_20_043416) do
     t.integer "lot_area", null: false
     t.bigint "apn", null: false
     t.string "listing_id", null: false
-    t.text "status", null: false
     t.string "arv_offer", null: false
     t.string "list_offer", null: false
     t.string "list_arv", null: false
@@ -84,7 +84,6 @@ ActiveRecord::Schema.define(version: 2021_03_20_043416) do
     t.string "bac", null: false
     t.string "list_price", null: false
     t.string "offer_date_dash"
-    t.string "previous_status"
     t.string "agent_id", null: false
     t.index ["address"], name: "index_properties_on_address"
     t.index ["city"], name: "index_properties_on_city"

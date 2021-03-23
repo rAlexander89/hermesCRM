@@ -1,1 +1,1 @@
-json.extract! pipeline, :id, :property_id, :user_id, :contacted
+json.extract! pipeline, :id, :property_id, :pipeline_status, :listing_status, :user_id, :contacted

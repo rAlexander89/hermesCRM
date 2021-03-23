@@ -4,6 +4,7 @@
             :id,
             :user_id,
             :property_id,
+            :listing_status,
             :pipeline_status,
             :contacted
     end

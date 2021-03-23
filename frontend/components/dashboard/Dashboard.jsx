@@ -6,15 +6,17 @@ function Dashboard({pipeline, currentUser, fetchPipeline}) {
     const [selectedLead, setSelectedLead] = useState(false);
     const [selectPipeline, setSelectPipeline] = useState('Unassigned')
     const [contacted, setContacted] = useState(false)
+    const [listingStatus, setListingStatus] = useState(null)
+    const [pipelineStatus, setPipelineStatus] = useState(null)
     
 
     useEffect(() => {
         fetchPipeline(selectPipeline)
-    },[selectPipeline, contacted]);
+    },[selectPipeline, contacted, listingStatus, pipelineStatus]);
 
     return (
         <div className='dashboard'>
-            <ImportLeadsContainer/>
+            {/* <ImportLeadsContainer/> */}
             <LeadsContainer 
                 setSelectedLead={setSelectedLead} 
                 selectedLead={selectedLead}
@@ -23,6 +25,10 @@ function Dashboard({pipeline, currentUser, fetchPipeline}) {
                 pipeline={pipeline}
                 contacted={contacted}
                 setContacted={setContacted}
+                listingStatus={listingStatus}
+                setListingStatus={setListingStatus}
+                pipelineStatus={pipelineStatus}
+                setPipelineStatus={setPipelineStatus}
                 />
         </div>
     )

@@ -2,7 +2,9 @@ import React from 'react'
 import LeadIndexItemContainer from '../leads_index_item/LeadIndexItemContainer'
 import LeadShowContainer from '../leads_show/LeadShowContainer'
 
-function Leads({pipeline, setSelectedLead, selectedLead, selectPipeline, setSelectPipeline, contacted, setContacted}){
+function Leads({
+    pipeline, setSelectedLead, selectedLead, selectPipeline, setSelectPipeline, 
+    contacted, setContacted, listingStatus, setListingStatus, pipelineStatus, setPipelineStatus }){
 
     
     function toggleLeadType(e){
@@ -18,6 +20,7 @@ function Leads({pipeline, setSelectedLead, selectedLead, selectPipeline, setSele
                         index={i}
                         lead={lead}
                         key={lead.id}
+                        status={lead.listing_status}
                         setSelectedLead={setSelectedLead}              
                         />
                 ))}
@@ -28,7 +31,12 @@ function Leads({pipeline, setSelectedLead, selectedLead, selectPipeline, setSele
     return (
         <div className='leads-container'>
             <div className='leads-header'>Leads</div>
-                <LeadShowContainer selectedLead={selectedLead} setSelectedLead={setSelectedLead} contacted={contacted} setContacted={setContacted}/>
+                <LeadShowContainer 
+                    selectedLead={selectedLead} setSelectedLead={setSelectedLead} 
+                    contacted={contacted} setContacted={setContacted}
+                    listingStatus={listingStatus} setListingStatus={setListingStatus}
+                    pipelineStatus={pipelineStatus} setPipelineStatus={setPipelineStatus}
+                    />
                 <div className='flex-table table-header'>
                      <div className='unassigned' id={selectPipeline === 'Unassigned' ? 'selected' : null } onClick={toggleLeadType}>
                         Unassigned
