@@ -38,7 +38,7 @@ export const fetchCounterRespondedProperties = () => {
 export const fetchUnderContractProperties = () => {
     return $.ajax({
         method: 'GET',
-        url: '/api/pipeline/fetch_under_contracted_properties'
+        url: '/api/pipeline/fetch_under_contract_properties'
     })
 }
 

@@ -26,7 +26,6 @@ export function truncDigits(num){
 
 // truncates status to a singletter ex: Active -> A, Pending -> P
 export function truncStatus(status){
-    debugger
     let acronym = status.split(/\s/).reduce((response,word)=> response+=word.slice(0,1),'')
     return acronym
 }

@@ -15,12 +15,14 @@ class Pipeline < ApplicationRecord
 
     validates :pipeline_status, inclusion: [
         'Unassigned',
+        'Uncontacted',
         'Counter Received',
         'Counter Responded',
         'Under Contract',
         'Contingencies Removed',
+        'Watch',
+        'Trash',
         'Closed',
-        'Under Contract'
     ]
 
     validates :listing_status, inclusion: [

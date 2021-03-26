@@ -13,59 +13,44 @@ function LeadsShowDetails({
     useEffect(() => {
         fetchProperty(property_id)
         setContacted(pipeline.contacted)
-    }, [property_id])
+    }, [property_id, listingStatus, pipelineStatus])
 
     function updateStatus(e){
         e.preventDefault()
         let propertyStatus = ['Coming Soon', 'Active', 'Under Contract', 'Contingencies Removed', 'Closed']
         let whatIsChanging = e.target.classList.value
         let newStatus = e.target.value
+
         switch(whatIsChanging){
             case('listing-status-select'):
                 pipeline['listing_status'] = newStatus
-                debugger
+                break
             case('pipeline-status-select'):
                 pipeline['pipeline_status'] = newStatus
+                break
             case('contact-checkbox'):
-                pipeline['contacted'] = !contacted;
+                pipeline['contacted'] = !contacted
+                break
         }
 
         updatePipeline(pipeline)
             .then(res => {
-                debugger
                 switch(whatIsChanging){
                     case('listing-status-select'):
                         setListingStatus(res.listing_status)
+                        break
                     case('pipeline-status-select'):
                         setPipelineStatus(res.pipeline_status)
+                        break
                     case('contact-checkbox'):
                         setContacted(res.contacted)
+                        break
                 }
             })
 
-
-        // if (e.target.classList.value === 'status-select'){
-        //     let newStatus = e.target.value
-        //     pipeline['pipeline_status'] = newStatus
-        //     updatePipeline(pipeline)
-        //         .then(() => {
-        //             if (propertyStatus.includes(newStatus)){
-
-        //             }
-                    
-        //         })
-        // } else if (e.target.classList.value === 'contact-checkbox'){
-        //     pipeline['contacted'] = !contacted
-        //     // need to add user ID to pipeline record when a user is assigned
-        //     updatePipeline(pipeline)
-        //     .then(res => {
-        //         setContacted(res.contacted)
-        //     })
-        // }
     }
 
     if(property){
-        debugger
         return (
             <div className='lead-show-listing-detail'>
                 <div className='lead-show-contact-header'>
@@ -77,7 +62,6 @@ function LeadsShowDetails({
                             Listing Status
                         </div>
                         <div className='detail-right'>
-                            {/* <select className='status-select' defaultValue={pipeline.listing_status === 'Unassigned' ? 'Active' : pipeline.pipeline_status } onChange={updateStatus}> */}
                             <select className='listing-status-select' defaultValue={pipeline.listing_status} onChange={updateStatus}>
                                 <option value='Coming Soon'>Coming Soon</option>
                                 <option value='Active'>Active</option>
@@ -95,7 +79,6 @@ function LeadsShowDetails({
                         <div className='detail-right'>
                             <select className='pipeline-status-select' defaultValue={pipeline.pipeline_status} onChange={updateStatus}>
                                 <option value='Unassigned'>Unassigned</option>
-                                <option value='Contacted'>Contacted</option>
                                 <option value='Counter Received'>Counter Received</option>
                                 <option value='Counter Responded'>Counter Responded</option>
                                 <option value='Under Contract'>Under Contract</option>

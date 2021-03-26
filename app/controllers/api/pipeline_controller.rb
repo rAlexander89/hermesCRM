@@ -66,7 +66,6 @@ class Api::PipelineController < ApplicationController
 
     def update
         @pipeline = Pipeline.find_by(id: params[:id])
-        debugger
         if @pipeline && @pipeline.update(pipeline_params)
             render :show
         else

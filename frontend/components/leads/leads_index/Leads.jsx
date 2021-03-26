@@ -27,6 +27,7 @@ function Leads({
             </>
         )
     }
+
         
     return (
         <div className='leads-container'>

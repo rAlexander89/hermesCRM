@@ -35,7 +35,6 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
 
 
     if (agent){
-        debugger
         return(
             <div className={`lead-index-item x${index}`} onDoubleClick={e => showThisLead(e, property, lead, agent, setSelectedLead)}>
                 <div className="flex-row" id='index'>{index + 1}</div>
