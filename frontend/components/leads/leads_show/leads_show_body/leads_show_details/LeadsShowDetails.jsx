@@ -11,20 +11,14 @@ function LeadsShowDetails({
     watched, setWatched
 }) {
 
-
     useEffect(() => {
         fetchProperty(property_id)
         setContacted(pipeline.contacted)
     }, [property_id, listingStatus, pipelineStatus])
 
-    useEffect(() => {
-        
-
-    },[property] )
 
     function updateStatus(e){
         e.preventDefault()
-        let propertyStatus = ['Coming Soon', 'Active', 'Under Contract', 'Contingencies Removed', 'Closed']
         let whatIsChanging = e.target.classList.value
         let newStatus = e.target.value
 
@@ -64,7 +58,6 @@ function LeadsShowDetails({
     }
 
     function pipelineListingStatus(status){
-        debugger
         return(
              <div className='lead-detail'>
                 <div className='detail-left'>
@@ -84,27 +77,34 @@ function LeadsShowDetails({
         )
     }
 
-    function pipelinePipelineStatus(status){
+    function pipelinePipelineStatus(status, contacted){
+        let advancedDispos = ['Counter Received', 'Counter Responded', 'Under Contract', 'Contingencies Removed', 'Closed' ]
+        let value = advancedDispos.includes(status) ?  status : 'Contacted'
+        debugger
         return(
             <div className='lead-detail'>
                 <div className='detail-left'>
                     Pipeline Status
                 </div>
                 <div className='detail-right'>
-                    <select className='pipeline-status-select' value={status} onChange={updateStatus}>
-                        <option value='Uncontacted'>Uncontacted</option>
+                    {contacted ?
+                    <select className='pipeline-status-select' value={value} onChange={updateStatus}>
+                        <option value='Contacted'>Contacted</option>
                         <option value='Counter Received'>Counter Received</option>
                         <option value='Counter Responded'>Counter Responded</option>
                         <option value='Under Contract'>Under Contract</option>
                         <option value='Contingencies Removed'> Contingencies Removed</option>
                         <option value='Closed'>Closed</option>
-                    </select>       
+                    </select>   
+                    : 
+                    'Uncontacted'}    
                 </div>
             </div>
         )
     }
 
     if(property){
+        debugger
             return (
             <div className='lead-show-listing-detail'>
                 <div className='lead-show-contact-header'>
@@ -112,7 +112,7 @@ function LeadsShowDetails({
                 </div>
                 <div className='lead-details'>
                     {pipelineListingStatus(pipeline.listing_status)}
-                    {pipelinePipelineStatus(pipeline.pipeline_status)}
+                    {pipelinePipelineStatus(pipeline.pipeline_status, contacted)}
                     <div className='lead-detail'>
                         <div className='detail-left'>
                             Address                

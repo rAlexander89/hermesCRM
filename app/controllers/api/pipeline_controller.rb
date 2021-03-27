@@ -20,8 +20,8 @@ class Api::PipelineController < ApplicationController
         render :index
     end
 
-        def fetch_watched_properties
-        @pipeline = Pipeline.where(contacted: true)
+    def fetch_watched_properties
+        @pipeline = Pipeline.where(watched: true)
         render :index
     end
 
