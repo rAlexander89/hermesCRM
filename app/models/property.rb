@@ -26,6 +26,7 @@
 #  st_prefix       :string
 #  st_suffix       :string
 #  state           :string           not null
+#  watch           :boolean          default(FALSE)
 #  zipcode         :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

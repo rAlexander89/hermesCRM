@@ -6,6 +6,7 @@
             :property_id,
             :listing_status,
             :pipeline_status,
-            :contacted
+            :contacted,
+            :watched
     end
 end

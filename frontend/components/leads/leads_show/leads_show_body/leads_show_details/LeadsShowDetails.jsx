@@ -7,13 +7,20 @@ function LeadsShowDetails({
     property_id, pipeline, property, fetchProperty, currentUserId, 
     contacted, setContacted,
     listingStatus, setListingStatus,
-    pipelineStatus, setPipelineStatus
+    pipelineStatus, setPipelineStatus,
+    watched, setWatched
 }) {
+
 
     useEffect(() => {
         fetchProperty(property_id)
         setContacted(pipeline.contacted)
     }, [property_id, listingStatus, pipelineStatus])
+
+    useEffect(() => {
+        
+
+    },[property] )
 
     function updateStatus(e){
         e.preventDefault()
@@ -21,6 +28,7 @@ function LeadsShowDetails({
         let whatIsChanging = e.target.classList.value
         let newStatus = e.target.value
 
+    
         switch(whatIsChanging){
             case('listing-status-select'):
                 pipeline['listing_status'] = newStatus
@@ -30,6 +38,9 @@ function LeadsShowDetails({
                 break
             case('contact-checkbox'):
                 pipeline['contacted'] = !contacted
+                break
+            case('watched-checkbox'):
+                pipeline['watched'] = !watched
                 break
         }
 
@@ -45,48 +56,63 @@ function LeadsShowDetails({
                     case('contact-checkbox'):
                         setContacted(res.contacted)
                         break
+                    case('watched-checkbox'):
+                        setWatched(res.watched)
+                        break
                 }
             })
+    }
 
+    function pipelineListingStatus(status){
+        debugger
+        return(
+             <div className='lead-detail'>
+                <div className='detail-left'>
+                    Listing Status
+                </div>
+                <div className='detail-right'>
+                    <select className='listing-status-select' value={status} onChange={updateStatus}>
+                        <option value='Coming Soon'>Coming Soon</option>
+                        <option value='Active'>Active</option>
+                        <option value='Under Contract'>Under Contract</option>
+                        <option value='Pending'>Pending</option>
+                        <option value='Hold'>Hold</option>
+                        <option value='Closed'>Closed</option>
+                    </select>       
+                </div>
+            </div>
+        )
+    }
+
+    function pipelinePipelineStatus(status){
+        return(
+            <div className='lead-detail'>
+                <div className='detail-left'>
+                    Pipeline Status
+                </div>
+                <div className='detail-right'>
+                    <select className='pipeline-status-select' value={status} onChange={updateStatus}>
+                        <option value='Uncontacted'>Uncontacted</option>
+                        <option value='Counter Received'>Counter Received</option>
+                        <option value='Counter Responded'>Counter Responded</option>
+                        <option value='Under Contract'>Under Contract</option>
+                        <option value='Contingencies Removed'> Contingencies Removed</option>
+                        <option value='Closed'>Closed</option>
+                    </select>       
+                </div>
+            </div>
+        )
     }
 
     if(property){
-        return (
+            return (
             <div className='lead-show-listing-detail'>
                 <div className='lead-show-contact-header'>
                     Lead Property Detail
                 </div>
                 <div className='lead-details'>
-                    <div className='lead-detail'>
-                        <div className='detail-left'>
-                            Listing Status
-                        </div>
-                        <div className='detail-right'>
-                            <select className='listing-status-select' defaultValue={pipeline.listing_status} onChange={updateStatus}>
-                                <option value='Coming Soon'>Coming Soon</option>
-                                <option value='Active'>Active</option>
-                                <option value='Under Contract'>Under Contract</option>
-                                <option value='Pending'>Pending</option>
-                                <option value='Hold'>Hold</option>
-                                <option value='Closed'>Closed</option>
-                            </select>       
-                        </div>
-                    </div>
-                    <div className='lead-detail'>
-                        <div className='detail-left'>
-                            Pipeline Status
-                        </div>
-                        <div className='detail-right'>
-                            <select className='pipeline-status-select' defaultValue={pipeline.pipeline_status} onChange={updateStatus}>
-                                <option value='Unassigned'>Unassigned</option>
-                                <option value='Counter Received'>Counter Received</option>
-                                <option value='Counter Responded'>Counter Responded</option>
-                                <option value='Under Contract'>Under Contract</option>
-                                <option value='Contingencies Removed'> Contingencies Removed</option>
-                                <option value='Closed'>Closed</option>
-                            </select>       
-                        </div>
-                    </div>
+                    {pipelineListingStatus(pipeline.listing_status)}
+                    {pipelinePipelineStatus(pipeline.pipeline_status)}
                     <div className='lead-detail'>
                         <div className='detail-left'>
                             Address                
@@ -137,6 +163,18 @@ function LeadsShowDetails({
                             </div>      
                         </div>
                     </div>
+                    {contacted ?                         
+                        <div className='lead-detail'>
+                            <div className='detail-left'>
+                                Watch                
+                            </div>
+                            <div className='detail-right'>
+                                <div className='watched-checkbox' onClick={updateStatus}>
+                                    {watched ? 'X' : ' '}
+                                </div>      
+                            </div>
+                        </div> : null
+                    }
                 </div>
             </div>
     )} else { return null }

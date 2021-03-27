@@ -5,7 +5,8 @@
 #  id              :bigint           not null, primary key
 #  contacted       :boolean          default(FALSE)
 #  listing_status  :string           default("Active"), not null
-#  pipeline_status :string           default("Unassigned"), not null
+#  pipeline_status :string           default("Uncontacted"), not null
+#  watched         :boolean          default(FALSE)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  property_id     :integer          not null
@@ -14,13 +15,11 @@
 class Pipeline < ApplicationRecord
 
     validates :pipeline_status, inclusion: [
-        'Unassigned',
         'Uncontacted',
         'Counter Received',
         'Counter Responded',
         'Under Contract',
         'Contingencies Removed',
-        'Watch',
         'Trash',
         'Closed',
     ]

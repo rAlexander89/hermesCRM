@@ -3,8 +3,9 @@ import * as PipelineAPIUtils from '../utils/api/pipeline_api_utils'
 
 export const RECEIVE_PIPELINE = 'RECEIVE_PIPELINE'
 
-const UNASSIGNED = 'Unassigned'
+const UNCONTACTED = 'Uncontacted'
 const CONTACTED = 'Contacted'
+const WATCHED = 'Watched'
 const COUNTER_RECEIVED = 'Counter Received'
 const COUNTER_RESPONDED = 'Counter Responded'
 const UNDER_CONTRACT = 'Under Contract'
@@ -22,11 +23,14 @@ export const receivePipeline = pipeline => {
 
 export const fetchPipeline = pipeline_status => dispatch => {
     switch(pipeline_status){
-        case(UNASSIGNED):
-            return PipelineAPIUtils.fetchUnassignedProperties()
+        case(UNCONTACTED):
+            return PipelineAPIUtils.fetchUncontactedProperties()
             .then(pipeline => dispatch(receivePipeline(pipeline)));
         case(CONTACTED):
             return PipelineAPIUtils.fetchContactedProperties()
+            .then(pipeline => dispatch(receivePipeline(pipeline)));
+        case(WATCHED):
+            return PipelineAPIUtils.fetchWatchedProperties()
             .then(pipeline => dispatch(receivePipeline(pipeline)));
         case(COUNTER_RECEIVED):
             return PipelineAPIUtils.fetchCounterReceivedProperties()

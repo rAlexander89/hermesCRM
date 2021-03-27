@@ -3,7 +3,7 @@ class Api::CsvController < ApplicationController
     def create_property(property_hash, pipeline_hash)
         @property = Property.new(property_hash)
         if @property.save!
-            @pipeline = Pipeline.new(property_id: @property.id, pipeline_status: 'Unassigned', listing_status: pipeline_hash[:listing_status])
+            @pipeline = Pipeline.new(property_id: @property.id, pipeline_status: 'Uncontacted', listing_status: pipeline_hash[:listing_status])
             if @pipeline.save!
                 puts 'pipeline saved!'
             end

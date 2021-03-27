@@ -4,8 +4,9 @@ import LeadShowContainer from '../leads_show/LeadShowContainer'
 
 function Leads({
     pipeline, setSelectedLead, selectedLead, selectPipeline, setSelectPipeline, 
-    contacted, setContacted, listingStatus, setListingStatus, pipelineStatus, setPipelineStatus }){
-
+    contacted, setContacted, listingStatus, setListingStatus, pipelineStatus, setPipelineStatus,
+    watched, setWatched
+ }){
     
     function toggleLeadType(e){
         e.preventDefault();
@@ -37,10 +38,11 @@ function Leads({
                     contacted={contacted} setContacted={setContacted}
                     listingStatus={listingStatus} setListingStatus={setListingStatus}
                     pipelineStatus={pipelineStatus} setPipelineStatus={setPipelineStatus}
+                    watched={watched} setWatched={setWatched}
                     />
                 <div className='flex-table table-header'>
-                     <div className='unassigned' id={selectPipeline === 'Unassigned' ? 'selected' : null } onClick={toggleLeadType}>
-                        Unassigned
+                     <div className='uncontacted' id={selectPipeline === 'Uncontacted' ? 'selected' : null } onClick={toggleLeadType}>
+                        Uncontacted
                     </div>
                      <div className='contacted' id={selectPipeline === 'Contacted' ? 'selected' : null } onClick={toggleLeadType}>
                         Contacted
@@ -57,8 +59,11 @@ function Leads({
                      <div className='contingencies-removed' id={selectPipeline === 'Contingencies Removed' ? 'selected' : null } onClick={toggleLeadType}>
                         Contingencies Removed                     
                     </div>
-                     <div className='closed' id={selectPipeline === 'Closed' ? 'selected' : null } onClick={toggleLeadType}>
+                    <div className='closed' id={selectPipeline === 'Closed' ? 'selected' : null } onClick={toggleLeadType}>
                         Closed                     
+                    </div>
+                    <div className='watched' id={selectPipeline === 'Watched' ? 'selected' : null } onClick={toggleLeadType}>
+                        <span className="iconify" data-icon="vscode-icons:file-type-bolt" data-inline="false"></span>
                     </div>
                 </div>
             <div className="table-container">

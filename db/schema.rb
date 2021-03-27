@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_23_025730) do
+ActiveRecord::Schema.define(version: 2021_03_26_194909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,13 +47,14 @@ ActiveRecord::Schema.define(version: 2021_03_23_025730) do
   end
 
   create_table "pipelines", force: :cascade do |t|
-    t.string "pipeline_status", default: "Unassigned", null: false
+    t.string "pipeline_status", default: "Uncontacted", null: false
     t.integer "property_id", null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "contacted", default: false
     t.string "listing_status", default: "Active", null: false
+    t.boolean "watched", default: false
   end
 
   create_table "properties", force: :cascade do |t|
@@ -85,6 +86,7 @@ ActiveRecord::Schema.define(version: 2021_03_23_025730) do
     t.string "list_price", null: false
     t.string "offer_date_dash"
     t.string "agent_id", null: false
+    t.boolean "watch", default: false
     t.index ["address"], name: "index_properties_on_address"
     t.index ["city"], name: "index_properties_on_city"
     t.index ["zipcode"], name: "index_properties_on_zipcode"

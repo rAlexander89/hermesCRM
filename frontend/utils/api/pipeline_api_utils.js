@@ -7,10 +7,10 @@ export const updatePipeline = pipeline => {
     })
 };
 
-export const fetchUnassignedProperties = () => {
+export const fetchUncontactedProperties = () => {
     return $.ajax({
         method: 'GET',
-        url: '/api/pipeline/fetch_unassigned_properties'
+        url: '/api/pipeline/fetch_uncontacted_properties'
     })
 }
 
@@ -18,6 +18,13 @@ export const fetchContactedProperties = () => {
     return $.ajax({
         method: 'GET',
         url: '/api/pipeline/fetch_contacted_properties'
+    })
+}
+
+export const fetchWatchedProperties = () => {
+    return $.ajax({
+        method: 'GET',
+        url: '/api/pipeline/fetch_watched_properties'
     })
 }
 

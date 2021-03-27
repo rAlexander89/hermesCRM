@@ -52,9 +52,7 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
                 <div className="flex-row" id='last-contact'> {updateDate(property.updated_at)} </div>
             </div>
         ) 
-    } else { 
-        return null
-    }
+    } else {  return null }
 }
 
 export default LeadIndexItem

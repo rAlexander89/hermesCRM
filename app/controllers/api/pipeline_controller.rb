@@ -10,12 +10,17 @@ class Api::PipelineController < ApplicationController
         render :index
     end
 
-    def fetch_unassigned_properties
-        @pipeline = Pipeline.where(pipeline_status: 'Unassigned').or(Pipeline.where(pipeline_status: 'Active')).where.not(contacted: true)
+    def fetch_uncontacted_properties
+        @pipeline = Pipeline.where(pipeline_status: 'Uncontacted').or(Pipeline.where(pipeline_status: 'Active')).where.not(contacted: true)
         render :index
     end
     
     def fetch_contacted_properties
+        @pipeline = Pipeline.where(contacted: true)
+        render :index
+    end
+
+        def fetch_watched_properties
         @pipeline = Pipeline.where(contacted: true)
         render :index
     end
@@ -76,6 +81,6 @@ class Api::PipelineController < ApplicationController
     private
 
     def pipeline_params
-        params.require(:pipeline).permit(:pipeline_status, :listing_status, :property_id, :user_id, :contacted)
+        params.require(:pipeline).permit(:pipeline_status, :listing_status, :property_id, :user_id, :contacted, :watched)
     end
 end

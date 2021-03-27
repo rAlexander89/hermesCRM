@@ -6,8 +6,8 @@ import LeadsShowBodyContainer from './leads_show_body/LeadsShowBodyContainer'
 function LeadShow({selectedLead, 
     contacted, setContacted, 
     listingStatus, setListingStatus,
-    pipelineStatus, setPipelineStatus
-
+    pipelineStatus, setPipelineStatus,
+    watched, setWatched
 }) {
     
     const leadData = (selectedLead) => {
@@ -19,6 +19,7 @@ function LeadShow({selectedLead,
                         selectedLead={selectedLead}
                         listingStatus={listingStatus} setListingStatus={setListingStatus}
                         pipelineStatus={pipelineStatus} setPipelineStatus={setPipelineStatus}
+                        watched={watched} setWatched={setWatched}
                     />
             )
         } else {

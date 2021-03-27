@@ -5,7 +5,8 @@ import LeadShowContactContainer from './lead_show_contact/LeadShowContactContain
 function LeadsShowBody({ currentUser, selectedLead, 
     contacted, setContacted,
     listingStatus, setListingStatus,
-    pipelineStatus, setPipelineStatus
+    pipelineStatus, setPipelineStatus,
+    watched, setWatched
 }) {
     return (
         <div className='leads-show-body-container'>
@@ -15,6 +16,8 @@ function LeadsShowBody({ currentUser, selectedLead,
                 currentUser={currentUser}
                 listingStatus={listingStatus} setListingStatus={setListingStatus}
                 pipelineStatus={pipelineStatus} setPipelineStatus={setPipelineStatus}
+                watched={watched} setWatched={setWatched}
+
 
             />
             <LeadShowContactContainer agent={selectedLead.agent} property_id={selectedLead.property_id} currentUser={currentUser}/>

@@ -58,17 +58,21 @@
 }
 
 .contact-log-container{
-    height: 100%;
+    height: calc(100% - 115px);
     overflow-y: auto;
 }
 
 .conversation-log{
-    height: 350px;
+    height: 330px;
+    width: 948px;
     border-bottom: 1px solid #d9d9d9;
+    line-height: 1;
+    overflow-y: auto;
 }
 
 .comment-form{
-    height: 148px;
+    height: 125px;
+    width: 948px;
     display: flex;
     flex-direction: row;
     // border-bottom: 1px solid #d9d9d9;

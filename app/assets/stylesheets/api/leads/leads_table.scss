@@ -43,13 +43,23 @@ div {
     border-right: none;
 }
 
-.unassigned,.contacted, .counter-received, .counter-responded, 
+.uncontacted,.contacted, .counter-received, .counter-responded, 
 .under-contract,.closed{
     width: 259px;
     cursor: pointer;
     text-align: center;
     padding: 0.5em 0.5em;
     border-right: solid 1px $table-border;
+}
+
+.bin, .watched{
+    width: 84px;
+    padding: 0.5em 0.5em;
+    cursor: pointer;
+    text-align: center;
+    border-right: solid 1px $table-border;
+
+
 }
 
 .contingencies-removed{
@@ -60,11 +70,11 @@ div {
     border-right: solid 1px $table-border;
 }
 
-.unassigned{
+.uncontacted{
     border-left: 1px solid white; 
 }
 
-.unassigned:hover, .contacted:hover, .counter-received:hover, .counter-responded:hover, 
+.uncontacted:hover, .contacted:hover, .counter-received:hover, .counter-responded:hover, 
 .under-contract:hover,.closed:hover,.contingencies-removed:hover{
     background:white;
     color: rgb(22,22,22);

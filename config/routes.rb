@@ -13,8 +13,9 @@ Rails.application.routes.draw do
       end
       resources :pipeline, only: [:index, :show, :create, :update, :destroy] do
          collection do 
-          get 'fetch_unassigned_properties'
+          get 'fetch_uncontacted_properties'
           get 'fetch_contacted_properties'
+          get 'fetch_watched_properties'
           get 'fetch_counter_received_properties'
           get 'fetch_counter_responded_properties'
           get 'fetch_under_contract_properties'

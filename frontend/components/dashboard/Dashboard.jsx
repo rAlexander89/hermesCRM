@@ -4,8 +4,9 @@ import ImportLeadsContainer from '../leads/leads_manager/ImportLeadsContainer'
 
 function Dashboard({pipeline, currentUser, fetchPipeline}) {
     const [selectedLead, setSelectedLead] = useState(false);
-    const [selectPipeline, setSelectPipeline] = useState('Unassigned')
+    const [selectPipeline, setSelectPipeline] = useState('Uncontacted')
     const [contacted, setContacted] = useState(false)
+    const [watched, setWatched] = useState(false)
     const [listingStatus, setListingStatus] = useState(null)
     const [pipelineStatus, setPipelineStatus] = useState(null)
     
@@ -29,6 +30,8 @@ function Dashboard({pipeline, currentUser, fetchPipeline}) {
                 setListingStatus={setListingStatus}
                 pipelineStatus={pipelineStatus}
                 setPipelineStatus={setPipelineStatus}
+                watched={watched}
+                setWatched={setWatched}
                 />
         </div>
     )

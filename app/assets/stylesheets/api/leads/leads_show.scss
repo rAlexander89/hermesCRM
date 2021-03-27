@@ -24,7 +24,7 @@
 .show {
     transition: all .2s ease-in-out;
     opacity: 100;
-    height: 650px;
+    height: 607px;
 }
 
 #close{
@@ -41,13 +41,13 @@
     width: 100px;
 }
 
-.contact-checkbox{
+.contact-checkbox, .watched-checkbox{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.contact-checkbox{
+.contact-checkbox, .watched-checkbox{
     cursor: pointer;
     text-align: center;
     display: flex;
