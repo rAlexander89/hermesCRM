@@ -1,26 +1,15 @@
 import React from 'react'
-import LeadsShowDetailsContainer from './leads_show_details/LeadsShowDetailsContainer'
+import LeadsShowDetails from './leads_show_details/LeadsShowDetails'
+// import LeadsShowDetailsContainer from './leads_show_details/LeadsShowDetailsContainer'
 import LeadShowContactContainer from './lead_show_contact/LeadShowContactContainer'
+import LeadShowContact from './lead_show_contact/LeadShowContact'
 
-function LeadsShowBody({ currentUser, selectedLead, 
-    contacted, setContacted,
-    listingStatus, setListingStatus,
-    pipelineStatus, setPipelineStatus,
-    watched, setWatched
-}) {
+function LeadsShowBody(){
+    
     return (
         <div className='leads-show-body-container'>
-            <LeadsShowDetailsContainer 
-                contacted={contacted} setContacted={setContacted} 
-                property_id={selectedLead.property_id} pipeline={selectedLead.pipeline} 
-                currentUser={currentUser}
-                listingStatus={listingStatus} setListingStatus={setListingStatus}
-                pipelineStatus={pipelineStatus} setPipelineStatus={setPipelineStatus}
-                watched={watched} setWatched={setWatched}
-
-
-            />
-            <LeadShowContactContainer agent={selectedLead.agent} property_id={selectedLead.property_id} currentUser={currentUser}/>
+            <LeadsShowDetails/>
+            <LeadShowContact/>
         </div>
     )
 }

@@ -1,68 +1,58 @@
-import React from 'react'
-import LeadIndexItemContainer from '../leads_index_item/LeadIndexItemContainer'
-import LeadShowContainer from '../leads_show/LeadShowContainer'
+import React, { useContext } from 'react'
+import LeadIndexItem from '../leads_index_item/LeadIndexItem'
+import LeadShow from '../leads_show/LeadShow'
+import { LeadsPipelineContext } from '../../dashboard/Dashboard'
 
-function Leads({
-    pipeline, setSelectedLead, selectedLead, selectPipeline, setSelectPipeline, 
-    contacted, setContacted, listingStatus, setListingStatus, pipelineStatus, setPipelineStatus,
-    watched, setWatched
- }){
+function Leads(){
+
+    let ctx = useContext(LeadsPipelineContext)
     
     function toggleLeadType(e){
         e.preventDefault();
-        selectPipeline !== e.target.innerText && e.target.innerText !== '' ? setSelectPipeline(e.target.innerText) : setSelectPipeline('Watched')
+        ctx.selectPipeline !== e.target.innerText && e.target.innerText !== '' ? ctx.setSelectPipeline(e.target.innerText) : ctx.setSelectPipeline('Watched')
     }
 
     function dispositionSelector(pipeline){
-        return(
-            <>
-                {pipeline.map((lead, i) => (
-                    <LeadIndexItemContainer
-                        index={i}
-                        lead={lead}
-                        key={lead.id}
-                        status={lead.listing_status}
-                        setSelectedLead={setSelectedLead}              
-                        />
-                ))}
-            </>
-        )
+        
+        return <>
+            {pipeline.map((lead, i) => (
+                <LeadIndexItem
+                    index={i}
+                    lead={lead}
+                    key={lead.id}
+                    status={lead.listing_status}
+                    setSelectedLead={ctx.setSelectedLead}              
+                />))}
+        </>
     }
-
         
     return (
         <div className='leads-container'>
             <div className='leads-header'>Leads</div>
-                <LeadShowContainer 
-                    selectedLead={selectedLead} setSelectedLead={setSelectedLead} 
-                    contacted={contacted} setContacted={setContacted}
-                    listingStatus={listingStatus} setListingStatus={setListingStatus}
-                    pipelineStatus={pipelineStatus} setPipelineStatus={setPipelineStatus}
-                    watched={watched} setWatched={setWatched}
-                    />
+                <LeadShow />
                 <div className='flex-table table-header'>
-                     <div className='uncontacted' id={selectPipeline === 'Uncontacted' ? 'selected' : null } onClick={toggleLeadType}>
+                     <div className='uncontacted' id={ctx.selectPipeline === 'Uncontacted' ? 'selected' : null } onClick={toggleLeadType}>
                         Uncontacted
                     </div>
-                     <div className='contacted' id={selectPipeline === 'Contacted' ? 'selected' : null } onClick={toggleLeadType}>
+                     <div className='contacted' id={ctx.selectPipeline === 'Contacted' ? 'selected' : null } onClick={toggleLeadType}>
                         Contacted
                     </div>
-                     <div className='counter-received' id={selectPipeline === 'Counter Received' ? 'selected' : null }  onClick={toggleLeadType}>
+                     <div className='counter-received' id={ctx.selectPipeline === 'Counter Received' ? 'selected' : null }  onClick={toggleLeadType}>
                         Counter Received
                     </div>
-                     <div className='counter-responded' id={selectPipeline === 'Counter Responded' ? 'selected' : null } onClick={toggleLeadType}>
+                     <div className='counter-responded' id={ctx.selectPipeline === 'Counter Responded' ? 'selected' : null } onClick={toggleLeadType}>
                         Counter Responded                    
                     </div>
-                     <div className='under-contract' id={selectPipeline === 'Under Contract' ? 'selected' : null } onClick={toggleLeadType}>
+                     <div className='under-contract' id={ctx.selectPipeline === 'Under Contract' ? 'selected' : null } onClick={toggleLeadType}>
                         Under Contract                     
                     </div>
-                     <div className='contingencies-removed' id={selectPipeline === 'Contingencies Removed' ? 'selected' : null } onClick={toggleLeadType}>
+                     <div className='contingencies-removed' id={ctx.selectPipeline === 'Contingencies Removed' ? 'selected' : null } onClick={toggleLeadType}>
                         Contingencies Removed                     
                     </div>
-                    <div className='closed' id={selectPipeline === 'Closed' ? 'selected' : null } onClick={toggleLeadType}>
+                    <div className='closed' id={ctx.selectPipeline === 'Closed' ? 'selected' : null } onClick={toggleLeadType}>
                         Closed                     
                     </div>
-                    <div className='watched' id={selectPipeline === 'Watched' ? 'selected' : null } onClick={toggleLeadType}>
+                    <div className='watched' id={ctx.selectPipeline === 'Watched' ? 'selected' : null } onClick={toggleLeadType}>
                         <span className="iconify" data-icon="vscode-icons:file-type-bolt" data-inline="false"></span>
                     </div>
                 </div>
@@ -82,7 +72,7 @@ function Leads({
                     <div className="flex-row" id='agent-name'> Assigned Agent </div>
                     <div className="flex-row" id='last-contact'>Last</div>
                 </div>  
-                {pipeline ? dispositionSelector(pipeline) : 'Looks like you aint got that kind of thing!'}
+                {ctx.pipeline ? dispositionSelector(ctx.pipeline) : 'Looks like you aint got that kind of thing!'}
             </div>
         </div>
     )

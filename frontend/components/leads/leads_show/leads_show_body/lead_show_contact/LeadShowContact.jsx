@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import CreateCommentContainer from '../../../../comments/create_comment/CreateCommentContainer'
 import ShowPropertyCommentsContainer from '../../../../comments/show_comment/ShowPropertyCommentsContainer'
-import {formatContact} from '../../../../../utils/misc/formatting/formatting'
+import { formatContact } from '../../../../../utils/misc/formatting/formatting'
+import { LeadsPipelineContext } from '../../../../dashboard/Dashboard'
 
 function LeadShowContact({property_id, agent}) {
 
-    if (property_id){
+    let ctx = useContext(LeadsPipelineContext)
+
+    if (ctx.selectedLead.property_id){
         return (
             <div className='lead-show-contact-container'>
                 <div className='agent-contact-container'>
@@ -15,11 +18,11 @@ function LeadShowContact({property_id, agent}) {
                     <div className='lead-show-contact-body'>
                         <div className='lead-show-contact-data'>
                             <div className='lead-show-contact-name-email'>
-                                <p>{agent.agent_first} {agent.agent_last}</p>
-                                <p>{agent.agent_email}</p>
+                                <p>{ctx.selectedLead.agent.agent_first} {ctx.selectedLead.agent.agent_last}</p>
+                                <p>{ctx.selectedLead.agent.agent_email}</p>
                             </div>
                             <div>
-                                {formatContact(agent.agent_contact)}
+                                {formatContact(ctx.selectedLead.agent.agent_contact)}
                             </div>
                         </div>
                     </div>
@@ -29,8 +32,8 @@ function LeadShowContact({property_id, agent}) {
                         Contact Log
                     </div>
                     <div className='lead-show-contact-log'>
-                        <ShowPropertyCommentsContainer property_id={property_id}/>
-                        <CreateCommentContainer property_id={property_id}/>
+                        <ShowPropertyCommentsContainer property_id={ctx.selectedLead.property_id}/>
+                        <CreateCommentContainer property_id={ctx.selectedLead.property_id}/>
                     </div>
                 </div>
             </div>

@@ -1,35 +1,23 @@
-import React from 'react'
-import LeadsShowBodyContainer from './leads_show_body/LeadsShowBodyContainer'
+import React, { useContext } from 'react'
+import LeadsShowBody from './leads_show_body/LeadsShowBody'
+import { LeadsPipelineContext } from '../../dashboard/Dashboard'
 
 
 
-function LeadShow({selectedLead, 
-    contacted, setContacted, 
-    listingStatus, setListingStatus,
-    pipelineStatus, setPipelineStatus,
-    watched, setWatched
-}) {
+function LeadShow(){
+
+    let ctx = useContext(LeadsPipelineContext)
     
     const leadData = (selectedLead) => {
         if (selectedLead){
             document.querySelector('.lead-show-container').classList.add('show');
-            return(
-                    <LeadsShowBodyContainer 
-                        contacted={contacted} setContacted={setContacted} 
-                        selectedLead={selectedLead}
-                        listingStatus={listingStatus} setListingStatus={setListingStatus}
-                        pipelineStatus={pipelineStatus} setPipelineStatus={setPipelineStatus}
-                        watched={watched} setWatched={setWatched}
-                    />
-            )
-        } else {
-            return null
-        }
+            return <LeadsShowBody/>
+        } else { return null }
     }
 
     return (
         <div className='lead-show-container'>
-            {leadData(selectedLead)}
+            {leadData(ctx.selectedLead)}
         </div>
     )
 

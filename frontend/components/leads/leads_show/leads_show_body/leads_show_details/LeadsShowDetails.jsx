@@ -1,20 +1,26 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { addComma } from '../../../../../utils/misc/formatting/formatting'
 import { potentialMaxOffer } from '../../../../../utils/misc/calculators/calculators'
 import { updatePipeline } from '../../../../../utils/api/pipeline_api_utils'
+import { LeadsPipelineContext } from '../../../../dashboard/Dashboard'
+import { fetchProperty } from '../../../../../utils/api/property_api_util'
 
-function LeadsShowDetails({
-    property_id, pipeline, property, fetchProperty, currentUserId, 
-    contacted, setContacted,
-    listingStatus, setListingStatus,
-    pipelineStatus, setPipelineStatus,
-    watched, setWatched
-}) {
+
+function LeadsShowDetails() {
+
+    const [property, setProperty] = useState(false)
+    
+    let ctx = useContext(LeadsPipelineContext)
+    let { pipeline } = ctx.selectedLead
+    let { contacted, watched } = ctx
 
     useEffect(() => {
-        fetchProperty(property_id)
-        setContacted(pipeline.contacted)
-    }, [property_id, listingStatus, pipelineStatus])
+        fetchProperty(pipeline.property_id)
+            .then(res => {
+                setProperty(res.property) 
+                ctx.setContacted(pipeline.contacted)
+            })
+    }, [pipeline.property_id, pipeline.listingStatus, pipeline.pipelineStatus])
 
 
     function updateStatus(e){
@@ -42,16 +48,16 @@ function LeadsShowDetails({
             .then(res => {
                 switch(whatIsChanging){
                     case('listing-status-select'):
-                        setListingStatus(res.listing_status)
+                        ctx.setListingStatus(res.listing_status)
                         break
                     case('pipeline-status-select'):
-                        setPipelineStatus(res.pipeline_status)
+                        ctx.setPipelineStatus(res.pipeline_status)
                         break
                     case('contact-checkbox'):
-                        setContacted(res.contacted)
+                        ctx.setContacted(res.contacted)
                         break
                     case('watched-checkbox'):
-                        setWatched(res.watched)
+                        ctx.setWatched(res.watched)
                         break
                 }
             })
