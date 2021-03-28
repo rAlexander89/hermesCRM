@@ -40,15 +40,15 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
                 <div className="flex-row" id='index'>{index + 1}</div>
                 <div className="flex-row" id='submitted'>{offerDate(property.offer_date_dash)}</div>
                 <div className="flex-row" id='status'>{truncStatus(lead.listing_status)}</div>
-                <div className="flex-row" id='o-l'>{truncDigits(property.list_offer)}</div>
-                <div className="flex-row" id='l-a'>{truncDigits(property.list_arv)}</div>
-                <div className="flex-row" id='offered'>{property.offer}</div>
+                {/* <div className="flex-row" id='o-l'>{truncDigits(property.list_offer)}</div> */}
+                {/* <div className="flex-row" id='l-a'>{truncDigits(property.list_arv)}</div> */}
+                {/* <div className="flex-row" id='offered'>{property.offer}</div>
                 <div className="flex-row" id='list-price'>{addComma(property.list_price)}</div>
-                <div className="flex-row" id='arv'>{addComma(property.arv)}</div>
+                <div className="flex-row" id='arv'>{addComma(property.arv)}</div> */}
                 <div className="flex-row" id='agent-name'>{agent.agent_first} {agent.agent_last}</div>
-                <div className="flex-row" id='phone'>{formatContact(agent.agent_contact)}</div>
+                {/* <div className="flex-row" id='phone'>{formatContact(agent.agent_contact)}</div> */}
                 <div className="flex-row" id='address'> {property.address}</div>
-                <div className="flex-row" id='agent-name'> N/A </div>
+                {/* <div className="flex-row" id='agent-name'> N/A </div> */}
                 <div className="flex-row" id='last-contact'> {updateDate(property.updated_at)} </div>
             </div>
         ) 

@@ -7,6 +7,12 @@ div {
   box-sizing: border-box;
 }
 
+.leads-dash{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
 .table-container {
   display: block;
   width: 100%;
@@ -33,6 +39,7 @@ div {
   text-align: center;
   padding: 0.5em 0.5em;
   border-right: solid 1px $table-border;
+  height: 35px;
 }
 
 .flex-row{
@@ -45,7 +52,8 @@ div {
 
 .uncontacted,.contacted, .counter-received, .counter-responded, 
 .under-contract,.closed{
-    width: 259px;
+    // width: 259px;
+    width: 245px;
     cursor: pointer;
     text-align: center;
     padding: 0.5em 0.5em;

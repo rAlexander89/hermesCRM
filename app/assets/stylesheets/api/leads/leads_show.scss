@@ -1,7 +1,11 @@
+
 .lead-show-container{
     transition: all .2s ease-in-out;
-    height: 0px;
+    width: 0px;
+    height: 100%;
     opacity: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .lead-show-header{
@@ -24,7 +28,7 @@
 .show {
     transition: all .2s ease-in-out;
     opacity: 100;
-    height: 607px;
+    width: 565px;
 }
 
 #close{
