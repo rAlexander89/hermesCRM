@@ -80,7 +80,6 @@ function LeadsShowDetails({
     function pipelinePipelineStatus(status, contacted){
         let advancedDispos = ['Counter Received', 'Counter Responded', 'Under Contract', 'Contingencies Removed', 'Closed' ]
         let value = advancedDispos.includes(status) ?  status : 'Contacted'
-        debugger
         return(
             <div className='lead-detail'>
                 <div className='detail-left'>

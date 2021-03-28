@@ -12,7 +12,6 @@ function Dashboard({pipeline, currentUser, fetchPipeline}) {
     
 
     useEffect(() => {
-        debugger
         fetchPipeline(selectPipeline)
     },[selectPipeline, contacted, listingStatus, pipelineStatus]);
 

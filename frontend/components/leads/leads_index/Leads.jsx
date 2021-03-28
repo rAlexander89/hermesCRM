@@ -10,8 +10,7 @@ function Leads({
     
     function toggleLeadType(e){
         e.preventDefault();
-        debugger
-        selectPipeline !== e.target.innerText && e.target.innerText.length > 0 ? setSelectPipeline(e.target.innerText) : setSelectPipeline('Watched')
+        selectPipeline !== e.target.innerText && e.target.innerText !== '' ? setSelectPipeline(e.target.innerText) : setSelectPipeline('Watched')
     }
 
     function dispositionSelector(pipeline){

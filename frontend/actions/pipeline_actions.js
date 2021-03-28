@@ -30,7 +30,6 @@ export const fetchPipeline = pipeline_status => dispatch => {
             return PipelineAPIUtils.fetchContactedProperties()
             .then(pipeline => dispatch(receivePipeline(pipeline)));
         case(WATCHED):
-            debugger
             return PipelineAPIUtils.fetchWatchedProperties()
             .then(pipeline => dispatch(receivePipeline(pipeline)));
         case(COUNTER_RECEIVED):
