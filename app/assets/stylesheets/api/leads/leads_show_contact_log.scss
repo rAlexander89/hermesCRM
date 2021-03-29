@@ -54,28 +54,30 @@
 }
 
 .agent-contact-container{
-    height: 115px;
+    // height: 115px;
+    height: auto;
 }
 
 .contact-log-container{
     height: calc(100% - 115px);
-    overflow-y: auto;
 }
 
 .conversation-log{
     height: 330px;
-    width: 948px;
+    width: 100%;
+    // width: 948px;
     border-bottom: 1px solid #d9d9d9;
     line-height: 1;
     overflow-y: auto;
 }
 
 .comment-form{
-    height: 125px;
-    width: 948px;
+    height: 111px;
+    // width: 948px;
+    width: 100%;
     display: flex;
     flex-direction: row;
-    // border-bottom: 1px solid #d9d9d9;
+    border-bottom: 1px solid #d9d9d9;
 }
 
 .comment-button{

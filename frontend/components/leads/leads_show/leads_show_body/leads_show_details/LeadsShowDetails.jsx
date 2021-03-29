@@ -109,7 +109,6 @@ function LeadsShowDetails() {
     }
 
     if(property){
-        debugger
             return (
             <div className='lead-show-listing-detail'>
                 <div className='lead-show-contact-header'>
