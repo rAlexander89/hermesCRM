@@ -10,9 +10,12 @@ function NavBar({}) {
                 <div className='logo'>
                     <h2><Link to='/dash'>Hermes CRM</Link></h2>
                 </div>
-                <div className='user-session'>
+                <ul className='nav-items'>
+                    <li><h3>Leads</h3></li>
+                </ul>
+                {/* <div className='user-session'>
                     <GreetingContainer/>
-                </div>
+                </div> */}
             </div>
         </div>
 

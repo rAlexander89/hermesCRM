@@ -14,24 +14,8 @@ function Leads(){
     }
 
     function dispositionSelector(pipeline){
-        
-        return <div className="table-container">
-                <div className="flex-table table-header">
-                    <div className="flex-row" id='index'>#</div>
-                    <div className="flex-row" id='submitted'>O</div>
-                    {/* <div className="flex-row" id='status'>S</div> */}
-                    {/* <div className="flex-row" id='o-l'>O-L</div> */}
-                    {/* <div className="flex-row" id='l-a'>L-A</div> */}
-                    {/* <div className="flex-row" id='offered'>Offered</div>
-                    <div className="flex-row" id='list-price'>List Price</div>
-                    <div className="flex-row" id='arv'>ARV</div> */}
-                    {/* <div className="flex-row" id='agent-name'> Listing Agent</div> */}
-                    {/* <div className="flex-row" id='phone'>Phone</div> */}
-                    <div className="flex-row" id='address'>Address</div>
-                    {/* <div className="flex-row" id='agent-name'> Assigned Agent </div> */}
-                    <div className="flex-row" id='last-contact'>Last</div>
-                </div> 
-                <div className='flex-table-body'>
+    
+        return <div className='flex-table-body'>
                     {pipeline.map((lead, i) => (
                         <LeadIndexItem
                             index={i}
@@ -41,12 +25,10 @@ function Leads(){
                             setSelectedLead={ctx.setSelectedLead}              
                         />))}
                 </div>
-            </div>
     }
         
     return (
         <div className='leads-container'>
-            <div className='leads-header'>Leads</div>
                 <div className='flex-table table-header'>
                      <div className='uncontacted' data-value='Uncontacted' id={ctx.selectPipeline === 'Uncontacted' ? 'selected' : null } onClick={toggleLeadType}>
                         Uncontacted
@@ -75,7 +57,27 @@ function Leads(){
                 </div>
                 <div className='leads-dash'>
                     <LeadShow />
-                    {ctx.pipeline ? dispositionSelector(ctx.pipeline) : 'Looks like you aint got that kind of thing!'}
+                    <div className="table-container">
+                        <div className='table-index-header'>
+                            <div className='header-data'>
+                                <div className="header-number" id='index'>#</div>
+                                <div className='card'>
+                                        <div className='item-address'> <h3 className='card-title'>Address</h3>
+                                            <div className='item-offer-det'>
+                                                Offer/List Price/ARV                             
+                                            </div>
+                                        </div>
+                                        <div className='item-dates'> 
+                                            <div className='header-contact-dates'>
+                                                1st/Last Contact
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+    
+                        </div>
+                        {ctx.pipeline ? dispositionSelector(ctx.pipeline) : 'Looks like you aint got that kind of thing!'}
+                    </div>
                 </div>
         </div>
     )

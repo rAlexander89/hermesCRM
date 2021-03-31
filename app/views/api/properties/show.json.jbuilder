@@ -15,6 +15,7 @@ json.property do
     :county,
     :state,
     :gla,
+    :house_number,
     :lot_area,
     :apn,
     :listing_id,

@@ -1,11 +1,110 @@
+.table-index-header{
+    height: 75px;
+    width: 525px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background: #72029F;
+    justify-content: space-between;
+    box-shadow:
+    0 1px 1.5px rgba(0, 0, 0, 0.12),
+    0 2.6px 3.5px rgba(0, 0, 0, 0.055),
+    0 5.3px 6.2px rgba(0, 0, 0, 0.045),
+    0 11px 13.2px rgba(0, 0, 0, 0.035),
+    0 30px 35px rgba(0, 0, 0, 0.027);
+    z-index: 2;
+}
+
 .lead-index-item{
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     width: 100%;
+    height: 85px;
     cursor:pointer;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background: white;
+    box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.07),
+    0 2.6px 2.9px rgba(0, 0, 0, 0.048),
+    0 5.3px 5.2px rgba(0, 0, 0, 0.039),
+    0 11px 10.2px rgba(0, 0, 0, 0.031),
+    0 30px 30px rgba(0, 0, 0, 0.022);
+    border: 3px solid white;
+}
+
+.number{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background: #72029F;
+    color: white;
+    width: 50px;
+}
+
+.header-number{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+.card{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.item-address, .item-dates{
+    display: inherit;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 15px;
+
+}
+
+.item-address{
+    padding-left: 15px;
+    width: 66%;
+    line-height: 1.2;
+}
+
+.card-title{
+    font-size: 18px;
+    color: white;
+}
+
+.index-item-title{
+    color: black;
+    font-size: 18px;
+}
+
+.item-dates{
+    width: 40%;
+}
+
+.item-offer-det{
+    font-style: italic;
+}
+
+
+.half{
+    display: flex;
+    justify-content: center;
 }
 
 .lead-index-item:hover{
-    background: rgb(22,22,22);
-    color: white;
+    transform: scale(1.03);
+    transition: all 0.2s ease-out;
+    box-shadow:
+    0 1px 1.5px rgba(0, 0, 0, 0.12),
+    0 2.6px 3.5px rgba(0, 0, 0, 0.055),
+    0 5.3px 6.2px rgba(0, 0, 0, 0.045),
+    0 11px 13.2px rgba(0, 0, 0, 0.035),
+    0 30px 35px rgba(0, 0, 0, 0.027);
 }

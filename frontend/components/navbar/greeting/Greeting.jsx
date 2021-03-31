@@ -28,10 +28,10 @@ function Greeting({currentUser, logout}) {
     const personalGreeting = () => (
         <div className='user-bar'>
 
-            <div className="dropdown">
+            {/* <div className="dropdown"> */}
                 <div onClick={toggleShow} className='greeting-name'>
                         Hello, {currentUser.first_name}.
-                </div>
+                {/* </div> */}
 
                 <MenuItemsContainer/>
             </div>

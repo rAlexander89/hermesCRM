@@ -20,8 +20,6 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
             })     
     }, [lead.property_id])
 
-
-    
     const showThisLead = (e, property, lead, agent, setSelectedLead) => {
         e.preventDefault();
         
@@ -35,21 +33,26 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
 
 
     if (agent){
+        debugger
         return(
             <div className={`lead-index-item x${index}`} onDoubleClick={e => showThisLead(e, property, lead, agent, setSelectedLead)}>
-                <div className="flex-row" id='index'>{index + 1}</div>
-                <div className="flex-row" id='submitted'>{offerDate(property.offer_date_dash)}</div>
-                {/* <div className="flex-row" id='status'>{truncStatus(lead.listing_status)}</div> */}
-                {/* <div className="flex-row" id='o-l'>{truncDigits(property.list_offer)}</div> */}
-                {/* <div className="flex-row" id='l-a'>{truncDigits(property.list_arv)}</div> */}
-                {/* <div className="flex-row" id='offered'>{property.offer}</div>
-                <div className="flex-row" id='list-price'>{addComma(property.list_price)}</div>
-                <div className="flex-row" id='arv'>{addComma(property.arv)}</div> */}
-                {/* <div className="flex-row" id='agent-name'>{agent.agent_first} {agent.agent_last}</div> */}
-                {/* <div className="flex-row" id='phone'>{formatContact(agent.agent_contact)}</div> */}
-                <div className="flex-row" id='address'> {property.address}</div>
-                {/* <div className="flex-row" id='agent-name'> N/A </div> */}
-                <div className="flex-row" id='last-contact'> {updateDate(property.updated_at)} </div>
+                <div className='number'>
+                    <div className="flex-row" id='index'>{index + 1}</div>
+                </div>
+                <div className='card'>
+                        <div className='item-address'> <p className='index-item-title'>{property.house_number} {property.st_prefix} {property.st_name} {property.st_suffix}</p>
+                            <div className='item-offer-det'>
+                                        {addComma(property.offer)}/                             
+                                        {addComma(property.list_price)}/
+                                        {addComma(property.arv)}
+                            </div>
+                        </div>
+                        <div className='item-dates'> 
+                            <div className='item-offer-det'>
+                                        {offerDate(property.offer_date_dash)}/{updateDate(property.updated_at)}
+                            </div>
+                        </div>
+                </div>
             </div>
         ) 
     } else {  return null }

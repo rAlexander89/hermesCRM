@@ -17,8 +17,9 @@ div {
 .table-container {
   display: block;
   width: auto;
-  height: calc(100% - 70px);
-  border-left: 1px solid $table-border
+  height: 100%;
+  margin-top: 35px;
+  margin-right: 35px;
 }
 
 .lead-selector{
@@ -26,34 +27,65 @@ div {
 
 }
 
-
 .flex-table {
     width: 100%;
     height: 35px;
     display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow:
+    0 1px 1.5px rgba(0, 0, 0, 0.12),
+    0 2.6px 3.5px rgba(0, 0, 0, 0.055),
+    0 5.3px 6.2px rgba(0, 0, 0, 0.045),
+    0 11px 13.2px rgba(0, 0, 0, 0.035),
+    0 30px 35px rgba(0, 0, 0, 0.027);
 }
 
 .flex-table-body{
     overflow-y: auto;
     height: calc(100% - 35px);
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .table-header{
-    background: rgb(22,22,22);
     color: white;
-    border-top: 1px solid white;
     height: 35px;
+    background: linear-gradient(90deg, #48075c, #53066c, #5d057c, #67048d, #72029f, #7c01b1, #8500c3, #8f00d6);
 }
 
 .flex-row, .lead-selector {
   text-align: center;
   padding: 0.5em 0.5em;
-  border-right: solid 1px $table-border;
   height: 35px;
 }
 
-.flex-row{
-    border-bottom: solid 1px $table-border;
+
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.header-data{
+    width: 100%;
+    color:white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.header-contact-dates{
+
+}
+
+.header-row{
+    text-align: center;
+    height: 20px;
+    padding: 0.5em 0.5em;
 }  
 
 .flex-table:last-child{
@@ -62,12 +94,10 @@ div {
 
 .uncontacted,.contacted, .counter-received, .counter-responded, 
 .under-contract,.closed{
-    // width: 259px;
-    width: 235px;
+    width: 210px;
     cursor: pointer;
     text-align: center;
     padding: 0.5em 0.5em;
-    border-right: solid 1px $table-border;
 }
 
 .bin, .watched{
@@ -75,9 +105,6 @@ div {
     padding: 0.5em 0.5em;
     cursor: pointer;
     text-align: center;
-    border-right: solid 1px $table-border;
-
-
 }
 
 .contingencies-removed{
@@ -85,22 +112,19 @@ div {
     cursor: pointer;
     text-align: center;
     padding: 0.5em 0.5em;
-    border-right: solid 1px $table-border;
 }
 
-.uncontacted{
-    border-left: 1px solid white; 
-}
 
 .uncontacted:hover, .contacted:hover, .counter-received:hover, .counter-responded:hover, 
 .under-contract:hover,.closed:hover,.contingencies-removed:hover{
-    background:white;
-    color: rgb(22,22,22);
+    background: #8d30af
 }
 
+
+
+
 #selected{
-    background: white;
-    color: rgb(22,22,22);
+    background: #8d30af
 }
 
 #index{
@@ -108,14 +132,19 @@ div {
 }
 
 #submitted{
-    width: 100px;
+    width: 120px;
 }
 
 #status, #l-a, #o-l{
     width: 60px;
 }
-#list-price, #arv, #offered{
-    width: 110px;
+// #list-price, #arv, #offered{
+//     width: 130px;
+// }
+
+#offered{
+    display: flex;
+    flex-direction: column;
 }
 
 #agent{
@@ -132,11 +161,14 @@ div {
     width: 140px;
 }
 
+// #address{
+//     width: 500px;
+// }
+
 #address{
-    width: 500px;
+    width: 300px;
 }
 
 #last-contact{
-    width: 100px;
-    border-right: none;
+    width: 135px;
 }

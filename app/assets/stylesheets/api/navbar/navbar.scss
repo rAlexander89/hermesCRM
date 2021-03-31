@@ -6,13 +6,23 @@
 
 .header{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin: 25px 35px 0px 35px;
 }
 
 .logo{
-    font-size: 18px;
+    font-size: 22px;
     letter-spacing: 2px;
     cursor: pointer;
+}
 
+.nav-items{
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-items > li{
+    margin-top: 15px;
+    text-align: right;
 }
