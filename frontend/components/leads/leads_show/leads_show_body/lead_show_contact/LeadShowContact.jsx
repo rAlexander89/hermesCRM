@@ -13,7 +13,7 @@ function LeadShowContact({property_id, agent}) {
             <div className='lead-show-contact-container'>
                 <div className='agent-contact-container'>
                     <div className='lead-show-contact-header'>
-                        Agent Contact
+                        <h2 className='card-title'>Agent Contact</h2>
                     </div>
                     <div className='lead-show-contact-body'>
                         <div className='lead-show-contact-data'>
@@ -29,7 +29,7 @@ function LeadShowContact({property_id, agent}) {
                 </div>
                 <div className='contact-log-container'>
                     <div className='lead-show-contact-header'>
-                        Contact Log
+                        <h2 className='card-title'>Contact Log</h2>
                     </div>
                     <div className='lead-show-contact-log'>
                         <ShowPropertyCommentsContainer property_id={ctx.selectedLead.property_id}/>

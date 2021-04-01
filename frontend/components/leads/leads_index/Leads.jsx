@@ -60,17 +60,9 @@ function Leads(){
                     <div className="table-container">
                         <div className='table-index-header'>
                             <div className='header-data'>
-                                <div className="header-number" id='index'>#</div>
                                 <div className='card'>
-                                        <div className='item-address'> <h3 className='card-title'>Address</h3>
-                                            <div className='item-offer-det'>
-                                                Offer/List Price/ARV                             
-                                            </div>
-                                        </div>
-                                        <div className='item-dates'> 
-                                            <div className='header-contact-dates'>
-                                                1st/Last Contact
-                                            </div>
+                                        <div className='item-address'> 
+                                            <h2 className='card-title'>Address</h2>
                                         </div>
                                 </div>
                             </div>

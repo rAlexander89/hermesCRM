@@ -41,17 +41,17 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
                 </div>
                 <div className='card'>
                         <div className='item-address'> <p className='index-item-title'>{property.house_number} {property.st_prefix} {property.st_name} {property.st_suffix}</p>
-                            <div className='item-offer-det'>
+                            {/* <div className='item-offer-det'>
                                         {addComma(property.offer)}/                             
                                         {addComma(property.list_price)}/
                                         {addComma(property.arv)}
-                            </div>
+                            </div> */}
                         </div>
-                        <div className='item-dates'> 
+                        {/* <div className='item-dates'> 
                             <div className='item-offer-det'>
                                         {offerDate(property.offer_date_dash)}/{updateDate(property.updated_at)}
                             </div>
-                        </div>
+                        </div> */}
                 </div>
             </div>
         ) 

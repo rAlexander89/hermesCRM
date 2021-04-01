@@ -1,7 +1,7 @@
 .lead-show-contact-container{
-    border: 1px solid #d9d9d9;
     width: 100%;
-    height: 100%;
+    height: 600px;
+    margin-top: 15px;
 }
 
 .lead-show-contact-data{
@@ -45,35 +45,52 @@
     flex-direction: row;
     flex-wrap: wrap;
     gap: 5px;
-    padding: 15px;
+    padding: 10px;
 }
 
 .convo-author{
     font-weight: bold;
     letter-spacing: 1;
+    font-size: 16px;
+    color: #e6a05b;
 }
 
 .agent-contact-container{
-    // height: 115px;
     height: auto;
+    border: 1px solid #d9d9d9;
+    background: white;
+    box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.07),
+    0 2.6px 2.9px rgba(0, 0, 0, 0.048),
+    0 5.3px 5.2px rgba(0, 0, 0, 0.039),
+    0 11px 10.2px rgba(0, 0, 0, 0.031),
+    0 30px 30px rgba(0, 0, 0, 0.022);
 }
 
 .contact-log-container{
+    border: 1px solid #d9d9d9;
     height: calc(100% - 115px);
+    background: white;
+    margin-top: 18px;
+    box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.07),
+    0 2.6px 2.9px rgba(0, 0, 0, 0.048),
+    0 5.3px 5.2px rgba(0, 0, 0, 0.039),
+    0 11px 10.2px rgba(0, 0, 0, 0.031),
+    0 30px 30px rgba(0, 0, 0, 0.022);
+
 }
 
 .conversation-log{
     height: 330px;
     width: 100%;
-    // width: 948px;
     border-bottom: 1px solid #d9d9d9;
     line-height: 1;
     overflow-y: auto;
 }
 
 .comment-form{
-    height: 111px;
-    // width: 948px;
+    height: 118px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -89,7 +106,7 @@
     align-items: center;
     height: 100%;
     background: rgb(22,22,22);
-    color: white;
+    color: #ffb56b;
     width: 35px;
     cursor: pointer;
     border: none;

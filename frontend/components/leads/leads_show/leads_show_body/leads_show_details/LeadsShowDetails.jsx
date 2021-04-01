@@ -67,7 +67,7 @@ function LeadsShowDetails() {
         return(
              <div className='lead-detail'>
                 <div className='detail-left'>
-                    Listing Status
+                    <h2 className='card-sub-title'>Listing Status</h2>
                 </div>
                 <div className='detail-right'>
                     <select className='listing-status-select' value={status} onChange={updateStatus}>
@@ -89,7 +89,7 @@ function LeadsShowDetails() {
         return(
             <div className='lead-detail'>
                 <div className='detail-left'>
-                    Pipeline Status
+                    <h2 className='card-sub-title'>Pipeline Status</h2>
                 </div>
                 <div className='detail-right'>
                     {contacted ?
@@ -119,7 +119,7 @@ function LeadsShowDetails() {
                     {pipelinePipelineStatus(pipeline.pipeline_status, contacted)}
                     <div className='lead-detail'>
                         <div className='detail-left'>
-                            Address                
+                            <h2 className='card-sub-title'>Address</h2>
                         </div>
                         <div className='detail-right'>
                             {property.address}             
@@ -127,7 +127,7 @@ function LeadsShowDetails() {
                     </div>
                     <div className='lead-detail'>
                         <div className='detail-left'>
-                            Offer/List/ARV                
+                            <h2 className='card-sub-title'>Offer/List/ARV</h2>
                         </div>
                         <div className='detail-right'>
                             {addComma(property.offer)}/{addComma(property.list_price)}/{addComma(property.arv)}
@@ -135,7 +135,7 @@ function LeadsShowDetails() {
                     </div>
                     <div className='lead-detail'>
                         <div className='detail-left'>
-                            Potential Max Offer                
+                            <h2 className='card-sub-title'>Potential Max Offer</h2>
                         </div>
                         <div className='detail-right'>
                             {potentialMaxOffer(property.arv)}                    
@@ -143,7 +143,7 @@ function LeadsShowDetails() {
                     </div>
                     <div className='lead-detail'>
                         <div className='detail-left'>
-                            Bed/Bath               
+                            <h2 className='card-sub-title'>Bed/Bath</h2>
                         </div>
                         <div className='detail-right'>
                             {property.bed_count}/{property.bath_count}
@@ -151,7 +151,7 @@ function LeadsShowDetails() {
                     </div>
                     <div className='lead-detail'>
                         <div className='detail-left'>
-                            GLA/LOT                
+                            <h2 className='card-sub-title'>GTA/LOT</h2>
                         </div>
                         <div className='detail-right'>
                             {addComma(property.gla)}/{addComma(property.lot_area)}
@@ -159,7 +159,7 @@ function LeadsShowDetails() {
                     </div>
                      <div className='lead-detail'>
                         <div className='detail-left'>
-                            Contacted?                
+                            <h2 className='card-sub-title'>Contacted?</h2>
                         </div>
                         <div className='detail-right'>
                             <div className='contact-checkbox' onClick={updateStatus}>
@@ -170,7 +170,7 @@ function LeadsShowDetails() {
                     {contacted ?                         
                         <div className='lead-detail'>
                             <div className='detail-left'>
-                                Watch                
+                                <h2 className='card-sub-title'>Watch</h2>
                             </div>
                             <div className='detail-right'>
                                 <div className='watched-checkbox' onClick={updateStatus}>

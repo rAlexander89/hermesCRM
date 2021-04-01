@@ -1,10 +1,10 @@
 .table-index-header{
-    height: 75px;
+    height: 50px;
     width: 525px;
     display: flex;
     align-items: center;
     flex-direction: row;
-    background: #72029F;
+    background: #ffb56b;
     justify-content: space-between;
     box-shadow:
     0 1px 1.5px rgba(0, 0, 0, 0.12),
@@ -20,7 +20,7 @@
     flex-direction: row;
     justify-content: flex-start;
     width: 100%;
-    height: 85px;
+    height: 65px;
     cursor:pointer;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -38,7 +38,7 @@
     height: 100%;
     display: flex;
     align-items: center;
-    background: #72029F;
+    background: #ffb56b;
     color: white;
     width: 50px;
 }
@@ -48,10 +48,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
-
-
 
 .card{
     display: flex;
@@ -64,23 +61,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-left: 15px;
-
 }
 
 .item-address{
-    padding-left: 15px;
-    width: 66%;
+    width: 100%;
     line-height: 1.2;
+    text-align: center;
 }
 
 .card-title{
+    font-size: 20px;
+    color: #0e0a0a;
+}
+
+.card-sub-title{
     font-size: 18px;
-    color: white;
+    color: #e6a05b;
 }
 
 .index-item-title{
-    color: black;
+    color: #0e0a0a;
     font-size: 18px;
 }
 
@@ -99,7 +99,7 @@
 }
 
 .lead-index-item:hover{
-    transform: scale(1.03);
+    transform: scale(1.025);
     transition: all 0.2s ease-out;
     box-shadow:
     0 1px 1.5px rgba(0, 0, 0, 0.12),

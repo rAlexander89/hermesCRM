@@ -53,7 +53,7 @@ div {
 .table-header{
     color: white;
     height: 35px;
-    background: linear-gradient(90deg, #48075c, #53066c, #5d057c, #67048d, #72029f, #7c01b1, #8500c3, #8f00d6);
+    background: #0e0a0a;
 }
 
 .flex-row, .lead-selector {
@@ -117,14 +117,16 @@ div {
 
 .uncontacted:hover, .contacted:hover, .counter-received:hover, .counter-responded:hover, 
 .under-contract:hover,.closed:hover,.contingencies-removed:hover{
-    background: #8d30af
+    background: #ffb56b;
+    color: #0e0a0a;
 }
 
 
 
 
 #selected{
-    background: #8d30af
+    background: #ffb56b;
+    color: #0e0a0a;
 }
 
 #index{

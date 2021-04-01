@@ -1,10 +1,8 @@
 .leads-show-body-container{
     display: flex;
     flex-direction: column;
-    // justify-content: center;
     height: 100%;
     width: 100%;
-    background: white;
 }
 
 .lead-show-contact-header{
@@ -12,8 +10,7 @@
     justify-content: center;
     align-items: center;
     font-size: 18px;
-    background: rgb(22,22,22);
-    color: white;
+    background: #ffb56b;
     width: 100%;
     height: 35px;
 }
