@@ -2,11 +2,11 @@ class Api::PipelineController < ApplicationController
 
     def index
         @pipelines = Pipeline.all
-        render :index
+        render json: @pipelines
     end
 
     def show
-        @pipeline = Pipeline.all.where(pipeline_status: params[:pipeline_status])
+        @pipeline = Pipeline.where(pipeline_status: params[:pipeline_status])
         render :index
     end
 
@@ -48,17 +48,10 @@ class Api::PipelineController < ApplicationController
         render :index
     end
 
-     def fetch_closed_properties
-        @pipeline = Pipeline.where(pipeline_status: 'Hold')
-        render :index
-    end
-
     def fetch_closed_properties
         @pipeline = Pipeline.where(pipeline_status: 'Closed')
         render :index
     end
-
-
 
     def create
         @pipeline = Pipeline.new(pipeline_params)

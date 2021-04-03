@@ -14,7 +14,7 @@
 #
 class Pipeline < ApplicationRecord
 
-    validates :pipeline_status, inclusion: [
+    validates :pipeline_status, inclusion:[
         'Uncontacted',
         'Counter Received',
         'Counter Responded',
@@ -32,6 +32,8 @@ class Pipeline < ApplicationRecord
         'Hold',
         'Closed'
     ]
+
+    validates :contacted, inclusion: { in: [ true, false ] }
 
     validates :property_id, presence: true
 

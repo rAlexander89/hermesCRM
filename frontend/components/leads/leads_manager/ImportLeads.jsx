@@ -11,8 +11,7 @@ function ImportLeads({importProperties}) {
         importProperties(data)
         .then((res) => {
             console.log('success')
-            console.log(res)
-            })
+        })
     }
 
     const onFileLoad = e => {

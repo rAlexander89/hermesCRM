@@ -1,4 +1,9 @@
-
+export const fetchPipeline = () => {
+    return $.ajax({
+        method: 'GET',
+        url: '/api/pipeline'
+    })
+}
 export const updatePipeline = pipeline => {
     return $.ajax({
         method: 'PATCH',

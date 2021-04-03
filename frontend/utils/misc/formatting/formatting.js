@@ -36,3 +36,9 @@ export function formatContact(num){
     let number = num.replaceAll(' ','').replaceAll('-','.').replace('(','').replace(')','')
     return number
 }
+
+// numerator / denominator turned into a whole number.
+export const floatToPerc = (num, den) => {
+    if ( den === 0) return null
+    return Math.floor(num/den * 100)
+}

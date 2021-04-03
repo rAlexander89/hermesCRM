@@ -33,14 +33,16 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
 
 
     if (agent){
-        debugger
         return(
             <div className={`lead-index-item x${index}`} onDoubleClick={e => showThisLead(e, property, lead, agent, setSelectedLead)}>
                 <div className='number'>
                     <div className="flex-row" id='index'>{index + 1}</div>
                 </div>
                 <div className='card'>
-                        <div className='item-address'> <p className='index-item-title'>{property.house_number} {property.st_prefix} {property.st_name} {property.st_suffix}</p>
+                        <div className='item-address'> 
+                            <p className='index-item-title'>
+                                {property.house_number} {property.st_prefix} {property.st_name} {property.st_suffix}
+                            </p>
                             {/* <div className='item-offer-det'>
                                         {addComma(property.offer)}/                             
                                         {addComma(property.list_price)}/

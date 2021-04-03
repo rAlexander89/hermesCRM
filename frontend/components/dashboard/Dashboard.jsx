@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import Leads from '../leads/leads_index/Leads'
+import LeadStats from '../lead_stats/LeadStats'
+import LeadShow from '../leads/leads_show/LeadShow'
+import LeadsSelector from '../leads/leads_selector/LeadsSelector'
 
 export const LeadsPipelineContext = React.createContext()
 
@@ -33,7 +36,10 @@ function Dashboard({pipeline, currentUser, fetchPipeline}) {
 
     return (
         <LeadsPipelineContext.Provider value={ctx}>
-            <div className='dashboard'>
+            <LeadsSelector/>
+            <div className='leads-dash'>
+                <LeadStats/>
+                <LeadShow />
                 <Leads/>
             </div>
         </LeadsPipelineContext.Provider>

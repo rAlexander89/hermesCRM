@@ -13,9 +13,7 @@ function App() {
     
     return (
         <div className='app-container'>
-            <div className='nav-container'>
                 <NavBarContainer/>
-            </div>
             <div className='content-display'>
                 <Switch>
                     <AuthRoute exact path ='/' component={SplashContainer}/>

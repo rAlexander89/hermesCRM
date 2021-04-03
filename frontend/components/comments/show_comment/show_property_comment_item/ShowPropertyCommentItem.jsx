@@ -6,12 +6,8 @@ function ShowPropertyCommentItem({author, fetchUser, comment}) {
         fetchUser(comment.user_id)
     }, [comment])
 
-
     return (
         <div className='convo-item'>
-            {/* <div className='convo-author'>
-                {author.first_name} {author.last_name}: 
-            </div> */}
             <h3 className='convo-author'>
                 {author.first_name} {author.last_name}: 
             </h3>
