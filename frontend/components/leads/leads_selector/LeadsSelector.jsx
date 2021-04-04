@@ -28,9 +28,6 @@ function LeadsSelector() {
                     <div className='under-contract' data-value='Under Contract' id={ctx.selectPipeline === 'Under Contract' ? 'selected' : null } onClick={toggleLeadType}>
                     Under Contract                     
                 </div>
-                    <div className='contingencies-removed' data-value='Contingencies Removed' id={ctx.selectPipeline === 'Contingencies Removed' ? 'selected' : null } onClick={toggleLeadType}>
-                    Contingencies Removed                     
-                </div>
                 <div className='closed' data-value='Closed' id={ctx.selectPipeline === 'Closed' ? 'selected' : null } onClick={toggleLeadType}>
                     Closed                     
                 </div>

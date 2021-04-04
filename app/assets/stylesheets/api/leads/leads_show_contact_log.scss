@@ -69,7 +69,7 @@
 
 .contact-log-container{
     border: 1px solid #d9d9d9;
-    height: calc(100% - 115px);
+    height: calc(100% - 165px);
     background: white;
     margin-top: 18px;
     box-shadow:
@@ -82,7 +82,7 @@
 }
 
 .conversation-log{
-    height: 330px;
+    height: 300px;
     width: 100%;
     border-bottom: 1px solid #d9d9d9;
     line-height: 1;
@@ -90,7 +90,7 @@
 }
 
 .comment-form{
-    height: 118px;
+    height: 100px;
     width: 100%;
     display: flex;
     flex-direction: row;

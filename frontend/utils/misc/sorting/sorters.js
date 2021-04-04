@@ -1,4 +1,4 @@
-import { floatToPerc } from '../formatting/formatting'
+import { floatToPerc, floatToPercTotal } from '../formatting/formatting'
 
 export const sortStats = pipelines => {
 
@@ -22,21 +22,18 @@ export const sortStats = pipelines => {
             case 'Under Contract':
                 underContract += 1;
                 break
-            case 'Contingencies Removed':
-                contingenciesRemoved += 1;
-                break
             case 'Closed':
                 closed += 1;
         }
     })
 
+
     let stats = {
-        contacted: floatToPerc(contacted,total),
+        contacted: floatToPercTotal(contacted,total),
         countersReceived: floatToPerc(countersReceived,contacted),
         counterResponded: floatToPerc(countersResponded,countersReceived),
         underContract: floatToPerc(underContract,countersResponded),
-        contingenciesRemoved: floatToPerc(countersResponded,contingenciesRemoved),
-        closed: floatToPerc(contingenciesRemoved,closed)            
+        closed: floatToPerc(closed,underContract)            
     }
 
     return stats

@@ -11,7 +11,6 @@ div {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    height: 100%;
 }
 
 .table-container {
@@ -24,7 +23,6 @@ div {
 
 .lead-selector{
     border-bottom:none;
-
 }
 
 .flex-table {
@@ -45,7 +43,7 @@ div {
 
 .flex-table-body{
     overflow-y: auto;
-    height: calc(100% - 35px);
+    height: calc(100vh - 180px);
     padding-left: 20px;
     padding-right: 20px;
 }

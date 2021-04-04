@@ -19,7 +19,6 @@ class Pipeline < ApplicationRecord
         'Counter Received',
         'Counter Responded',
         'Under Contract',
-        'Contingencies Removed',
         'Trash',
         'Closed',
     ]
