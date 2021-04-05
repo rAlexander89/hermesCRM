@@ -1,17 +1,27 @@
 html{
     letter-spacing: 1px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
 }
 
 .app-container{
     background: white;
-    height: 100vh;
-    width: 100vw;
+    min-height: 1080px;
+    width: 1920px;
     display: flex;
     flex-direction: column;    
+    box-shadow:
+    0 1px 1.5px rgba(0, 0, 0, 0.12),
+    0 2.6px 3.5px rgba(0, 0, 0, 0.055),
+    0 5.3px 6.2px rgba(0, 0, 0, 0.045),
+    0 11px 13.2px rgba(0, 0, 0, 0.035),
+    0 30px 35px rgba(0, 0, 0, 0.027);
 }
 
 .header-container{
-    width: 100vw;
+    width: 100%;
     height: 50px; 
     background: white;
     display: flex;
@@ -33,9 +43,9 @@ html{
 }
 
 .content-display{
-    height: calc(100vw - 65px);
+    height: calc(100% - 65px);
     flex-direction: column;
-    width: 100vw;
+    width: 100%;
     box-sizing: border-box;
 }
 

@@ -33,6 +33,15 @@
     margin-right: 35px;
 }
 
+.show-nav{
+    transition: all .2s ease-in-out;
+    opacity: 100;
+    width: 100px;
+    margin-top: 35px;
+    margin-right: 120px;
+
+}
+
 #close{
     cursor: pointer;
     font-weight: bolder;
