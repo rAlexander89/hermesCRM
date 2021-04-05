@@ -40,7 +40,6 @@ export function formatContact(num){
 // numerator / denominator turned into a whole number.
 export const floatToPerc = (num, den) => {
     if ( den === 0 && num === 0) return null
-    debugger
     return Math.floor(num/(den + num) * 100).toString()
 }
 
