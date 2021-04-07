@@ -33,25 +33,28 @@ div {
     justify-content: flex-end;
     padding-left: 20px;
     padding-right: 20px;
-    box-shadow:
-    0 1px 1.5px rgba(0, 0, 0, 0.12),
-    0 2.6px 3.5px rgba(0, 0, 0, 0.055),
-    0 5.3px 6.2px rgba(0, 0, 0, 0.045),
-    0 11px 13.2px rgba(0, 0, 0, 0.035),
-    0 30px 35px rgba(0, 0, 0, 0.027);
+    // box-shadow:
+    // 0 1px 1.5px rgba(0, 0, 0, 0.12),
+    // 0 2.6px 3.5px rgba(0, 0, 0, 0.055),
+    // 0 5.3px 6.2px rgba(0, 0, 0, 0.045),
+    // 0 11px 13.2px rgba(0, 0, 0, 0.035),
+    // 0 30px 35px rgba(0, 0, 0, 0.027);
 }
 
 .flex-table-body{
     overflow-y: auto;
     height: calc(100vh - 180px);
-    padding-left: 20px;
-    padding-right: 20px;
+    // padding-left: 20px;
+    // padding-right: 20px;
 }
 
 .table-header{
-    color: white;
+    // color: white;
+    // color: rgb(165, 163, 163);
     height: 35px;
-    background: #0e0a0a;
+    background: #f4f5f7;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
 }
 
 .flex-row, .lead-selector {
@@ -89,10 +92,11 @@ div {
 
 .uncontacted,.contacted, .counter-received, .counter-responded, 
 .under-contract,.closed{
-    width: 210px;
+    width: 250px;
     cursor: pointer;
     text-align: center;
     padding: 0.5em 0.5em;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .bin, .watched{
@@ -111,8 +115,8 @@ div {
 
 
 .uncontacted:hover, .contacted:hover, .counter-received:hover, .counter-responded:hover, 
-.under-contract:hover,.closed:hover,.contingencies-removed:hover{
-    background: #ffb56b;
+.under-contract:hover,.closed:hover,.contingencies-removed:hover, .watched:hover{
+    background: #ff72a6;
     color: #0e0a0a;
 }
 
@@ -120,8 +124,10 @@ div {
 
 
 #selected{
-    background: #ffb56b;
+    background: white;
     color: #0e0a0a;
+    font-family: 'Montserrat', sans-serif;
+    
 }
 
 #index{
