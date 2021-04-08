@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
-import CreateCommentContainer from '../../../../comments/create_comment/CreateCommentContainer'
-import ShowPropertyCommentsContainer from '../../../../comments/show_comment/ShowPropertyCommentsContainer'
+import CreateComment from '../../../../comments/create_comment/CreateCommentForm'
+import ShowPropertyComments from '../../../../comments/show_comment/ShowPropertyComments'
 import { formatContact } from '../../../../../utils/misc/formatting/formatting'
 import { LeadsPipelineContext } from '../../../../dashboard/Dashboard'
 
-function LeadShowContact({property_id, agent}) {
+function LeadShowContact() {
 
     let ctx = useContext(LeadsPipelineContext)
 
@@ -32,8 +32,9 @@ function LeadShowContact({property_id, agent}) {
                         <h2 className='card-title'>Contact Log</h2>
                     </div>
                     <div className='lead-show-contact-log'>
-                        <ShowPropertyCommentsContainer property_id={ctx.selectedLead.property_id}/>
-                        <CreateCommentContainer property_id={ctx.selectedLead.property_id}/>
+                        {/* <ShowPropertyCommentsContainer property_id={ctx.selectedLead.property_id}/> */}
+                        <ShowPropertyComments/>
+                        <CreateComment/>
                     </div>
                 </div>
             </div>

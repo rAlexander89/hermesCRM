@@ -31,7 +31,6 @@ function LeadsShowDetails() {
         let whatIsChanging = e.target.classList.value
         let newStatus = e.target.value
 
-    
         switch(whatIsChanging){
             case('listing-status-select'):
                 pipeline['listing_status'] = newStatus
@@ -46,6 +45,7 @@ function LeadsShowDetails() {
                 pipeline['watched'] = !watched
                 break
         }
+
 
         updatePipeline(pipeline)
             .then(res => {

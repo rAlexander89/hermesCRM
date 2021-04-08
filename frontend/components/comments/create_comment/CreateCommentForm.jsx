@@ -1,10 +1,18 @@
-import React, {useRef} from 'react'
+import React, { useRef, useContext } from 'react'
+import { useDispatch } from 'react-redux'
+import { createComment } from '../../../actions/comment_actions'
+import { LeadsPipelineContext } from '../../dashboard/Dashboard'
 
-function CreateCommentForm({currentUser, property_id, createComment}) {
+function CreateCommentForm() {
+
+    let ctx = useContext(LeadsPipelineContext)
+    const dispatch = useDispatch()
+
     const commentForm = useRef(null)
 
-    let user_id = currentUser.id
-    let privileges = currentUser.privileges
+    let user_id = ctx.currentUser.id
+    let privileges = ctx.currentUser.privileges
+    let property_id = ctx.selectedLead.property_id
 
     const handleClick = e => {
         e.preventDefault()
@@ -18,7 +26,7 @@ function CreateCommentForm({currentUser, property_id, createComment}) {
             privileges: privileges
         }
 
-        createComment(comment)
+        dispatch(createComment(comment))
             .then(() => e.target.reset())
     }
 
