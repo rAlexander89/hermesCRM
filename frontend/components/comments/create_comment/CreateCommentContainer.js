@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { createComment } from '../../../actions/comment_actions'
 import CreateCommentForm from './CreateCommentForm'
 
-const mSTP = ({entities: { users, session }}) => {
+const mSTP = ({entities: { users }, session}) => {
     
     return {
         currentUser: users[session.currentUserId],

@@ -18,7 +18,6 @@ function LeadStats() {
 
     if(stats){
         return <div className='lead-stats-container'>
-                        {/* Contacted::Uncontacted Ratio */}
                     <div className='stats-container'>
                         <div className={`c100 p${stats.contacted}`}>
                             <span><h1>{`${stats.contacted}`}%</h1></span>
@@ -30,7 +29,6 @@ function LeadStats() {
                         <h1 className='graph-desc'>Contacted/</h1>
                         <h1 className='graph-desc'>Uncontacted</h1>
                     </div>
-                        {/* Counter Received::Contacted Ratio */}
                     <div className='stats-container'>
                         <div className={`c100 p${stats.countersReceived}`}>
                             <span><h1>{`${stats.countersReceived}`}%</h1></span>
@@ -42,7 +40,6 @@ function LeadStats() {
                         <h1 className='graph-desc'>Counters Received/</h1>
                         <h1 className='graph-desc'>Contacted</h1>
                     </div>
-                        {/* Counter Responded::Counter Received Ratio */}
                     <div className='stats-container'>
                         <div className={`c100 p${stats.counterResponded}`}>
                             <span><h1>{`${stats.counterResponded}`}%</h1></span>
@@ -54,7 +51,6 @@ function LeadStats() {
                         <h1 className='graph-desc'>Counters Responded/</h1>
                         <h1 className='graph-desc'>Counters Received</h1>
                     </div>
-                         {/* Under Contract::Counters Responded Ratio */}
                     <div className='stats-container'>
                         <div className={`c100 p${stats.underContract}`}>
                             <span><h1>{`${stats.underContract}`}%</h1></span>
@@ -66,7 +62,6 @@ function LeadStats() {
                         <h1 className='graph-desc'>Under Contract/</h1>
                         <h1 className='graph-desc'>Counters Responded</h1>
                     </div>
-                        {/* Closed::Under Contract Ratio */}
                     <div className='stats-container'>
                         <div className={`c100 p${stats.closed}`}>
                             <span><h1>{`${stats.closed}`}%</h1></span>

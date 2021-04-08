@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { addComma } from '../../../../../utils/misc/formatting/formatting'
 import { potentialMaxOffer } from '../../../../../utils/misc/calculators/calculators'
-import { updatePipeline } from '../../../../../utils/api/pipeline_api_utils'
+import { updatePipeline, fetchPipelineById } from '../../../../../utils/api/pipeline_api_utils'
 import { LeadsPipelineContext } from '../../../../dashboard/Dashboard'
 import { fetchProperty } from '../../../../../utils/api/property_api_util'
 
@@ -22,6 +22,9 @@ function LeadsShowDetails() {
             })
     }, [pipeline.property_id, pipeline.listingStatus, pipeline.pipelineStatus])
 
+    useEffect(() => {
+        fetchPipelineById(pipeline.id)
+    }, [pipeline])
 
     function updateStatus(e){
         e.preventDefault()
@@ -84,7 +87,7 @@ function LeadsShowDetails() {
     }
 
     function pipelinePipelineStatus(status, contacted){
-        let advancedDispos = ['Counter Received', 'Counter Responded', 'Under Contract', 'Contingencies Removed', 'Closed' ]
+        let advancedDispos = ['Counter Received', 'Counter Responded', 'Under Contract', 'Closed' ]
         let value = advancedDispos.includes(status) ?  status : 'Contacted'
         return(
             <div className='lead-detail'>

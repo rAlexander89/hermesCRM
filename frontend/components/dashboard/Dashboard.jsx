@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchPipeline } from '../../actions/pipeline_actions'
 import Leads from '../leads/leads_index/Leads'
 import LeadStats from '../lead_stats/LeadStats'
 import LeadShow from '../leads/leads_show/LeadShow'
@@ -6,7 +8,8 @@ import LeadsSelector from '../leads/leads_selector/LeadsSelector'
 
 export const LeadsPipelineContext = React.createContext()
 
-function Dashboard({pipeline, currentUser, fetchPipeline}) {
+function Dashboard() {
+
     const [selectedLead, setSelectedLead] = useState(false);
     const [selectPipeline, setSelectPipeline] = useState('Uncontacted')
     const [contacted, setContacted] = useState(false)
@@ -14,9 +17,22 @@ function Dashboard({pipeline, currentUser, fetchPipeline}) {
     const [listingStatus, setListingStatus] = useState(null)
     const [pipelineStatus, setPipelineStatus] = useState(null)
 
-    let ctx = {
+    const dispatch = useDispatch()
+    
+    useEffect(() => {
+        dispatch(fetchPipeline(selectPipeline))
+    },[selectPipeline, contacted, listingStatus, pipelineStatus]);
+
+    const pipeline = useSelector((state => state.entities.pipeline))
+    const currentUser = useSelector((state => state.entities.users[state.session.currentUserId]))
+
+    debugger
+
+        let ctx = {
         currentUser: currentUser,
-        pipeline: pipeline,
+        pipeline: 
+            Object.values(pipeline).length !== 0 ? 
+            Object.values(pipeline).reverse() : false,
         selectedLead: selectedLead,
         setSelectedLead: setSelectedLead,
         selectPipeline, setSelectPipeline,
@@ -29,10 +45,7 @@ function Dashboard({pipeline, currentUser, fetchPipeline}) {
         pipelineStatus: pipelineStatus,
         setPipelineStatus: setPipelineStatus
     }
-    
-    useEffect(() => {
-        fetchPipeline(selectPipeline)
-    },[selectPipeline, contacted, listingStatus, pipelineStatus]);
+
 
     return (
         <LeadsPipelineContext.Provider value={ctx}>

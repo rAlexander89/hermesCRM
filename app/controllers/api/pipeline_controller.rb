@@ -6,8 +6,13 @@ class Api::PipelineController < ApplicationController
     end
 
     def show
-        @pipeline = Pipeline.where(pipeline_status: params[:pipeline_status])
-        render :index
+        @pipeline = Pipeline.where(id: params[:id])
+        if @pipeline
+            render json: @pipeline
+        else
+            render json: @pipeline.errors.full_messages, status: 422
+        end
+
     end
 
     def fetch_uncontacted_properties

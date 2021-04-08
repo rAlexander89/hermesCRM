@@ -1,6 +1,5 @@
 import React from 'react'
 import MenuItemsContainer from '../../navbar/options/menu-items/MenuItemsContainer'
-import OptionsContainer from '../options/OptionsContainer'
 
 function Greeting({currentUser, logout}) {
 

@@ -4,6 +4,14 @@ export const fetchPipeline = () => {
         url: '/api/pipeline'
     })
 }
+
+export const fetchPipelineById = pipelineId => {
+    return $.ajax({
+        method: 'GET',
+        url: `/api/pipeline/${pipelineId}`
+    })
+
+}
 export const updatePipeline = pipeline => {
     return $.ajax({
         method: 'PATCH',

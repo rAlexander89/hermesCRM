@@ -43,6 +43,7 @@ export const floatToPerc = (num, den) => {
     return Math.floor(num/(den + num) * 100).toString()
 }
 
+// numerator / denominator turned into a whole number.
 export const floatToPercTotal = (num, den) => {
     if ( den === 0 && num === 0) return null
     return Math.floor(num/den * 100).toString()

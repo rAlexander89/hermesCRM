@@ -7,7 +7,6 @@ function Leads(){
     let ctx = useContext(LeadsPipelineContext)
     
     function dispositionSelector(pipeline){
-    
         return <div className='flex-table-body'>
                     {pipeline.map((lead, i) => (
                         <LeadIndexItem

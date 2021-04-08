@@ -35,22 +35,16 @@ h1{
     letter-spacing: 2px;
 }
 
-.email-field{
-    // border-radius: 8px 8px 0px 0px;
-}
-
-.password-field{
-    // border-radius: 0px 0px 8px 8px;
-}
-
 .name-field:hover, .email-field:hover, .password-field:hover{
-    // border: 1px solid rgba(60, 60, 61, 0.329)
-    border: 1px solid #ffc7dc;
+    border: 1px solid rgba(60, 60, 61, 0.329);
 }
 
 .name-field:focus, .email-field:focus, .password-field:focus{
-    // border: 1px solid rgba(60, 60, 61, 0.596)
-    border: 1px solid #ff72a6bd;
+    border: 1px solid rgba(60, 60, 61, 0.596);
+
+    & .name-field:hover, .email-field:hover, .password-field:hover{
+        border: none;
+    }
 }
 
 
@@ -132,7 +126,6 @@ h1{
     font-size: 14px;
     color: rgb(27,31,29);
 }
-
 
 .create-user-container > div{
     margin-top: 25px;
