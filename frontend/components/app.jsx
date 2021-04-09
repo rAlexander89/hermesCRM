@@ -6,7 +6,7 @@ import { AuthRoute, ProtectedRoute, Route } from '../utils/route_util'
 import NavBar from './navbar/NavBar'
 import Splash from './splash/Splash'
 import Dashboard from './dashboard/Dashboard'
-import UserMenu from './users_menu/UserMenu'
+import UserMenu from './users_menu/UsersMenu'
 
 
 function App() {
