@@ -1,12 +1,10 @@
 import React from 'react'
-import SessionFormContainer from '../session_form/SessionFormContainer'
+import SessionForm from '../session_form/SessionForm'
 
 function Splash() {
-    return (
-        <div className='splash'>
-            <SessionFormContainer/>
-        </div>
-    )
+    return <div className='splash'>
+                <SessionForm/>
+            </div>
 }
 
 export default Splash

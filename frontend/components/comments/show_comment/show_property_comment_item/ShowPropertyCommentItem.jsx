@@ -12,17 +12,14 @@ function ShowPropertyCommentItem({comment}) {
     
     const author = useSelector(state => Object.values(state.entities.users)[0])
     
-
-    return (
-        <div className='convo-item'>
-            <h3 className='convo-author'>
-                {author.first_name} {author.last_name}: 
-            </h3>
-            <div className='convo-text'>
-                {comment.comment_txt}
+    return <div className='convo-item'>
+                <h3 className='convo-author'>
+                    {author.first_name} {author.last_name}: 
+                </h3>
+                <div className='convo-text'>
+                    {comment.comment_txt}
+                </div>
             </div>
-        </div>
-    )
 }
 
 export default ShowPropertyCommentItem

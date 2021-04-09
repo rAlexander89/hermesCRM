@@ -1,7 +1,7 @@
 import React, {useEffect, useRef} from 'react'
 import { deleteUser, fetchUsers, fetchUser } from '../../actions/user_actions'
-import ImportLeadsContainer from '../leads/leads_manager/ImportLeadsContainer'
-import CreateUserFormContainer from './create_user_form/CreateUserFormContainer'
+import ImportLeads from '../leads/leads_manager/ImportLeads'
+import CreateUserForm from './create_user_form/CreateUserForm'
 
 function UsersMenu() {
 
@@ -9,12 +9,10 @@ function UsersMenu() {
         fetchUsers()
     }, [])
 
-    return (
-        <div className='user-menu-container'>
-            <ImportLeadsContainer/>
-            {/* <CreateUserFormContainer/> */}
-        </div>
-    )
+    return  <div className='user-menu-container'>
+                <ImportLeads/>
+                <CreateUserForm/>
+            </div>
 }
 
 export default UsersMenu

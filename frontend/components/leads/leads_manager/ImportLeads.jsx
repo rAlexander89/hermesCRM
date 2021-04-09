@@ -1,17 +1,24 @@
 import React, { useState, useRef } from 'react'
+import { useDispatch } from 'react-redux'
+import { importProperties } from '../../../actions/property_actions'
 
-function ImportLeads({importProperties}) {
+function ImportLeads() {
+    
     const [ fileName, setFileName ] = useState('no file selected')
-
+    const dispatch = useDispatch()
     const fileRef = useRef(null)
+
+
 
     const handeUpload = () => {
         const data = new FormData()
+        
         data.append('csv', fileRef.current.files[0])
-        importProperties(data)
-        .then((res) => {
-            console.log('success')
-        })
+        
+        dispatch(importProperties(data))
+            .then((res) => {
+                console.log('success')
+            })
     }
 
     const onFileLoad = e => {

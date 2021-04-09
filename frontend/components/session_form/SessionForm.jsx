@@ -1,10 +1,13 @@
 import React, { useRef } from 'react'
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { login } from '../../actions/session_actions'
 
-const SessionForm = ({loginUser}) => {
+const SessionForm = () => {
 
     const inputForm = useRef(null)
     const history = useHistory()
+    const dispatch = useDispatch()
 
     const handleClick = (e) => {
         e.preventDefault()
@@ -16,7 +19,7 @@ const SessionForm = ({loginUser}) => {
             password: formData['password'].value 
         }
 
-        loginUser(user)
+        dispatch(login(user))
             .then(() => {
                 inputForm.current.reset()
                 history.push('/dash')

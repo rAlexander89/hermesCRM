@@ -1,7 +1,10 @@
 import React from 'react'
-import MenuItemsContainer from '../../navbar/options/menu-items/MenuItemsContainer'
+import { useSelector } from 'react-redux'
+import MenuItems from '../../navbar/options/menu-items/MenuItems'
 
-function Greeting({currentUser, logout}) {
+function Greeting() {
+
+    const currentUser = useSelector((state => state.entities.users[state.session.currentUserId]))
 
     function toggleShow() {
         document.getElementById("menuDropdown-Nav").classList.toggle("show");
@@ -24,14 +27,14 @@ function Greeting({currentUser, logout}) {
         }
     }
 
-    const personalGreeting = () => (
-        <div className='user-bar'>
-                <div onClick={toggleShow} className='greeting-name'>
-                        Hello, {currentUser.first_name}.
-                <MenuItemsContainer/>
-            </div>
-        </div>
-    )
+    const personalGreeting = () => {
+        return  <div className='user-bar'>
+                    <div onClick={toggleShow} className='greeting-name'>
+                            Hello, {currentUser.first_name}.
+                            <MenuItems/>
+                    </div>
+                </div>
+    }
 
     return currentUser ? personalGreeting() : null;
 }

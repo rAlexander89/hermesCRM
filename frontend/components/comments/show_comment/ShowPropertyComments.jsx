@@ -18,16 +18,14 @@ function ShowPropertyComments() {
     }, [property_id])
 
 
-    return (
-        <div className='conversation-log'>
-            {comments.map((comment) => (
-                <ShowPropertyCommentItem
-                    key={comment.id}
-                    comment={comment}
-                />
-            ))}
-        </div>
-    )
+    return <div className='conversation-log'>
+                {comments.map((comment) => (
+                    <ShowPropertyCommentItem
+                        key={comment.id}
+                        comment={comment}
+                    />
+                ))}
+            </div>
 }
 
 export default ShowPropertyComments

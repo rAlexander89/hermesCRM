@@ -3,26 +3,24 @@ import { Switch } from 'react-router-dom'
 
 import { AuthRoute, ProtectedRoute, Route } from '../utils/route_util'
 
-import NavBarContainer from './navbar/NavBarContainer'
-import SplashContainer from './splash/SplashContainer'
+import NavBar from './navbar/NavBar'
+import Splash from './splash/Splash'
 import Dashboard from './dashboard/Dashboard'
-import UserMenuContainer from './users_menu/UserMenuContainer'
+import UserMenu from './users_menu/UserMenu'
 
 
 function App() {
     
-    return (
-        <div className='app-container'>
-                <NavBarContainer/>
-            <div className='content-display'>
-                <Switch>
-                    <AuthRoute exact path ='/' component={SplashContainer}/>
-                    <ProtectedRoute exact path='/dash' component={Dashboard}/>
-                    <ProtectedRoute exact path='/user-menu' component={UserMenuContainer}/>
-                </Switch>
+    return <div className='app-container'>
+                <NavBar/>
+                <div className='content-display'>
+                    <Switch>
+                        <AuthRoute exact path ='/' component={Splash}/>
+                        <ProtectedRoute exact path='/dash' component={Dashboard}/>
+                        <ProtectedRoute exact path='/user-menu' component={UserMenu}/>
+                    </Switch>
+                </div>
             </div>
-        </div>
-    )
 }
 
 export default App

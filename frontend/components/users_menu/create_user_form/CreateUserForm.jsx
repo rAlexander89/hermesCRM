@@ -1,7 +1,10 @@
 import React, {useRef} from 'react'
+import { useDispatch } from 'react-redux'
+import { createUser } from '../../../actions/user_actions'
 
-function CreateUserForm({createUser}) {
+function CreateUserForm() {
     const newUser = useRef(null)
+    const dispatch = useDispatch()
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -16,7 +19,7 @@ function CreateUserForm({createUser}) {
             privileges: formData['privilege'].value
         }
 
-        createUser(user)
+        dispatch(createUser(user))
             .then(() => {
                 inputForm.current.reset()
                 console.log('user created')
