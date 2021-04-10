@@ -26,8 +26,6 @@ function Dashboard() {
     const pipeline = useSelector((state => state.entities.pipeline))
     const currentUser = useSelector((state => state.entities.users[state.session.currentUserId]))
 
-    debugger
-
         let ctx = {
         currentUser: currentUser,
         pipeline: 
@@ -46,17 +44,14 @@ function Dashboard() {
         setPipelineStatus: setPipelineStatus
     }
 
-
-    return (
-        <LeadsPipelineContext.Provider value={ctx}>
-            <LeadsSelector/>
-            <div className='leads-dash'>
-                <LeadStats/>
-                <LeadShow />
-                <Leads/>
-            </div>
-        </LeadsPipelineContext.Provider>
-    )
+    return  <LeadsPipelineContext.Provider value={ctx}>
+                <LeadsSelector/>
+                <div className='leads-dash'>
+                    <LeadStats/>
+                    <LeadShow />
+                    <Leads/>
+                </div>
+            </LeadsPipelineContext.Provider>
 }
 
 export default Dashboard

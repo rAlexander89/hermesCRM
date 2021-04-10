@@ -27,29 +27,27 @@ const SessionForm = () => {
             })
     }
 
-    return (
-        <div className='session-form-container'>
-            <div className='session-form-header'>
-                <h1>Hermes CRM</h1>
-            </div>
-            <form ref={inputForm} className='session-form' autoComplete="off" onSubmit={handleClick}>
-                <input
-                    type='email'
-                    className='email-field'
-                    placeholder='email'
-                    label={'email'}
-                    name={'email'}/>
+    return  <div className='session-form-container'>
+                <div className='session-form-header'>
+                    <h1>Hermes CRM</h1>
+                </div>
+                <form ref={inputForm} className='session-form' autoComplete="off" onSubmit={handleClick}>
+                    <input
+                        type='email'
+                        className='email-field'
+                        placeholder='email'
+                        label={'email'}
+                        name={'email'}/>
 
-                <input
-                    type='password'
-                    className='password-field'
-                    placeholder='password'
-                    label={'password'}
-                    name={'password'}/>
-                <button type='submit' className='session-button'> LOG IN </button>
-            </form>
-        </div>
-    )
+                    <input
+                        type='password'
+                        className='password-field'
+                        placeholder='password'
+                        label={'password'}
+                        name={'password'}/>
+                    <button type='submit' className='session-button'> LOG IN </button>
+                </form>
+            </div>  
 }
 
 export default SessionForm

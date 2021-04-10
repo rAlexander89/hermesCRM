@@ -9,7 +9,7 @@ html{
 .app-container{
     background: white;
     min-height: 1080px;
-    width: 1920px;
+    max-width: 1920px;
     display: flex;
     flex-direction: column;    
     box-shadow:

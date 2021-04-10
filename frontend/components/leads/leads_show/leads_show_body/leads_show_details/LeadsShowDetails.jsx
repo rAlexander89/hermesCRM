@@ -19,6 +19,7 @@ function LeadsShowDetails() {
             .then(res => {
                 setProperty(res.property) 
                 ctx.setContacted(pipeline.contacted)
+                ctx.setWatched(pipeline.watched)
             })
     }, [pipeline.property_id, pipeline.listingStatus, pipeline.pipelineStatus])
 
@@ -112,6 +113,7 @@ function LeadsShowDetails() {
     }
 
     if(property){
+            debugger
             return (
             <div className='lead-show-listing-detail'>
                 <div className='lead-show-contact-header'>
@@ -173,7 +175,7 @@ function LeadsShowDetails() {
                     {contacted ?                         
                         <div className='lead-detail'>
                             <div className='detail-left'>
-                                <h2 className='card-sub-title'>Watch</h2>
+                                <h2 className='card-sub-title'>Watched?</h2>
                             </div>
                             <div className='detail-right'>
                                 <div className='watched-checkbox' onClick={updateStatus}>
