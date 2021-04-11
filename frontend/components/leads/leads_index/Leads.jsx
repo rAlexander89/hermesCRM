@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import LeadIndexItem from '../leads_index_item/LeadIndexItem'
 import { LeadsPipelineContext } from '../../dashboard/Dashboard'
-
+import { newButton } from '../../misc/svgs'
 function Leads(){
 
     let ctx = useContext(LeadsPipelineContext)
@@ -26,6 +26,7 @@ function Leads(){
                                 <div className='item-address'> 
                                     <h2 className='card-title'>Address</h2>
                                 </div>
+                                {newButton()}
                         </div>
                     </div>
                 </div>

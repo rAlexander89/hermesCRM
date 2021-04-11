@@ -1,9 +1,16 @@
 import React, { useContext } from 'react'
 import { LeadsPipelineContext } from '../../dashboard/Dashboard'
+import { useDispatch } from 'react-redux'
+import { logout } from '../../../actions/session_actions'
+import { lightningBoltSVG, logoutSVG } from '../../misc/svgs'
+
 
 function LeadsSelector() {
 
     let ctx = useContext(LeadsPipelineContext)
+
+    const dispatch = useDispatch()
+
 
     function toggleLeadType(e){
         e.preventDefault();
@@ -11,8 +18,7 @@ function LeadsSelector() {
         ctx.selectPipeline !== target ? ctx.setSelectPipeline(target) : null
     }
 
-    return (
-        <div className='flex-table table-header'>
+    return  <div className='flex-table table-header'>
                     <div className='uncontacted' data-value='Uncontacted' id={ctx.selectPipeline === 'Uncontacted' ? 'selected' : null } onClick={toggleLeadType}>
                     UNCONTACTED
                 </div>
@@ -32,10 +38,12 @@ function LeadsSelector() {
                     CLOSED                     
                 </div>
                 <div className='watched' data-value='Watched' id={ctx.selectPipeline === 'Watched' ? 'selected' : null } onClick={toggleLeadType}>
-                    <span className="iconify" data-icon="vscode-icons:file-type-bolt" data-inline="false"></span>
+                    {lightningBoltSVG(toggleLeadType)}
+                </div>
+                <div className='logoff' onClick={() => dispatch(logout())}>
+                    {logoutSVG()}
                 </div>
             </div>
-    )
 }
 
 export default LeadsSelector

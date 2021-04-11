@@ -3,6 +3,8 @@
     flex-direction: row;
     justify-content: space-between;
     width: fit-content;
-    gap: 35px;
-    cursor: pointer;
+    svg{
+        cursor: pointer;
+        margin-left: 25px;
+    }
 }

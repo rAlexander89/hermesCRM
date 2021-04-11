@@ -89,11 +89,20 @@ div {
     font-family: 'Montserrat', sans-serif;
 }
 
-.bin, .watched{
+
+.watched, .logoff{
     width: 84px;
-    padding: 0.5em 0.5em;
     cursor: pointer;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#ico{
+    height: 25px;
+    width: 25px;
 }
 
 .contingencies-removed{
@@ -105,19 +114,22 @@ div {
 
 
 .uncontacted:hover, .contacted:hover, .counter-received:hover, .counter-responded:hover, 
-.under-contract:hover,.closed:hover,.contingencies-removed:hover, .watched:hover{
+.under-contract:hover,.closed:hover,.contingencies-removed:hover, .watched:hover, .logoff:hover{
     background: #ff72a6;
     color: #0e0a0a;
 }
 
 
-
+.logoff:hover{
+    svg{
+        fill: #fff;
+    }
+}
 
 #selected{
     background: white;
     color: #0e0a0a;
     font-family: 'Montserrat', sans-serif;
-    
 }
 
 #index{

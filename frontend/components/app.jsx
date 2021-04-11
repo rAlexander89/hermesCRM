@@ -7,10 +7,10 @@ import NavBar from './navbar/NavBar'
 import Splash from './splash/Splash'
 import Dashboard from './dashboard/Dashboard'
 import UserMenu from './users_menu/UsersMenu'
-
+import Modal from './modal/Modal'
 
 function App() {
-    
+
     return <div className='app-container'>
                 <NavBar/>
                 <div className='content-display'>
@@ -20,6 +20,7 @@ function App() {
                         <ProtectedRoute exact path='/user-menu' component={UserMenu}/>
                     </Switch>
                 </div>
+                <Modal/>
             </div>
 }
 
