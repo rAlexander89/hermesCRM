@@ -52,10 +52,10 @@ class Property < ApplicationRecord
     :arv_offer, 
     :bath_count, 
     :bed_count, 
-    :city,
+    :city, #x
     :county, 
     :gla, 
-    :house_number, 
+    :house_number, #x
     :arv, 
     :arv_offer, 
     :list_arv, 
@@ -66,8 +66,8 @@ class Property < ApplicationRecord
     :offer_date, 
     :offer_text, 
     :state, 
-    :st_name, 
-    :zipcode, 
+    :st_name, #x
+    :zipcode, #x
     :listing_id, 
     presence: true
 

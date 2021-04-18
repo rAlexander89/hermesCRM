@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { closeModal } from '../../actions/modal_actions'
+import CreateListing from '../users_menu/CreateListing'
 
 function Modal() {
 
@@ -10,14 +11,7 @@ function Modal() {
     if (showModal){
         return  <div className='modal-background'>
                     <div className="modal-child">
-                        hi
-                        <br>
-                        </br>
-                        <br>
-                        </br>
-                        <br>
-                        </br>
-                        hi
+                        <CreateListing/>
                     </div>
                 </div>
     }
