@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import LeadIndexItem from '../leads_index_item/LeadIndexItem'
 import { LeadsPipelineContext } from '../../dashboard/Dashboard'
 import { newButton } from '../../misc/svgs'
+
 function Leads(){
 
     let ctx = useContext(LeadsPipelineContext)

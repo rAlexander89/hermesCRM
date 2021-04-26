@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { openModal } from '../../actions/modal_actions'
+import { openModal, closeModal } from '../../actions/modal_actions'
 
 
 export function lightningBoltSVG(onClick){
@@ -27,6 +27,21 @@ export function newButton(){
     const dispatch = useDispatch()
 
     return  <div className='new-lead-button' onClick={() => dispatch(openModal())}>
+                <svg xmlns="http://www.w3.org/2000/svg" 
+                    className='r45'
+                    width="3.5em" 
+                    height="3.5em" 
+                    viewBox="0 0 32 32">
+                    <path d="M17 15V8h-2v7H8v2h7v7h2v-7h7v-2z" fill="#2d2d2d" />
+                </svg>
+            </div>
+
+}
+
+export function closeButton(){
+    const dispatch = useDispatch()
+
+    return  <div className='close-modal-button' onClick={() => dispatch(closeModal())}>
                 <svg xmlns="http://www.w3.org/2000/svg" 
                     className='r45'
                     width="3.5em" 

@@ -1,6 +1,7 @@
 import React, {useRef} from 'react'
 import { useDispatch } from 'react-redux'
 import ImportLeads from '../leads/leads_manager/ImportLeads'
+import { closeButton } from '../misc/svgs'
 
 function CreateListing() {
     const newUser = useRef(null)
@@ -29,6 +30,7 @@ function CreateListing() {
 
 
     return  <div className='create-lead-container'>
+                {closeButton()}
                 <div className='create-lead-container-header'>
                     <h5>Create New Listings </h5>
                 </div>

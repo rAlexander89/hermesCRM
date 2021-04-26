@@ -1,11 +1,10 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { closeModal } from '../../actions/modal_actions'
+import { useSelector } from 'react-redux'
 import CreateListing from '../users_menu/CreateListing'
+import { closeButton } from '../misc/svgs'
 
 function Modal() {
 
-    const dispatch = useDispatch()
     const showModal = useSelector((({ui}) => ui.modal))
     
     if (showModal){
