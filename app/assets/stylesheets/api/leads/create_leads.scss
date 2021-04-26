@@ -1,0 +1,47 @@
+.create-lead-container{
+    // padding: 35px;
+}
+
+.create-lead-container-header{
+    width: 100%;
+    background: #ff72a6;
+    padding: 1.5em;
+
+}
+
+.create-lead-container-body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.create-lead-form{
+    display: flex;
+    flex-direction: column;
+    padding: 5px 25px 25px 25px;
+    width: 100%;
+}
+
+.form-lead-top, .form-lead-bottom{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.form-lead-bottom{
+    align-items: center;
+}
+
+.form-lead-top > div {
+    margin: 15px;
+}
+
+.lead-create-col{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.lead-create-col-header{
+    margin-bottom: 10px;
+}
