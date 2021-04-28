@@ -23,52 +23,50 @@ class Api::CsvController < ApplicationController
     def import
         CSV.foreach(params[:csv].path, headers: true, :header_converters => :symbol, skip_blanks: true, encoding:'iso-8859-1:utf-8') do |row, i|
 
-            property_hash = 
-                {
-                    address: row[:address], 
-                    city: row[:city],
-                    zipcode: row[:zip],
-                    house_number: row[:housenumber],
-                    st_prefix: row[:street_prefix],
-                    st_name: row[:street_name],
-                    st_suffix: row[:street_suffix],
-                    county: row[:county],
-                    state: row[:state],
-                    apn: row[:apn],
-                    arv_offer: row[:ao],
-                    list_arv: row[:la],
-                    list_price: row[:listprice],
+            property_hash = {
+                    address: row[:address], #
+                    city: row[:city], #
+                    zipcode: row[:zip],#
+                    house_number: row[:housenumber], #
+                    st_prefix: row[:street_prefix], #
+                    st_name: row[:street_name], #
+                    st_suffix: row[:street_suffix], #
+                    county: row[:county], #
+                    state: row[:state], #
+                    apn: row[:apn], #
+                    arv_offer: row[:ao], 
+                    list_arv: row[:la], 
+                    list_price: row[:listprice], #
                     list_offer: row[:lo],
                     offer_date_dash: row[:date],
                     offer_date: row[:datetext],
-                    offer_text: row[:offertext],
-                    offer: row[:offer],
-                    arv: row[:arv],
-                    bac: row[:bac],
-                    bed_count: row[:bed],
-                    bath_count: row[:bath],
-                    lot_area: row[:lot_area],
-                    gla: row[:gla],
-                    listing_id: row[:listing_id],
-                    agent_id: row[:agentid],
-
-                }
+                    offer_text: row[:offertext], #///
+                    offer: row[:offer], #
+                    arv: row[:arv], #
+                    bac: row[:bac], #
+                    bed_count: row[:bed], #
+                    bath_count: row[:bath], #
+                    lot_area: row[:lot_area], #
+                    gla: row[:gla], #
+                    listing_id: row[:listing_id], #
+                    agent_id: row[:agentid], #
+            }
 
             pipeline_hash = {
-                listing_status: row[:status]
+                listing_status: row[:status] #
             }
 
             # IO.write("../../log/failed_property_insert", row_hash.join(' ') + '\n, mode: 'a')
 
             agent_hash = 
                 {
-                    agent_first: row[:firstname],
-                    agent_last: row[:lastname],
-                    agent_contact: row[:cell],
-                    agent_email: row[:email],
-                    agent_id: row[:agentid],
-                    agent_broker: row[:officename],
-                    agent_broker_id: row[:officeid],
+                    agent_first: row[:firstname], #
+                    agent_last: row[:lastname],# 
+                    agent_contact: row[:cell], #
+                    agent_email: row[:email], #
+                    agent_id: row[:agentid], #
+                    agent_broker: row[:officename], #
+                    agent_broker_id: row[:officeid], #
                 }
 
             # Agent.create! agent_hash 

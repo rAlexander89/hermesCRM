@@ -48,3 +48,153 @@ export const floatToPercTotal = (num, den) => {
     if ( den === 0 && num === 0) return null
     return Math.floor(num/den * 100).toString()
 }
+
+// turns a num into a word -- code from: https://www.onlinecode.org/convert-number-words-javascript/
+export function numToWord(num){
+    s = num;
+    // System for American Numbering 
+    var th_val = ['', 'thousand', 'million', 'billion', 'trillion'];
+    // System for uncomment this line for Number of English 
+    // var th_val = ['','thousand','million', 'milliard','billion'];
+    
+    var dg_val = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+    var tn_val = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+    var tw_val = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
+    s = s.toString();
+    s = s.replace(/[\, ]/g, '');
+    if (s != parseFloat(s))
+        return 'not a number ';
+    var x_val = s.indexOf('.');
+    if (x_val == -1)
+        x_val = s.length;
+    if (x_val > 15)
+        return 'too big';
+    var n_val = s.split('');
+    var str_val = '';
+    var sk_val = 0;
+
+    for (var i = 0; i < x_val; i++) {
+        if ((x_val - i) % 3 == 2) {
+            if (n_val[i] == '1') {
+                str_val += tn_val[Number(n_val[i + 1])] + ' ';
+                i++;
+                sk_val = 1;
+            } else if (n_val[i] != 0) {
+                str_val += tw_val[n_val[i] - 2] + ' ';
+                sk_val = 1;
+            }
+        } else if (n_val[i] != 0) {
+            str_val += dg_val[n_val[i]] + ' ';
+            if ((x_val - i) % 3 == 0)
+                str_val += 'hundred ';
+            sk_val = 1;
+        }
+        if ((x_val - i) % 3 == 1) {
+            if (sk_val)
+                str_val += th_val[(x_val - i - 1) / 3] + ' ';
+            sk_val = 0;
+        }
+    }
+
+    if (x_val != s.length) {
+        var y_val = s.length;
+        str_val += 'point ';
+        for (var i = x_val + 1; i < y_val; i++)
+            str_val += dg_val[n_val[i]] + ' ';
+    }
+
+    return str_val.replace(/\s+/g, ' ');
+}
+
+export function getOfferDate(type){
+
+    let date = new Date
+    let year = date.getFullYear()
+    let month = date.getMonth()
+    let day = date.getDate()
+
+    let truncMonth = [
+        'Jan', 'Feb', 'Mrc', 'Apr',
+        'May', 'Jun', 'Jly', 'Aug',
+        'Sep', 'Oct', 'Nov', 'Dec'
+    ]
+
+    switch(type){
+        case 'dash':
+            month.toString()
+            day.toString()
+            month += 1
+            month = month.length > 1 ? month : '0' + month
+            day = day.length > 1 ? day : '0' + day
+            let dateDash = month + '/' + day + '/' + year
+            return dateDash
+        default:
+            let truncDate = truncMonth[month].toString() + ' ' + day.toString() + ' ' + year.toString()
+            return truncDate
+    }
+}
+
+export function formAddress(houseNumber, stPrefix, stName, stSuffix,){
+    let address;
+    if (stPrefix.length > 0 && stSuffix.length > 0) {
+        address = houseNumber + ' ' + stPrefix + ' ' + stName + ' ' + stSuffix
+    } else if ( stPrefix.length === 0 && stSuffix.length > 0 ){
+        address = houseNumber + ' ' + ' ' + stName + ' ' + stSuffix
+    } else if ( stPrefix.length === 0 && stSuffix.length === 0 ){
+        address = houseNumber + ' ' + stName +
+    }
+    return address
+}
+
+// take the form data from the individual lead maker and writes it in a way that is friendly to our backend.
+export function prepNewLead(formData){
+
+    debugger
+
+    const newLead = {
+        agent_hash: {
+            agent_first: formData['agent_first'].value,
+            angent_last: formData['agent_last'].value,
+            agent_contact: formData['agent_contact'].value,
+            agent_email: formData['agent_email'].value,
+            agent_id: formData['agent_id'].value,
+            agent_broker: formData['agent_broker_name'].value,
+            agent_broker_id: formData['agent_broker_id'].value
+
+        },
+        pipeline_hash: {
+            listing_status: formData['status'].value,
+        },
+        property_hash: {
+            address: formAddress(formData['house_number'].value, formData['st_prefix'].value, formData['street_name'].value, formData['st_suffix'].value ),
+            city: formData['city'].value,
+            zipcode: formData['zipcode'].value,
+            house_number: formData['house_number'].value,
+            st_prefix: formData['st_prefix'].value,
+            st_name: formData['street_name'].value,
+            st_suffix: formData['st_suffix'].value,
+            county: formData['county'].value,
+            state: formData['state'].value,
+            apn: formData['apn'].value,
+            arv_offer: truncDigits(parseInt(formData['offer'].value) / parseInt(formData['arv'].value)),
+            list_arv: truncDigits(parseInt(formData['list_price'].value) / parseInt(formData['arv'].value)),
+            list_price: formData['list_price'].value,
+            list_offer: truncDigits(parseInt(formData['offer'].value) / parseInt(formData['list_price'].value)),
+            offer_date_dash: getOfferDate('dash'),
+            offer_date: getOfferDate(),
+            offer_text: numToWord(formData['offer'].value),
+            offer: formData['offer'].value,
+            arv: formData['arv'].value,
+            bac: formData['bac'].value,
+            bed_count: formData['bed_count'].value,
+            bath_count: formData['bath_count'].value,
+            lot_area: formData['gla'].value,
+            gla: formData['gla'].value,
+            listing_id: formData['listing_id'].value,
+            agent_id: formData['agent_id'].value,
+        }
+    }
+
+    return newLead
+
+}

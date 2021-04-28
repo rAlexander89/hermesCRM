@@ -1,11 +1,12 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
-import CreateListing from '../users_menu/CreateListing'
-import { closeButton } from '../misc/svgs'
+import { useSelector, useDispatch } from 'react-redux'
+import CreateListing from '../users_menu//create_lead/CreateListing'
+import { closeModal } from '../../actions/modal_actions'
 
 function Modal() {
 
     const showModal = useSelector((({ui}) => ui.modal))
+    const dispatch = useDispatch()
     
     if (showModal){
         return  <div className='modal-background'>

@@ -39,7 +39,8 @@
     align-items: center;
     height: 35px;
     box-sizing: border-box;
-    border: 1px solid #d4d5d6;
+    border-top: 1px solid #d4d5d6;
+    border-bottom: 1px solid #d4d5d6;
     
 }
 
@@ -62,7 +63,7 @@
     height: 100%;
     padding-left: 15px;
     padding-right: 15px;
-    border-left: 1px solid #d4d5d6;
+    // border-left: 1px solid #d4d5d6;
 }
 
 
@@ -105,9 +106,6 @@
     cursor: pointer;
 }
 
-.file-select-button:hover{
-    border-left: 1px solid white;
-}
 
 .file-upload-submit:hover, .file-select-button:hover{
     background: #ff72a6;
@@ -149,5 +147,4 @@ input[type="file"] {
     border-left: 1px solid rgb(22,22,22);
     width: 200px;
     height: 35px;
-
 }
