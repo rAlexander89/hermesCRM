@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :csv do 
         collection { post :import }
       end
+      resources :leads, only: [:create, :show, :destroy]
       resources :pipeline, only: [:index, :show, :create, :update, :destroy] do
          collection do 
           get 'fetch_uncontacted_properties'

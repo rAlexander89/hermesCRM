@@ -7,6 +7,7 @@ import CreateListingDetails from './CreateListingDetails'
 import CreateProperty from './CreateProperty'
 import PropertyDetails from './PropertyDetails'
 import { prepNewLead } from '../../../utils/misc/formatting/formatting'
+import { createSingleLead } from '../../../actions/lead_actions'
 
 function CreateListing() {
     const newUser = useRef(null)
@@ -16,9 +17,13 @@ function CreateListing() {
         e.preventDefault();
 
         let formData = newUser.current
+        let newLead = prepNewLead(formData)
 
-        console.log(prepNewLead(formData))
-
+        dispatch(createSingleLead(newLead))
+            // .then((res) => {
+            //     newUser.current.reset()
+            //     console.log(res)
+            // })
 
 
     //     const user = {
@@ -38,8 +43,6 @@ function CreateListing() {
         
     }
     
-
-
     return  <div className='create-lead-container'>
                 {closeButton()}
                 <div className='create-lead-container-header'>

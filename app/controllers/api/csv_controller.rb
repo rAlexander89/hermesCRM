@@ -69,8 +69,6 @@ class Api::CsvController < ApplicationController
                     agent_broker_id: row[:officeid], #
                 }
 
-            # Agent.create! agent_hash 
-            # Property.create! property_hash
             create_agent(agent_hash)
             create_property(property_hash, pipeline_hash)
         end

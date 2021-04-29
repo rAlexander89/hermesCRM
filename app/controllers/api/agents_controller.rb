@@ -1,4 +1,5 @@
 class Api::AgentsController < ApplicationController
+    before_action :require_login
 
     helper_method :create
     

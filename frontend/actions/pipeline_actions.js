@@ -14,7 +14,6 @@ const CONTINGENCIES_REMOVED ='Contingencies Removed'
 const CLOSED = 'Closed'
 
 
-
 export const receivePipeline = pipeline => {
     return{
         type: RECEIVE_PIPELINE,

@@ -21,6 +21,9 @@ export function updateDate(date){
 
 // truncates offer ratios (O-L, L-A) down to the 100th point ex: 0.2131231231 -> 0.21
 export function truncDigits(num){
+    if (typeof num === 'number'){
+        num = num.toString()
+    }
     return num.substring(0,4)
 }
 
@@ -51,7 +54,7 @@ export const floatToPercTotal = (num, den) => {
 
 // turns a num into a word -- code from: https://www.onlinecode.org/convert-number-words-javascript/
 export function numToWord(num){
-    s = num;
+    let s = num;
     // System for American Numbering 
     var th_val = ['', 'thousand', 'million', 'billion', 'trillion'];
     // System for uncomment this line for Number of English 
@@ -106,6 +109,8 @@ export function numToWord(num){
     return str_val.replace(/\s+/g, ' ');
 }
 
+
+// Figures the date 
 export function getOfferDate(type){
 
     let date = new Date
@@ -141,15 +146,14 @@ export function formAddress(houseNumber, stPrefix, stName, stSuffix,){
     } else if ( stPrefix.length === 0 && stSuffix.length > 0 ){
         address = houseNumber + ' ' + ' ' + stName + ' ' + stSuffix
     } else if ( stPrefix.length === 0 && stSuffix.length === 0 ){
-        address = houseNumber + ' ' + stName +
+        address = houseNumber + ' ' + stName
     }
-    return address
+    return address.toString()
 }
 
 // take the form data from the individual lead maker and writes it in a way that is friendly to our backend.
 export function prepNewLead(formData){
 
-    debugger
 
     const newLead = {
         agent_hash: {
@@ -166,32 +170,32 @@ export function prepNewLead(formData){
             listing_status: formData['status'].value,
         },
         property_hash: {
-            address: formAddress(formData['house_number'].value, formData['st_prefix'].value, formData['street_name'].value, formData['st_suffix'].value ),
-            city: formData['city'].value,
-            zipcode: formData['zipcode'].value,
-            house_number: formData['house_number'].value,
-            st_prefix: formData['st_prefix'].value,
-            st_name: formData['street_name'].value,
-            st_suffix: formData['st_suffix'].value,
-            county: formData['county'].value,
-            state: formData['state'].value,
-            apn: formData['apn'].value,
-            arv_offer: truncDigits(parseInt(formData['offer'].value) / parseInt(formData['arv'].value)),
-            list_arv: truncDigits(parseInt(formData['list_price'].value) / parseInt(formData['arv'].value)),
+            address: formAddress(formData['house_number'].value, formData['st_prefix'].value, formData['street_name'].value, formData['st_suffix'].value ),//
+            city: formData['city'].value,//
+            zipcode: formData['zipcode'].value.toString(), //
+            house_number: formData['house_number'].value, //
+            st_prefix: formData['st_prefix'].value,//
+            st_name: formData['street_name'].value,//
+            st_suffix: formData['st_suffix'].value,//
+            county: formData['county'].value,//
+            state: formData['state'].value,//
+            apn: formData['apn'].value,//
+            arv_offer: truncDigits(parseInt(formData['offer'].value) / parseInt(formData['arv'].value)),//
+            list_arv: truncDigits(parseInt(formData['list_price'].value) / parseInt(formData['arv'].value)),//
             list_price: formData['list_price'].value,
-            list_offer: truncDigits(parseInt(formData['offer'].value) / parseInt(formData['list_price'].value)),
+            list_offer: truncDigits(parseInt(formData['offer'].value) / parseInt(formData['list_price'].value)),//
             offer_date_dash: getOfferDate('dash'),
             offer_date: getOfferDate(),
             offer_text: numToWord(formData['offer'].value),
-            offer: formData['offer'].value,
-            arv: formData['arv'].value,
-            bac: formData['bac'].value,
-            bed_count: formData['bed_count'].value,
-            bath_count: formData['bath_count'].value,
-            lot_area: formData['gla'].value,
-            gla: formData['gla'].value,
-            listing_id: formData['listing_id'].value,
-            agent_id: formData['agent_id'].value,
+            offer: formData['offer'].value.toString(),//
+            arv: formData['arv'].value.toString(),//
+            bac: formData['bac'].value.toString(),//
+            bed_count: formData['bed_count'].value,//
+            bath_count: formData['bath_count'].value,//
+            lot_area: formData['gla'].value,//
+            gla: formData['gla'].value,//
+            listing_id: formData['listing_id'].value.toString(), //
+            agent_id: formData['agent_id'].value.toString(),
         }
     }
 
