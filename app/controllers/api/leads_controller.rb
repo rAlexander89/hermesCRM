@@ -1,3 +1,5 @@
+require 'byebug'
+
 class Api::LeadsController < ApplicationController
     before_action :require_login
 
@@ -22,16 +24,64 @@ class Api::LeadsController < ApplicationController
     end
 
     def create
-        @lead = lead_params[:data]
-        debugger
-        puts @lead
+        @lead = params
 
+        property_hash = {
+                address: @lead[:address], #
+                city: @lead[:city], #
+                zipcode: @lead[:zip],#
+                house_number: @lead[:housenumber], #
+                st_prefix: @lead[:street_prefix], #
+                st_name: @lead[:street_name], #
+                st_suffix: @lead[:street_suffix], #
+                county: @lead[:county], #
+                state: @lead[:state], #
+                apn: @lead[:apn], #
+                arv_offer: @lead[:ao], 
+                list_arv: @lead[:la], 
+                list_price: @lead[:listprice], #
+                list_offer: @lead[:lo],
+                offer_date_dash: @lead[:date],
+                offer_date: @lead[:datetext],
+                offer_text: @lead[:offertext], #///
+                offer: @lead[:offer], #
+                arv: @lead[:arv], #
+                bac: @lead[:bac], #
+                bed_count: @lead[:bed], #
+                bath_count: @lead[:bath], #
+                lot_area: @lead[:lot_area], #
+                gla: @lead[:gla], #
+                listing_id: @lead[:listing_id], #
+                agent_id: @lead[:agentid] #
+        }
+
+        pipeline_hash = {
+            listing_status: @lead[:status] #
+        }
+
+        # IO.write("../../log/failed_property_insert", @lead_hash.join(' ') + '\n, mode: 'a')
+
+        agent_hash = {
+                agent_first: @lead[:firstname], #
+                agent_last: @lead[:lastname],# 
+                agent_contact: @lead[:cell], #
+                agent_email: @lead[:email], #
+                agent_id: @lead[:agentid], #
+                agent_broker: @lead[:officename], #
+                agent_broker_id: @lead[:officeid] #
+        }
+
+        debugger
+
+
+        create_agent(agent_hash)
+        create_property(property_hash, pipeline_hash)
     end
 
     private
 
     def lead_params
-        params.permit(:agent_hash, :pipeline_hash, :property_hash)
+        params.permit!
+    #     params.require(:property).permit(:property_hash)
     end
-
 end

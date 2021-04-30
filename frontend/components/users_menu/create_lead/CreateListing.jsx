@@ -18,29 +18,9 @@ function CreateListing() {
 
         let formData = newUser.current
         let newLead = prepNewLead(formData)
+        // jsonToCSV(newLead)
 
         dispatch(createSingleLead(newLead))
-            // .then((res) => {
-            //     newUser.current.reset()
-            //     console.log(res)
-            // })
-
-
-    //     const user = {
-    //         first_name: formData['first-name'].value,
-    //         last_name: formData['last-name'].value,
-    //         password: formData['password'].value,
-    //         email: formData['email'].value,
-    //         privileges: formData['privilege'].value
-    //     }
-
-    //     dispatch(createUser(user))
-    //         .then(() => {
-    //             inputForm.current.reset()
-    //             console.log('user created')
-    //             history.push('/dash')
-    //         })
-        
     }
     
     return  <div className='create-lead-container'>

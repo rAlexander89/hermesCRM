@@ -31,6 +31,8 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
         setSelectedLead(showData)
     }
 
+    debugger
+
 
     if (agent){
         return(
