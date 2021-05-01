@@ -23,7 +23,7 @@ json.property do
     :list_arv,
     :offer,
     :offer_text,
-    :pipeline,
+    # :pipeline,
     :arv,
     :bac,
     :list_price,

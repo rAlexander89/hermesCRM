@@ -7,7 +7,7 @@ import {
 
 const propertiesReducer = (state = {}, action) => {
     Object.freeze(state);
-    
+
     switch (action.type) {
         case RECEIVE_PROPERTIES:
             return Object.assign({}, state, action.properties)
@@ -15,7 +15,7 @@ const propertiesReducer = (state = {}, action) => {
             return Object.assign({}, state, {uncontactedProperties: action.properties})
         case RECEIVE_PROPERTY:
             let { property } = action.property
-            return Object.assign({}, state, { property: property })
+            return Object.assign({}, state, property )
         case REMOVE_PROPERTY:
             let newState = Object.assign({}, state);
             delete newState[action.propertyId];

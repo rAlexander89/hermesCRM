@@ -8,6 +8,8 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
 
     const [agent, setAgent] = useState(false);
     const [property, setProperty] = useState(false);
+
+
     
     useEffect(() => {
         fetchProperty(lead.property_id)
@@ -28,7 +30,7 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
             agent: agent,
             pipeline: lead
         }
-        debugger
+
         setSelectedLead(showData)
     }
 

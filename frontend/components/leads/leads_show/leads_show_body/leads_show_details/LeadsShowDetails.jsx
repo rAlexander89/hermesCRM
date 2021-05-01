@@ -11,7 +11,9 @@ function LeadsShowDetails({}) {
     const [property, setProperty] = useState(false)
     
     let ctx = useContext(LeadsPipelineContext)
+    debugger
     let { pipeline } = ctx.selectedLead
+    debugger
     let { contacted, watched } = ctx
 
     if (!pipeline){ return null}
@@ -24,6 +26,7 @@ function LeadsShowDetails({}) {
                 setProperty(res.property) 
                 ctx.setContacted(pipeline.contacted)
                 ctx.setWatched(pipeline.watched)
+                ctx.setPipelineStatus(pipeline.pipeline_status)
             })
     }, [pipeline.property_id, pipeline.listingStatus, pipeline.pipelineStatus])
 
@@ -102,6 +105,7 @@ function LeadsShowDetails({}) {
                 <div className='detail-right'>
                     {contacted ?
                     <select className='pipeline-status-select' value={value} onChange={updateStatus}>
+                     {/* <select className='pipeline-status-select' value={status} onChange={updateStatus}> */}
                         <option value='Contacted'>Contacted</option>
                         <option value='Counter Received'>Counter Received</option>
                         <option value='Counter Responded'>Counter Responded</option>
