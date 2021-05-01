@@ -9,6 +9,7 @@ function LeadShowContact() {
     let ctx = useContext(LeadsPipelineContext)
 
     if (ctx.selectedLead.property_id){
+
         return  <div className='lead-show-contact-container'>
                     <div className='agent-contact-container'>
                         <div className='lead-show-contact-header'>

@@ -6,13 +6,17 @@ import { LeadsPipelineContext } from '../../../../dashboard/Dashboard'
 import { fetchProperty } from '../../../../../utils/api/property_api_util'
 
 
-function LeadsShowDetails() {
+function LeadsShowDetails({}) {
 
     const [property, setProperty] = useState(false)
     
     let ctx = useContext(LeadsPipelineContext)
     let { pipeline } = ctx.selectedLead
     let { contacted, watched } = ctx
+
+    if (!pipeline){ return null}
+
+    debugger
 
     useEffect(() => {
         fetchProperty(pipeline.property_id)

@@ -6,6 +6,7 @@ import { LeadsPipelineContext } from '../../dashboard/Dashboard'
 function CreateCommentForm() {
 
     let ctx = useContext(LeadsPipelineContext)
+
     const dispatch = useDispatch()
 
     const commentForm = useRef(null)

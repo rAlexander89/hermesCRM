@@ -5,6 +5,7 @@ import Leads from '../leads/leads_index/Leads'
 import LeadStats from '../lead_stats/LeadStats'
 import LeadShow from '../leads/leads_show/LeadShow'
 import LeadsSelector from '../leads/leads_selector/LeadsSelector'
+import { newLeadCycle } from '../../utils/misc/functionality/api_functionality'
 
 export const LeadsPipelineContext = React.createContext()
 
@@ -17,14 +18,19 @@ function Dashboard() {
     const [listingStatus, setListingStatus] = useState(null)
     const [pipelineStatus, setPipelineStatus] = useState(null)
 
+    const lead = useSelector(state => state.entities.leads)
+    const pipeline = useSelector((state => state.entities.pipeline))
+    const currentUser = useSelector((state => state.entities.users[state.session.currentUserId]))
+
     const dispatch = useDispatch()
     
     useEffect(() => {
         dispatch(fetchPipeline(selectPipeline))
     },[selectPipeline, contacted, listingStatus, pipelineStatus]);
 
-    const pipeline = useSelector((state => state.entities.pipeline))
-    const currentUser = useSelector((state => state.entities.users[state.session.currentUserId]))
+    useEffect(() => {
+        newLeadCycle(lead, setSelectedLead, dispatch, fetchPipeline, selectPipeline )
+    }, [lead])
 
         let ctx = {
         currentUser: currentUser,
@@ -43,6 +49,8 @@ function Dashboard() {
         pipelineStatus: pipelineStatus,
         setPipelineStatus: setPipelineStatus
     }
+
+
 
     return  <LeadsPipelineContext.Provider value={ctx}>
                 <LeadsSelector/>

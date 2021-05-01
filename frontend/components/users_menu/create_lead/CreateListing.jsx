@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch,  } from 'react-redux'
 import ImportLeads from '../../leads/leads_manager/ImportLeads'
 import { closeButton } from '../../misc/svgs'
 import CreateAgent from './CreateAgent'
@@ -10,15 +10,17 @@ import { prepNewLead } from '../../../utils/misc/formatting/formatting'
 import { createSingleLead } from '../../../actions/lead_actions'
 
 function CreateListing() {
+
+
     const newUser = useRef(null)
     const dispatch = useDispatch()
+
 
     const handleClick = (e) => {
         e.preventDefault();
 
         let formData = newUser.current
         let newLead = prepNewLead(formData)
-        // jsonToCSV(newLead)
 
         dispatch(createSingleLead(newLead))
     }

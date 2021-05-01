@@ -7,7 +7,7 @@ import { LeadsPipelineContext } from '../../dashboard/Dashboard'
 function LeadShow(){
 
     let ctx = useContext(LeadsPipelineContext)
-    
+
     const leadData = (selectedLead) => {
         if (selectedLead){
             document.querySelector('.lead-show-container').classList.add('show');

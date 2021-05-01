@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import CreateListing from '../users_menu//create_lead/CreateListing'
 import { closeModal } from '../../actions/modal_actions'
 
-function Modal() {
+function Modal({setFromModal}) {
 
     const showModal = useSelector((({ui}) => ui.modal))
     const dispatch = useDispatch()
@@ -11,7 +11,7 @@ function Modal() {
     if (showModal){
         return  <div className='modal-background'>
                     <div className="modal-child">
-                        <CreateListing/>
+                        <CreateListing setFromModal={setFromModal}/>
                     </div>
                 </div>
     }

@@ -3,15 +3,43 @@ require 'byebug'
 class Api::LeadsController < ApplicationController
     before_action :require_login
 
+
+    def create_lead(agent_hash, property_hash, pipeline_hash)
+        
+        @agent = Agent.new(agent_hash)
+        
+        if @agent.save!
+            puts 'agent saved!'
+            @property = Property.new(property_hash)
+
+            if @property.save!
+                @pipeline = Pipeline.new(property_id: @property.id, pipeline_status: 'Uncontacted', listing_status: pipeline_hash[:listing_status])
+
+                if @pipeline.save!
+                    lead = {
+                        "property" => @property.id,
+                        "pipeline" => @pipeline,
+                        "agent" => @agent
+                    }
+                    render json: lead
+                end
+            else 
+                redirect json: @property.errors.full_messages, status: 422
+                puts 'property and pipeline did not save'
+            end
+        end
+
+    end
+
      def create_property(property_hash, pipeline_hash)
         @property = Property.new(property_hash)
         if @property.save!
             @pipeline = Pipeline.new(property_id: @property.id, pipeline_status: 'Uncontacted', listing_status: pipeline_hash[:listing_status])
             if @pipeline.save!
-                puts 'pipeline saved!'
+                render json: @property
             end
         else 
-            render json: @property.errors.full_messages, status: 422
+            redirect json: @property.errors.full_messages, status: 422
             puts 'property and pipeline did not save'
         end
     end
@@ -71,17 +99,12 @@ class Api::LeadsController < ApplicationController
                 agent_broker_id: @lead[:officeid] #
         }
 
-        debugger
-
-
-        create_agent(agent_hash)
-        create_property(property_hash, pipeline_hash)
+        create_lead(agent_hash, property_hash, pipeline_hash)
     end
 
     private
 
     def lead_params
         params.permit!
-    #     params.require(:property).permit(:property_hash)
     end
 end

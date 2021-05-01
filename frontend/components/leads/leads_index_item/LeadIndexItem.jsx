@@ -28,10 +28,9 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
             agent: agent,
             pipeline: lead
         }
+        debugger
         setSelectedLead(showData)
     }
-
-    debugger
 
 
     if (agent){
