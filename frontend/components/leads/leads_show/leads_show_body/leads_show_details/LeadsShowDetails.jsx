@@ -11,14 +11,10 @@ function LeadsShowDetails({}) {
     const [property, setProperty] = useState(false)
     
     let ctx = useContext(LeadsPipelineContext)
-    debugger
     let { pipeline } = ctx.selectedLead
-    debugger
     let { contacted, watched } = ctx
-
     if (!pipeline){ return null}
 
-    debugger
 
     useEffect(() => {
         fetchProperty(pipeline.property_id)
