@@ -34,6 +34,7 @@ export const fetchPipelineById = pipelineId => dispatch => {
 }
 
 export const fetchPipeline = pipeline_status => dispatch => {
+    debugger
     switch(pipeline_status){
         case(UNCONTACTED):
             return PipelineAPIUtils.fetchUncontactedProperties()

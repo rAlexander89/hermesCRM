@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { useDispatch } from 'react-redux'
+import { fetchPipeline } from '../../../actions/pipeline_actions'
 import { importProperties } from '../../../actions/property_actions'
 
 function ImportLeads() {
@@ -12,10 +13,16 @@ function ImportLeads() {
         const data = new FormData()
         
         data.append('csv', fileRef.current.files[0])
+
         
         dispatch(importProperties(data))
-            .then((res) => {
-                console.log('success')
+            .then(res => {
+                debugger
+                if (res.type === "RECEIVE_CSV"){
+                    const UNCONTATED = 'Uncontacted'
+                    dispatch(fetchPipeline(UNCONTATED))
+                    console.log('success')
+                }
             })
     }
 
