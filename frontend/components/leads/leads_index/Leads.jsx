@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import LeadIndexItem from '../leads_index_item/LeadIndexItem'
 import { LeadsPipelineContext } from '../../dashboard/Dashboard'
 import { newButton } from '../../misc/svgs'
@@ -6,6 +6,8 @@ import { newButton } from '../../misc/svgs'
 function Leads(){
 
     let ctx = useContext(LeadsPipelineContext)
+
+    const [highlightedLead, setHighlightedLead] = useState(null)
     
     function dispositionSelector(pipeline){
         return <div className='flex-table-body'>
@@ -15,6 +17,8 @@ function Leads(){
                             lead={lead}
                             key={lead.id}
                             status={lead.listing_status}
+                            highlightedLead={highlightedLead}
+                            setHighlightedLead={setHighlightedLead}
                             setSelectedLead={ctx.setSelectedLead}              
                         />))}
                 </div>

@@ -127,9 +127,16 @@
     justify-content: center;
 }
 
+#selected-lead{
+    background: #f37ba7;
+}
+
 .lead-index-item:hover{
-    transition: all 0.2s ease-out;
     background: #ffc7dc;
+}
+
+.lead-index-item:hover, #selected-lead{
+    transition: all 0.2s ease-out;
     &.number{
         border-right: 2px solid #f4f5f7;
         border-bottom: 2px solid #f4f5f7;

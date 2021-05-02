@@ -20,7 +20,6 @@ function Dashboard() {
 
     const lead = useSelector(state => state.entities.leads)
     const pipeline = useSelector((state => state.entities.pipeline))
-    debugger
     const currentUser = useSelector((state => state.entities.users[state.session.currentUserId]))
 
     const dispatch = useDispatch()

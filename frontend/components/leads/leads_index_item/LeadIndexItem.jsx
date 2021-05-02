@@ -4,13 +4,11 @@ import { fetchProperty } from '../../../utils/api/property_api_util'
 import {addComma, offerDate, truncDigits, truncStatus, formatContact, updateDate} from '../../../utils/misc/formatting/formatting'
 
 
-function LeadIndexItem({lead, index, setSelectedLead}) {
+function LeadIndexItem({lead, index, setSelectedLead, highlightedLead, setHighlightedLead}) {
 
-    const [agent, setAgent] = useState(false);
-    const [property, setProperty] = useState(false);
+    const [agent, setAgent] = useState(false)
+    const [property, setProperty] = useState(false)
 
-
-    
     useEffect(() => {
         fetchProperty(lead.property_id)
             .then(property => {
@@ -22,6 +20,12 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
             })     
     }, [lead.property_id])
 
+    function isHighltedLead(propertyId, highlightedLead){
+        return propertyId === highlightedLead
+    }
+
+
+
     const showThisLead = (e, property, lead, agent, setSelectedLead) => {
         e.preventDefault();
         
@@ -31,13 +35,14 @@ function LeadIndexItem({lead, index, setSelectedLead}) {
             pipeline: lead
         }
 
+        setHighlightedLead(property.id)
         setSelectedLead(showData)
-    }
 
+    }
 
     if (agent){
         return(
-            <div className={`lead-index-item x${index}`} onDoubleClick={e => showThisLead(e, property, lead, agent, setSelectedLead)}>
+            <div className={`lead-index-item x${index}`} id={ isHighltedLead(property.id, highlightedLead) ? 'selected-lead' : null }  onDoubleClick={e => showThisLead(e, property, lead, agent, setSelectedLead)}>
                 <div className='number'>
                     <div className="flex-row" id='index'>{index + 1}</div>
                 </div>

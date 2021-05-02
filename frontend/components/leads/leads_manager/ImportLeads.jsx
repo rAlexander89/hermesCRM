@@ -17,7 +17,6 @@ function ImportLeads() {
         
         dispatch(importProperties(data))
             .then(res => {
-                debugger
                 if (res.type === "RECEIVE_CSV"){
                     const UNCONTATED = 'Uncontacted'
                     dispatch(fetchPipeline(UNCONTATED))
