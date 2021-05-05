@@ -36,9 +36,6 @@ function ImportLeads() {
                 </div>
                 <div className='file-upload-bar'>
                     <div className='file-container-left'>
-                        {/* <div className='file-upload-header'>
-                            Upload Leads &#40;.csv&#41;
-                        </div> */}
                         <form className='file-upload-form'>
                             <label className='file-select-button'>
                                 <h5>select csv</h5>

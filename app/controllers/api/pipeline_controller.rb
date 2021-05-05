@@ -2,7 +2,7 @@ class Api::PipelineController < ApplicationController
 
     def index
         @pipelines = Pipeline.all
-        render json: @pipelines
+        render :index
     end
 
     def show
@@ -12,51 +12,66 @@ class Api::PipelineController < ApplicationController
         else
             render json: @pipeline.errors.full_messages, status: 422
         end
-
     end
 
-    def fetch_uncontacted_properties
-        @pipeline = Pipeline.where(pipeline_status: 'Uncontacted').or(Pipeline.where(pipeline_status: 'Active')).where.not(contacted: true)
-        render :index
+    def fetch_pipeline
+        if (params[:pipeline_status] == 'Contacted')
+            @pipelines = Pipeline.where(contacted: true)
+            render :index
+        elsif (params[:pipeline_status] == 'stats')
+            @pipelines = Pipeline.all
+            render :index
+        elsif (!!params[:pipeline_status])
+            @pipelines = Pipeline.where(pipeline_status: params[:pipeline_status])
+            render :index
+        # else
+        #     @pipelines = Pipeline.all
+        #     render :index
+        end
     end
+
+    # def fetch_uncontacted_properties
+    #     # @pipeline = Pipeline.where(pipeline_status: 'Uncontacted').or(Pipeline.where(pipeline_status: 'Active')).where.not(contacted: true)
+    #     @pipelines = Pipeline.where(pipeline_status: 'Uncontacted').or(Pipeline.where(pipeline_status: 'Active')).where.not(contacted: true)
+    #     debugger
+    #     render :index
+    # end
     
-    def fetch_contacted_properties
-        @pipeline = Pipeline.where(contacted: true)
-        render :index
-    end
+    # def fetch_contacted_properties
+    #     @pipelines = Pipeline.where(contacted: true)
+    #     # @pipeline = Pipeline.where(contacted: true)
+    #     render :index
+    # end
 
-    def fetch_watched_properties
-        @pipeline = Pipeline.where(watched: true)
-        render :index
-    end
+    # def fetch_watched_properties
+    #     @pipeline = Pipeline.where(watched: true)
+    #     render :index
+    # end
 
-    def fetch_counter_received_properties
-        @pipeline = Pipeline.where(pipeline_status: 'Counter Received')
-        render :index
+    # def fetch_counter_received_properties
+    #     @pipeline = Pipeline.where(pipeline_status: 'Counter Received')
+    #     render :index
+    # end
 
-    end
+    # def fetch_counter_responded_properties
+    #     @pipeline = Pipeline.where(pipeline_status: 'Counter Responded')
+    #     render :index
+    # end
 
-    def fetch_counter_responded_properties
-        @pipeline = Pipeline.where(pipeline_status: 'Counter Responded')
-        render :index
+    # def fetch_under_contract_properties
+    #     @pipeline = Pipeline.where(pipeline_status: 'Under Contract')
+    #     render :index
+    # end
 
-    end
+    # def fetch_contingencies_removed_properties
+    #     @pipeline = Pipeline.where(pipeline_status: 'Contingencies Removed')
+    #     render :index
+    # end
 
-    def fetch_under_contract_properties
-        @pipeline = Pipeline.where(pipeline_status: 'Under Contract')
-        render :index
-
-    end
-
-    def fetch_contingencies_removed_properties
-        @pipeline = Pipeline.where(pipeline_status: 'Contingencies Removed')
-        render :index
-    end
-
-    def fetch_closed_properties
-        @pipeline = Pipeline.where(pipeline_status: 'Closed')
-        render :index
-    end
+    # def fetch_closed_properties
+    #     @pipeline = Pipeline.where(pipeline_status: 'Closed')
+    #     render :index
+    # end
 
     def create
         @pipeline = Pipeline.new(pipeline_params)

@@ -1,7 +1,15 @@
-export const fetchPipeline = () => {
+// export const fetchAllPipeline = () => {
+//     return $.ajax({
+//         method: 'GET',
+//         url: '/api/pipeline',
+//     })
+// }
+
+export const fetchPipeline = pipeline_status => {
     return $.ajax({
         method: 'GET',
-        url: '/api/pipeline'
+        url: '/api/pipeline/fetch_pipeline',
+        data: { pipeline_status }
     })
 }
 

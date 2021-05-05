@@ -1,6 +1,7 @@
 import { floatToPerc, floatToPercTotal } from '../formatting/formatting'
 
 export const sortStats = pipelines => {
+    debugger
 
     let contacted = 0
     let total = pipelines.length
@@ -35,6 +36,7 @@ export const sortStats = pipelines => {
         underContract: floatToPerc(underContract,countersResponded),
         closed: floatToPerc(closed,underContract)            
     }
+    debugger
 
     return stats
 }

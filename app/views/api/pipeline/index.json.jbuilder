@@ -1,12 +1,14 @@
-@pipeline.each do |lead|
-    json.set! lead.id do #this sets an object and uses lead.id as a key
-        json.extract! lead,
-            :id,
-            :user_id,
-            :property_id,
-            :listing_status,
-            :pipeline_status,
-            :contacted,
-            :watched
+@pipelines.each do |pipeline|
+    json.set! pipeline.id do #this sets an object and uses pipeline.id as a key
+        # json.extract! lead,
+        #     :id,
+        #     :pipeline_status,
+        #     :property_id,
+        #     :user_id,
+        #     :contacted,
+        #     :listing_status,
+        #     :watched
+        json.partial! 'pipeline', pipeline: pipeline
+        # json.partial! '/api/pipeline/pipeline', pipeline: lead
     end
 end

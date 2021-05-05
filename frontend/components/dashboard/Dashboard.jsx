@@ -11,12 +11,12 @@ export const LeadsPipelineContext = React.createContext()
 
 function Dashboard() {
 
+    const [selectPipeline, setSelectPipeline] = useState('Uncontacted') // render these lead pipelines
     const [selectedLead, setSelectedLead] = useState(false);
-    const [selectPipeline, setSelectPipeline] = useState('Uncontacted')
     const [contacted, setContacted] = useState(false)
     const [watched, setWatched] = useState(false)
     const [listingStatus, setListingStatus] = useState(null)
-    const [pipelineStatus, setPipelineStatus] = useState(null)
+    const [pipelineStatus, setPipelineStatus] = useState(null) // pipeline status for lead
 
     const lead = useSelector(state => state.entities.leads)
     const pipeline = useSelector((state => state.entities.pipeline))
@@ -26,15 +26,16 @@ function Dashboard() {
     
     useEffect(() => {
         dispatch(fetchPipeline(selectPipeline))
-    },[selectPipeline, contacted, listingStatus, pipelineStatus]);
+    },[pipelineStatus, contacted, selectPipeline]);
+    // },[pipelineStatus, contacted, listingStatus, selectPipeline]);
 
     useEffect(() => {
         newLeadCycle(lead, setSelectedLead, dispatch, fetchPipeline, selectPipeline )
     }, [lead])
 
-        let ctx = {
+    let ctx = {
         currentUser: currentUser,
-        pipeline: 
+        pipeline:   
             Object.values(pipeline).length !== 0 ? 
             Object.values(pipeline).reverse() : false,
         selectedLead: selectedLead,
@@ -49,7 +50,6 @@ function Dashboard() {
         pipelineStatus: pipelineStatus,
         setPipelineStatus: setPipelineStatus
     }
-
 
 
     return  <LeadsPipelineContext.Provider value={ctx}>

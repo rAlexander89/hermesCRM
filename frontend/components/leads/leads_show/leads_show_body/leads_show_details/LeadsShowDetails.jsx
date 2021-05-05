@@ -101,7 +101,6 @@ function LeadsShowDetails({}) {
                 <div className='detail-right'>
                     {contacted ?
                     <select className='pipeline-status-select' value={value} onChange={updateStatus}>
-                     {/* <select className='pipeline-status-select' value={status} onChange={updateStatus}> */}
                         <option value='Contacted'>Contacted</option>
                         <option value='Counter Received'>Counter Received</option>
                         <option value='Counter Responded'>Counter Responded</option>

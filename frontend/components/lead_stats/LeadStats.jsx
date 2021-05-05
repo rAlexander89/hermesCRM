@@ -10,9 +10,9 @@ function LeadStats() {
     const [stats, setStats] = useState(false)
 
     useEffect(() => {
-        fetchPipeline()
+        fetchPipeline('stats')
             .then(res => {
-                setStats(sortStats(res))
+                setStats(sortStats(Object.values(res)))
         })
     }, [ctx])
 

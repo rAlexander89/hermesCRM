@@ -33,33 +33,38 @@ export const fetchPipelineById = pipelineId => dispatch => {
         .then(pipeline => dispatch(receivePipelineById(pipeline)))
 }
 
-export const fetchPipeline = pipeline_status => dispatch => {
-    switch(pipeline_status){
-        case(UNCONTACTED):
-            return PipelineAPIUtils.fetchUncontactedProperties()
-            .then(pipeline => dispatch(receivePipeline(pipeline)));
-        case(CONTACTED):
-            return PipelineAPIUtils.fetchContactedProperties()
-            .then(pipeline => dispatch(receivePipeline(pipeline)));
-        case(WATCHED):
-            return PipelineAPIUtils.fetchWatchedProperties()
-            .then(pipeline => dispatch(receivePipeline(pipeline)));
-        case(COUNTER_RECEIVED):
-            return PipelineAPIUtils.fetchCounterReceivedProperties()
-            .then(pipeline => dispatch(receivePipeline(pipeline)));
-        case(COUNTER_RESPONDED):
-            return PipelineAPIUtils.fetchCounterRespondedProperties()
-            .then(pipeline => dispatch(receivePipeline(pipeline)));
-        case(UNDER_CONTRACT):
-            return PipelineAPIUtils.fetchUnderContractProperties()
-            .then(pipeline => dispatch(receivePipeline(pipeline)));
-        case(CONTINGENCIES_REMOVED):
-            return PipelineAPIUtils.fetchContingenciesRemovedProperties()
-            .then(pipeline => dispatch(receivePipeline(pipeline)));
-        case(CLOSED):
-            return PipelineAPIUtils.fetchClosedroperties()
-            .then(pipeline => dispatch(receivePipeline(pipeline)));
-        default:
-            return null;
-    }
+export const fetchPipeline = pipelineStatus => dispatch => {
+    return PipelineAPIUtils.fetchPipeline(pipelineStatus)
+        .then(pipeline => dispatch(receivePipeline(pipeline)))
 }
+
+// export const fetchPipeline = pipeline_status => dispatch => {
+//     switch(pipeline_status){
+//         case(UNCONTACTED):
+//             return PipelineAPIUtils.fetchUncontactedProperties()
+//             .then(pipeline => dispatch(receivePipeline(pipeline)));
+//         case(CONTACTED):
+//             return PipelineAPIUtils.fetchContactedProperties()
+//             .then(pipeline => dispatch(receivePipeline(pipeline)));
+//         case(WATCHED):
+//             return PipelineAPIUtils.fetchWatchedProperties()
+//             .then(pipeline => dispatch(receivePipeline(pipeline)));
+//         case(COUNTER_RECEIVED):
+//             return PipelineAPIUtils.fetchCounterReceivedProperties()
+//             .then(pipeline => dispatch(receivePipeline(pipeline)));
+//         case(COUNTER_RESPONDED):
+//             return PipelineAPIUtils.fetchCounterRespondedProperties()
+//             .then(pipeline => dispatch(receivePipeline(pipeline)));
+//         case(UNDER_CONTRACT):
+//             return PipelineAPIUtils.fetchUnderContractProperties()
+//             .then(pipeline => dispatch(receivePipeline(pipeline)));
+//         case(CONTINGENCIES_REMOVED):
+//             return PipelineAPIUtils.fetchContingenciesRemovedProperties()
+//             .then(pipeline => dispatch(receivePipeline(pipeline)));
+//         case(CLOSED):
+//             return PipelineAPIUtils.fetchClosedroperties()
+//             .then(pipeline => dispatch(receivePipeline(pipeline)));
+//         default:
+//             return null;
+//     }
+// }
