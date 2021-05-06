@@ -1,5 +1,8 @@
 class Api::PipelineController < ApplicationController
 
+    require 'concerns/tabulations_module'
+    include TabulationMethods
+
     def index
         @pipelines = Pipeline.all
         render :index
@@ -15,19 +18,43 @@ class Api::PipelineController < ApplicationController
     end
 
     def fetch_pipeline
-        if (params[:pipeline_status] == 'Contacted')
+
+        status = params[:pipeline_status]
+
+
+
+        if (status == 'Contacted')
             @pipelines = Pipeline.where(contacted: true)
             render :index
-        elsif (params[:pipeline_status] == 'stats')
-            @pipelines = Pipeline.all
-            render :index
-        elsif (!!params[:pipeline_status])
-            @pipelines = Pipeline.where(pipeline_status: params[:pipeline_status])
-            render :index
-        # else
+        # elsif (status == 'stats')
         #     @pipelines = Pipeline.all
         #     render :index
+        elsif (!!status)
+            @pipelines = Pipeline.where(pipeline_status: params[:pipeline_status])
+            render :index
+        else
+            render json: @pipeline.errors.full_messages, status: 422
         end
+    end
+
+    def fetch_lead_stats
+        total_count = Pipeline.all.count
+        contacted_count = Pipeline.where(contacted: true).count
+        counter_received_count = Pipeline.where(pipeline_status: 'Counter Received').count
+        counter_responded_count = Pipeline.where(pipeline_status: 'Counter Responded').count
+        under_contract_count = Pipeline.where(pipeline_status: 'Under Contract').count
+        closed_count = Pipeline.where(pipeline_status: 'Closed').count
+
+        @sorted_stats = gen_statistics(
+            total_count, 
+            contacted_count,  
+            counter_received_count,
+            counter_responded_count,
+            under_contract_count,
+            closed_count
+        ) 
+
+        render json: @sorted_stats
     end
 
     # def fetch_uncontacted_properties

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :pipeline, only: [:index, :show, :create, :update, :destroy] do
          collection do 
           get 'fetch_pipeline'
+          get 'fetch_lead_stats'
           get 'fetch_uncontacted_properties'
           get 'fetch_contacted_properties'
           get 'fetch_watched_properties'

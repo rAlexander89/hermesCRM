@@ -13,6 +13,13 @@ export const fetchPipeline = pipeline_status => {
     })
 }
 
+export const fetchLeadStats = () => {
+    return $.ajax({
+        method: 'GET',
+        url: '/api/pipeline/fetch_lead_stats'
+    })
+}
+
 export const fetchPipelineById = pipelineId => {
     return $.ajax({
         method: 'GET',
@@ -70,12 +77,7 @@ export const fetchUnderContractProperties = () => {
     })
 }
 
-export const fetchContingenciesRemovedProperties = () => {
-    return $.ajax({
-        method: 'GET',
-        url: '/api/pipeline/fetch_contingencies_removed_properties'
-    })
-}
+
 
 export const fetchClosedroperties = () => {
     return $.ajax({

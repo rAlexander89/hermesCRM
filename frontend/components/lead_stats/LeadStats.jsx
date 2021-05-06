@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { LeadsPipelineContext } from '../dashboard/Dashboard'
-import { fetchPipeline } from '../../utils/api/pipeline_api_utils'
+import { fetchLeadStats } from '../../utils/api/pipeline_api_utils'
 import { sortStats } from '../../utils/misc/sorting/sorters'
 
 
@@ -10,9 +10,9 @@ function LeadStats() {
     const [stats, setStats] = useState(false)
 
     useEffect(() => {
-        fetchPipeline('stats')
+        fetchLeadStats()
             .then(res => {
-                setStats(sortStats(Object.values(res)))
+                setStats(res)
         })
     }, [ctx])
 
@@ -41,8 +41,8 @@ function LeadStats() {
                         <h1 className='graph-desc'>Contacted</h1>
                     </div>
                     <div className='stats-container'>
-                        <div className={`c100 p${stats.counterResponded}`}>
-                            <span><h1>{`${stats.counterResponded}`}%</h1></span>
+                        <div className={`c100 p${stats.countersResponded}`}>
+                            <span><h1>{`${stats.countersResponded}`}%</h1></span>
                             <div className="slice">
                                 <div className="bar"></div>
                                 <div className="fill"></div>

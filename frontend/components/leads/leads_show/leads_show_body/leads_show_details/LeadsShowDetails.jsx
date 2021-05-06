@@ -105,7 +105,6 @@ function LeadsShowDetails({}) {
                         <option value='Counter Received'>Counter Received</option>
                         <option value='Counter Responded'>Counter Responded</option>
                         <option value='Under Contract'>Under Contract</option>
-                        <option value='Contingencies Removed'> Contingencies Removed</option>
                         <option value='Closed'>Closed</option>
                     </select>   
                     : 
