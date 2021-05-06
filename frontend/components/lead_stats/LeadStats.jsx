@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { LeadsPipelineContext } from '../dashboard/Dashboard'
 import { fetchLeadStats } from '../../utils/api/pipeline_api_utils'
-import { sortStats } from '../../utils/misc/sorting/sorters'
 
 
 function LeadStats() {

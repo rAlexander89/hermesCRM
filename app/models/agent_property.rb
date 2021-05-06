@@ -13,7 +13,7 @@
 class AgentProperty < ApplicationRecord
 
     validates :agent_id, :property_id, :listing_id, presence: true
-    validates :agent_id, uniqueness: {scope: [:property_id, :listing_id]}
+    validates :agent_id, uniqueness: { scope: [:property_id, :listing_id] }
 
     belongs_to :agent,
     foreign_key: :agent_id,

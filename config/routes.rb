@@ -16,15 +16,6 @@ Rails.application.routes.draw do
          collection do 
           get 'fetch_pipeline'
           get 'fetch_lead_stats'
-          get 'fetch_uncontacted_properties'
-          get 'fetch_contacted_properties'
-          get 'fetch_watched_properties'
-          get 'fetch_counter_received_properties'
-          get 'fetch_counter_responded_properties'
-          get 'fetch_under_contract_properties'
-          get 'fetch_contingencies_removed_properties'
-          get 'fetch_closed_properties'
-          get 'fetch_hold_properties'
         end
       end
       resources :comments, only: [:create, :update, :destroy, :index]

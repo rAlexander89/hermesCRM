@@ -8,12 +8,12 @@ class Api::AgentsController < ApplicationController
         render :index
     end
 
-    def show
+    def show #this gets an agent by their active record id 
         @agent = Agent.find_by(id: params[:id].to_i)
         render :show
     end
 
-    def fetch_agent_by_agent_license
+    def fetch_agent_by_agent_license #this gets an agent by their mls id
         @agent = Agent.find_by(agent_id: params[:agent_id])
         render json: @agent
     end

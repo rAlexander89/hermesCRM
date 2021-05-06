@@ -77,7 +77,6 @@ class Api::PropertiesController < ApplicationController
                 :st_suffix, 
                 :zipcode, 
                 :listing_id, 
-                # :csv
         )
     end
 end

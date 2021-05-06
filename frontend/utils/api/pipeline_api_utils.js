@@ -1,9 +1,3 @@
-// export const fetchAllPipeline = () => {
-//     return $.ajax({
-//         method: 'GET',
-//         url: '/api/pipeline',
-//     })
-// }
 
 export const fetchPipeline = pipeline_status => {
     return $.ajax({

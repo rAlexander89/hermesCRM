@@ -114,53 +114,5 @@ module LeadCreationMethods
         end
     end
 
-    # def gen_statistics(count)
-    #     # debugger
-
-    #     counter = Hash.new(0)
-
-
-    #     # contacted = 0
-    #     # total = @count.length
-    #     # counter_received = 0
-    #     # counter_responded = 0
-    #     # under_contract = 0
-    #     # closed = 0
-
-    #     count.each do |lead| 
-    #         counter[lead.pipeline_status] += 1
-    #         lead.contacted ? counter['Contacted'] += 1 :  null
-    #     end
-
-    #     debugger
-
-    #     stats = {
-    #         contacted => float_to_perc_total(counter['Contacted'], count.length),
-    #         countersReceived => float_to_perc(counter['Counter Received'], counter['Contacted']),
-    #         counterResponded => float_to_perc(counter['Counter Responded'], counter['Counter Received']),
-    #         underContract => float_to_perc(counter['Counter Responded'], counter['Counter Received']),
-    #         closed => float_to_perc(counter['Closed'], counter['Under Contract'])
-    #     }
-
-    #     debugger
-
-    #     return stats
-    # end
-
-    # def float_to_perc(num1, num2)
-    #     return nil if ( num2 == 0 && num1 == 0 )
-    #     total = num1 + num2
-    #     stat_in_decimal = num1 / (num1 + num2).to_f * 100
-    #     stat_to_int = stat_in_decimal.to_i
-    #     return stat_to_int.to_s
-    # end
-
-    # def float_to_perc_total(numerator, denominator)
-    #     return nil if ( numerator == 0 && denominator == 0 )
-    #     stat_in_decimal = numerator / denominator.to_f * 100
-    #     stat_to_int = stat_in_decimal.to_i
-    #     return stat_to_int.to_s
-    # end
-
-
+    
 end

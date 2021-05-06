@@ -27,7 +27,6 @@ function Dashboard() {
     useEffect(() => {
         dispatch(fetchPipeline(selectPipeline))
     },[pipelineStatus, contacted, selectPipeline]);
-    // },[pipelineStatus, contacted, listingStatus, selectPipeline]);
 
     useEffect(() => {
         newLeadCycle(lead, setSelectedLead, dispatch, fetchPipeline, selectPipeline )

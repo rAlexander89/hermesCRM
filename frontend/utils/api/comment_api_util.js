@@ -28,8 +28,6 @@ export const createComment = (comment) => {
         method: 'POST',
         url: '/api/comments',
         data: {comment},
-        // contentType: false,
-        // processData: false
     })
 };
 
